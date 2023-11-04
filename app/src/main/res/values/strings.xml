@@ -9,6 +9,23 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="produit1">TALLADEGA SUPERSPEEDWAY</string>
+    <string name="produit2">CHARLOTTE MOTOR SPEEDWAY ROAD COURSE</string>
+    <string name="produit3">LAS VEGAS MOTOR SPEEDWAY</string>
+    <string name="produitD1">Description1</string>
+    <string name="produitD2">Description12</string>
+    <string name="produitD3">Description13</string>
+    <string name="produit4">HOMESTEAD-MIAMI SPEEDWAY</string>
+    <string name="produitDate1">SUN. OCT 10, 2023 | 2:00 PM ET</string>
+    <string name="produitDate2">SUN. OCT 18, 2023 | 2:00 PM ET</string>
+    <string name="produitDate3">SUN. OCT 25, 2023 | 2:30 PM ET</string>
+    <string name="produitPrice1">2</string>
+    <string name="produitPrice2">10</string>
+    <string name="produitPrice3">20</string>
+    <string name="produitQuantity1">10</string>
+    <string name="produitQuantity2">15</string>
+    <string name="produitQuantity3">20</string>
+
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

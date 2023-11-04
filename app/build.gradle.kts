@@ -7,6 +7,7 @@ android {
     namespace = "tn.esprit.greenworld"
     compileSdk = 34
 
+
     defaultConfig {
         applicationId = "tn.esprit.greenworld"
         minSdk = 24
