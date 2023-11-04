@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar"></style>
+  <style name="MyBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+    <!-- Change text color -->
+
+    <!-- Change background color -->
+    <item name="android:background">@color/verylightgreen</item>
+  </style>
+
+</resources>
