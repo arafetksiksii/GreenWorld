@@ -13,7 +13,7 @@
     <string name="btn_remember_me">Remember Me</string>
     <string name="btn_forgot_password">Forgot password ?</string>
 
-    <string name="txt_otp_validation">Enter the code sent to you by Email or Mobile number</string>
+    <string name="txt_otp_validation">Please enter the 4-digit code we sent to your email address</string>
     <string name="txt_otp_adress"> verify your email address.</string>
     <string name="txt_otp_email_code"> We have sent a 4-digit code to the following email address:</string>
     <string name="txt_otp_email">  @{viewmodel.userName}"</string>
@@ -27,10 +27,24 @@
     <string name="btn_validation">Valider maintenant</string>
     <string name="btn_validation_try">Typo ? try again</string>
 
+
     <string name="btn_terms_and_privacy">By registering you agree to our <u>Terms &amp; Conditions</u> and <u>Privacy Policy</u></string>
+    <!--  ValidationCode  -->
+    <string name="txt_otp_Confirmation">Confirmation code</string>
+
+    <string name="txt_no_reception">Didn\'t receive a verification code?</string>
+    <string name="btn_verify">Verify</string>
+    <string name="btn_resend_code"><u>Resend code</u></string>
+    <string name="Content_description_1">Enter the first digit of your validation code</string>
+    <string name="Content_description_2">Enter the second digit of your validation code</string>
+    <string name="Content_description_3">Enter the third digit of your validation code</string>
+    <string name="Content_description_4">Enter the fourth digit of your validation code</string>
+
+
 
     <!--  STATICS  -->
     <string name="Content_description_app_logo">App Logo</string>
+    <string name="Content_description_back">back</string>
     <string name="Content_description_apple_button">Apple Login</string>
     <string name="Content_description_facebook_button">Facebook Login</string>
     <string name="Content_description_google_button">Google Login</string>
