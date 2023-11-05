@@ -13,6 +13,9 @@
         android:theme="@style/Theme.GreenWorld"
         tools:targetApi="31">
         <activity
+            android:name=".User_Register"
+            android:exported="false" />
+        <activity
             android:name=".user_register"
             android:exported="false" />
         <activity
