@@ -3,9 +3,9 @@ package tn.esprit.greenworld
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class MainActivity : AppCompatActivity() {
+class User_Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_register)
+        setContentView(R.layout.activity_user_login)
     }
 }
