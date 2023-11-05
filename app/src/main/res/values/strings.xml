@@ -39,7 +39,10 @@
     <string name="Content_description_2">Enter the second digit of your validation code</string>
     <string name="Content_description_3">Enter the third digit of your validation code</string>
     <string name="Content_description_4">Enter the fourth digit of your validation code</string>
+    <!--  Renitialiser Mot Passe  -->
 
+    <string name="txt_reset_password_desc"> Reset Password.</string>
+    <string name="btn_submit">Submit</string>
 
 
     <!--  STATICS  -->
