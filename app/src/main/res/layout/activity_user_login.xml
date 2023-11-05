@@ -31,15 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivLogo"
         app:startIconDrawable="@drawable/ic_email"
-        app:suffixText="@string/input_suffix_Email">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:suffixText="@string/input_suffix_Email"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiPasswordLayout"
@@ -64,6 +56,10 @@
             android:drawablePadding="20dp"
             android:inputType="textPassword"
             android:password="true"
+            android:textColor="@color/Primary"
+            android:textColorHighlight="@color/Primary"
+            android:textColorHint="@color/Primary"
+            android:textColorLink="@color/Primary"
             tools:ignore="Deprecated" />
 
     </com.google.android.material.textfield.TextInputLayout>

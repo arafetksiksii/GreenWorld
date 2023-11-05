@@ -15,26 +15,29 @@
         app:icon="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <!-- Votre mise en page actuelle -->
+
 
     <ImageView
         android:id="@+id/ivLogo"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_width="363dp"
+        android:layout_height="99dp"
         android:layout_margin="20dp"
-        android:padding="10dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/Content_description_facebook_button"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_apple" />
+        app:srcCompat="@drawable/ic_logof" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiFullNameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/input_full_name"
         android:layout_margin="20dp"
-        app:startIconDrawable="@drawable/ic_account"
+        android:hint="@string/input_full_name"
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +47,8 @@
             android:id="@+id/tiFullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:drawableStart="@drawable/ic_account"
+            android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +58,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/input_email"
         android:layout_margin="20dp"
-        app:startIconDrawable="@drawable/ic_email"
+
         app:errorEnabled="true"
         app:suffixText="@string/input_suffix_Email"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +69,8 @@
             android:id="@+id/tiEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"/>
+            android:drawableStart="@drawable/ic_email"
+            android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,7 +81,9 @@
         android:hint="@string/input_password"
         android:layout_margin="20dp"
         app:passwordToggleEnabled="true"
-        app:startIconDrawable="@drawable/ic_lock"
+
+
+
         app:passwordToggleTint="@color/colorPrimary"
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tiEmailLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:drawableStart="@drawable/ic_password"
             android:id="@+id/tiPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,7 +106,7 @@
         android:hint="@string/input_confirm_password"
         android:layout_margin="20dp"
         app:passwordToggleEnabled="true"
-        app:startIconDrawable="@drawable/ic_lock"
+
         app:passwordToggleTint="@color/colorPrimary"
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,6 +114,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tiPasswordLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:drawableStart="@drawable/ic_password"
             android:id="@+id/tiConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,6 +133,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tiConfirmPasswordLayout" />
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="1dp"
+        android:weightSum="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignUp">
+
+        <ImageView
+            android:id="@+id/btnFacebookLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/Content_description_facebook_button"
+            android:padding="20dp"
+            android:src="@drawable/ic_btn_facebook" />
+
+        <ImageView
+            android:id="@+id/btnGoogleLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/Content_description_google_button"
+            android:padding="20dp"
+            android:src="@drawable/ic_btn_google" />
+
+        <ImageView
+            android:id="@+id/btnAppleLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/Content_description_apple_button"
+            android:padding="20dp"
+            android:src="@drawable/ic_apple" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/btnTermsAndPolicy"
         style="@style/Widget.Material3.Button.TextButton"
@@ -133,6 +181,8 @@
         android:text="@string/btn_terms_and_privacy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

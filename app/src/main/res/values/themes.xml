@@ -4,11 +4,17 @@
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
 
+
         <item name="colorOnPrimary">@color/white</item>
 
         <item name="colorSurface">@color/colorPrimary</item>
         <item name="colorOnSurface">@color/colorPrimary</item>
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="colorError">#B3261E</item>
+        <item name="colorErrorContainer">#B3261E</item>
+        <item name="colorOnError">#B3261E</item>
+        <item name="colorOnErrorContainer">#B3261E</item>
     </style>
 
     <style name="Theme.GreenWorld" parent="Base.Theme.GreenWorld" />

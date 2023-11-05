@@ -14,11 +14,18 @@
     <string name="btn_forgot_password">Forgot password ?</string>
 
     <string name="txt_otp_validation">Enter the code sent to you by Email or Mobile number</string>
+    <string name="txt_otp_adress"> verify your email address.</string>
+    <string name="txt_otp_email_code"> We have sent a 4-digit code to the following email address:</string>
+    <string name="txt_otp_email">  @{viewmodel.userName}"</string>
+    <string name="txt_otp_email_validation">  If you do not receive the confirmation email, please check your spam or unwanted emails."</string>
+
     <string name="txt_reset_password">Reset Password</string>
     <string name="btn_register_now">Don\'t have an account? <u>Register Now</u> </string>
     <string name="btn_login">Login</string>
     <string name="btn_apple">apple</string>
     <string name="btn_signup">Submit</string>
+    <string name="btn_validation">Valider maintenant</string>
+    <string name="btn_validation_try">Typo ? try again</string>
 
     <string name="btn_terms_and_privacy">By registering you agree to our <u>Terms &amp; Conditions</u> and <u>Privacy Policy</u></string>
 
