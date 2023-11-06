@@ -11,9 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.databinding.ActivityUserRegisterBinding
 
-class User_Register:AppCompatActivity() {
-
-
+class User_Register : AppCompatActivity() {
 
     private lateinit var binding: ActivityUserRegisterBinding
 
@@ -21,180 +19,158 @@ class User_Register:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUserRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val contextView = findViewById<View>(android.R.id.content)
 
-        binding.tiFullName.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                return
-            }
+        // Get the root view to be used as the parent for Snackbar
+        val rootView = window.decorView.rootView
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                validateFullName()
-            }
+        // Initialize the TextWatcher for the input fields
+        initTextWatchers()
 
-            override fun afterTextChanged(s: Editable?) {
-                return
-            }
-        })
-
-        binding.tiEmail.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                return
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                validateEmail()
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                return
-            }
-        })
-
-        binding.tiPassword.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                return
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                validatePassword()
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                return
-            }
-        })
-
-        binding.tiConfirmPassword.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                return
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                validateConfirmPassword()
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                return
-            }
-        })
-
+        // Handle Sign Up button click
         binding.btnSignUp.setOnClickListener {
-            //MyStatics.hideKeyboard(this, binding.btnSignUp)
-            if (validateFullName() && validateEmail() && validatePassword() && validateConfirmPassword()){
+            if (validateForm()) {
+                // If validation is successful, navigate to the LoginActivity.
                 startActivity(Intent(this, LoginActivity::class.java))
-            }else{
-                Snackbar.make(contextView, getString(R.string.msg_error_inputs), Snackbar.LENGTH_SHORT).show()
+            } else {
+                // If validation fails, show a Snackbar with an error message.
+                Snackbar.make(rootView, getString(R.string.msg_error_inputs), Snackbar.LENGTH_SHORT).show()
             }
         }
 
+        // Handle Terms and Policy button click
         binding.btnTermsAndPolicy.setOnClickListener {
-            Snackbar.make(contextView, getString(R.string.msg_coming_soon), Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(rootView, getString(R.string.msg_coming_soon), Snackbar.LENGTH_SHORT).show()
         }
 
+        // Handle Return button click
         binding.btnReturn.setOnClickListener {
             finish()
         }
     }
 
-    private fun validateFullName(): Boolean {
-        binding.tiFullNameLayout.isErrorEnabled = false
+    private fun initTextWatchers() {
+        // TextWatcher for Full Name input
+        binding.tiFullName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-        if (binding.tiFullName.text.toString().isEmpty()) {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                validateFullName()
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+        // TextWatcher for Email input
+        binding.tiEmail.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                validateEmail()
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+        // TextWatcher for Password input
+        binding.tiPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                validatePassword()
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+        // TextWatcher for Confirm Password input
+        binding.tiConfirmPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                validateConfirmPassword()
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+    }
+
+    private fun validateFullName(): Boolean {
+        val fullName = binding.tiFullName.text.toString()
+        binding.tiFullNameLayout.error = null
+
+        if (fullName.isEmpty()) {
             binding.tiFullNameLayout.error = getString(R.string.msg_must_not_be_empty)
-            binding.tiFullName.requestFocus()
             return false
-        }else{
-            binding.tiFullNameLayout.isErrorEnabled = false
         }
 
-        if (binding.tiFullName.text.toString().length < 6) {
+        if (fullName.length < 6) {
             binding.tiFullNameLayout.error = getString(R.string.msg_check_your_characters)
-            binding.tiFullName.requestFocus()
             return false
-        }else{
-            binding.tiFullNameLayout.isErrorEnabled = false
         }
 
         return true
     }
 
     private fun validateEmail(): Boolean {
-        binding.tiEmailLayout.isErrorEnabled = false
+        val email = binding.tiEmail.text.toString()
+        binding.tiEmailLayout.error = null
 
-        if (binding.tiEmail.text.toString().isEmpty()) {
+        if (email.isEmpty()) {
             binding.tiEmailLayout.error = getString(R.string.msg_must_not_be_empty)
-            binding.tiEmail.requestFocus()
             return false
-        }else{
-            binding.tiEmailLayout.isErrorEnabled = false
         }
 
-        if (Patterns.EMAIL_ADDRESS.matcher(binding.tiEmail.text.toString()).matches()) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.tiEmailLayout.error = getString(R.string.msg_check_your_email)
-            binding.tiEmail.requestFocus()
             return false
-        }else{
-            binding.tiEmailLayout.isErrorEnabled = false
         }
 
         return true
     }
 
     private fun validatePassword(): Boolean {
-        binding.tiPasswordLayout.isErrorEnabled = false
+        val password = binding.tiPassword.text.toString()
+        binding.tiPasswordLayout.error = null
 
-        if (binding.tiPassword.text.toString().isEmpty()) {
+        if (password.isEmpty()) {
             binding.tiPasswordLayout.error = getString(R.string.msg_must_not_be_empty)
-            binding.tiPassword.requestFocus()
             return false
-        }else{
-            binding.tiPasswordLayout.isErrorEnabled = false
         }
 
-        if (binding.tiPassword.text.toString().length < 6) {
+        if (password.length < 6) {
             binding.tiPasswordLayout.error = getString(R.string.msg_check_your_characters)
-            binding.tiPassword.requestFocus()
             return false
-        }else{
-            binding.tiPasswordLayout.isErrorEnabled = false
         }
 
         return true
     }
 
     private fun validateConfirmPassword(): Boolean {
-        binding.tiConfirmPasswordLayout.isErrorEnabled = false
+        val confirmPassword = binding.tiConfirmPassword.text.toString()
+        val password = binding.tiPassword.text.toString()
+        binding.tiConfirmPasswordLayout.error = null
+        binding.tiPasswordLayout.error = null
 
-        if (binding.tiConfirmPassword.text.toString().isEmpty()) {
+        if (confirmPassword.isEmpty()) {
             binding.tiConfirmPasswordLayout.error = getString(R.string.msg_must_not_be_empty)
-            binding.tiConfirmPassword.requestFocus()
             return false
-        }else{
-            binding.tiConfirmPasswordLayout.isErrorEnabled = false
         }
 
-        if (binding.tiConfirmPassword.text.toString().length < 6) {
+        if (confirmPassword.length < 6) {
             binding.tiConfirmPasswordLayout.error = getString(R.string.msg_check_your_characters)
-            binding.tiConfirmPassword.requestFocus()
             return false
-        }else{
-            binding.tiConfirmPasswordLayout.isErrorEnabled = false
         }
 
-        if (!binding.tiConfirmPassword.text.toString().equals(binding.tiPassword.text.toString())) {
+        if (confirmPassword != password) {
             binding.tiConfirmPasswordLayout.error = getString(R.string.msg_check_your_confirm_Password)
             binding.tiPasswordLayout.error = getString(R.string.msg_check_your_confirm_Password)
-            binding.tiConfirmPassword.requestFocus()
             return false
-        }else{
-            binding.tiConfirmPasswordLayout.isErrorEnabled = false
-            binding.tiPasswordLayout.isErrorEnabled = false
         }
 
         return true
     }
 
-
-
+    private fun validateForm(): Boolean {
+        return validateFullName() && validateEmail() && validatePassword() && validateConfirmPassword()
+    }
 }
