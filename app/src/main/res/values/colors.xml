@@ -13,6 +13,10 @@
 
     <color name="red">#FF0000</color>
     <color name="yellow">#FFFF00</color>
+    <color name="startblue">#E8E82C</color>
+    <color name="endblue">#EDED93</color>
+    <color name="graylight">#5B9C11</color>
     <color name="transparent">#00FFFFFF</color>
+
 
 </resources>
