@@ -52,5 +52,13 @@
     <string name="Content_description_facebook_button">Facebook Login</string>
     <string name="Content_description_google_button">Google Login</string>
 
+    <!--  ErrorsMessages  -->
+    <string name="msg_must_not_be_empty">Must not be empty!</string>
+    <string name="msg_check_your_email">Must be a valid email!</string>
+    <string name="msg_check_your_characters">Must be a at least 6 characters!</string>
+    <string name="msg_check_your_confirm_Password">Must be the same password!</string>
+    <string name="msg_error_inputs">You Have some errors in your inputs!</string>
+    <string name="msg_error_wrong_code">Wrong code!</string>
+    <string name="msg_coming_soon">Coming soon :)</string>
 
 </resources>
