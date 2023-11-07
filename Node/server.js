@@ -9,7 +9,7 @@ const app = express();
 const databaseName = 'GreenWorld';
 const port = process.env.PORT || 9090;
 mongoose
-  .connect(`mongodb://localhost:27017/${databaseName}`)
+  .connect(`mongodb://127.0.0.1:27017/${databaseName}`)
   .then(() => {
     console.log(`connection successful`);
   })
