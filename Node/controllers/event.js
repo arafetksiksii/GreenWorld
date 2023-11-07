@@ -44,7 +44,7 @@ export function addOnce(req, res) {
     }
 }
 export function getOnce(req, res) {
-    Game
+    Event
     .findOne({ "titre": req.params.titre })
     .then(doc => {
         res.status(200).json(doc);
@@ -61,7 +61,7 @@ export function putOnce(req, res) {
  * Remarque : renommez putOnce par putAll
  */
 export function putAll(req, res) {
-    Game
+    Event
     .updateMany({}, { "lieu": String })
     .then(doc => {
         res.status(200).json(doc);
@@ -75,27 +75,34 @@ export function putAll(req, res) {
  * Mettre à jour un seul document
  */
 export function patchOnce(req, res) {
-    Game
-    .findOneAndUpdate({ "titre": req.params.titre }, { "description": String })
-    .then(doc => {
-        res.status(200).json(doc);
-    })
-    .catch(err => {
+    Event
+      .findOneAndUpdate({ "titre": req.params.titre }, { "description": req.body.description },{ "lieu": req.body.lieu },{ "nbparticipant": req.body.nbparticipant },{ "dateDebut": req.body.dateDebut },{ "dateFin": req.body.dateFin },{ "image": req.body.image }, { new: true })
+      .then(doc => {
+        if (doc) {
+          res.status(200).json(doc);
+        } else {
+          res.status(404).json({ message: "Document not found" });
+        }
+      })
+      .catch(err => {
         res.status(500).json({ error: err });
-    });
-}
-
+      });
+  }
 /**
  * Supprimer un seul document
  */
 export function deleteOnce(req, res) {
-    Game
-    .findOneAndRemove({ "titre": req.params.titre })
-    .then(doc => {
-        res.status(200).json(doc);
-    })
-    .catch(err => {
+    Event
+      .findOneAndDelete({ "titre": req.params.titre })
+      .then(doc => {
+        if (doc) {
+          res.status(200).json(doc);
+        } else {
+          res.status(404).json({ message: "Document not found" });
+        }
+      })
+      .catch(err => {
         res.status(500).json({ error: err });
-    });
-}
+      });
+  }
 
