@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:textColor="#FFB300"
 
-    tools:context=".User_Validation">
+    tools:context=".ui.gestionUser.User_Validation">
 
 
 

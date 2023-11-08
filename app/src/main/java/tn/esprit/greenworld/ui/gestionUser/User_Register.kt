@@ -1,11 +1,10 @@
-package tn.esprit.greenworld.ui
+package tn.esprit.greenworld.ui.gestionUser
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import tn.esprit.greenworld.R

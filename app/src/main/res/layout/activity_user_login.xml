@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.LoginActivity">
+    tools:context=".ui.gestionUser.LoginActivity">
 
     <ImageView
         android:id="@+id/ivLogo"
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/ic_logo" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiEmailLayout"
@@ -26,12 +26,23 @@
         android:layout_marginTop="20dp"
         android:hint="@string/input_email"
         app:errorEnabled="true"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivLogo"
-        app:startIconDrawable="@drawable/ic_email"
-        app:suffixText="@string/input_suffix_Email"/>
+        app:startIconDrawable="@drawable/ic_email">
+
+        <!-- Ajoutez un EditText à l'intérieur du TextInputLayout -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+        android:hint="@string/input_email"
+        />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- app:suffixText="@string/input_suffix_Email" -->
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiPasswordLayout"

@@ -6,36 +6,34 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GreenWorld"
         tools:targetApi="31">
         <activity
-            android:name=".User_RentialiseMotPasse"
+            android:name=".ui.gestionUser.User_RentialiseMotPasse"
             android:exported="false" />
         <activity
-            android:name=".User_ValidationCode"
+            android:name=".ui.gestionUser.User_ValidationCode"
             android:exported="false" />
         <activity
-            android:name=".User_Validation"
+            android:name=".ui.gestionUser.User_Validation"
             android:exported="false" />
         <activity
-            android:name=".User_Register"
+            android:name=".ui.gestionUser.UserProfil"
             android:exported="false" />
         <activity
-            android:name=".user_register"
+
+            android:name=".ui.gestionUser.User_Register"
             android:exported="false" />
+
+        <!-- Activité de lancement -->
         <activity
-            android:name=".User_Login"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".ui.gestionUser.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

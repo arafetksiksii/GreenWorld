@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".User_RentialiseMotPasse">
+    tools:context=".ui.gestionUser.User_RentialiseMotPasse">
     <Button
         android:id="@+id/btnReturn"
         style="@style/Widget.Material3.Button.IconButton"
