@@ -25,4 +25,11 @@
     <style name="EllipseTextInputStyle">
         <item name="android:background">@drawable/ellipse_background</item>
     </style>
+
+    <!-- styles.xml -->
+    <style name="green_world">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">#F2FEED</item>
+    </style>
+
 </resources>

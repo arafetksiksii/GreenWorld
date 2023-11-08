@@ -22,6 +22,7 @@
     <string name="txt_reset_password">Reset Password</string>
     <string name="btn_register_now">Don\'t have an account? <u>Register Now</u> </string>
     <string name="btn_login">Login</string>
+    <string name="btn_Sign">Sign</string>
     <string name="btn_apple">apple</string>
     <string name="btn_signup">Submit</string>
     <string name="btn_validation">Valider maintenant</string>
@@ -60,5 +61,12 @@
     <string name="msg_error_inputs">You Have some errors in your inputs!</string>
     <string name="msg_error_wrong_code">Wrong code!</string>
     <string name="msg_coming_soon">Coming soon :)</string>
+
+    <!--  Main  -->
+    <string name="main_desc">Every action counts in preserving our precious nature</string>
+
+    <string name="green_world">
+Green World
+</string>
 
 </resources>
