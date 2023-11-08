@@ -21,45 +21,48 @@
 
 
 
-    <LinearLayout
-        android:id="@+id/linear_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:id="@+id/linear_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/img_search"
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_3bars" />
+
+            <TextView
+                android:id="@+id/tv_produit"
+                style="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:fontFamily="@font/myfont"
+                android:gravity="center_vertical"
+                android:text="Store"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_29ssp" />
+        </LinearLayout>
+
+
 
         <TextView
-            android:id="@+id/tv_produit"
-            style="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/myfont"
-            android:text="Store"
-            android:textColor="@color/green"
-            android:textSize="@dimen/_25ssp" />
-
-        <ImageView
-            android:id="@+id/img_search"
-            android:layout_width="104dp"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_search" />
-
-
-    </LinearLayout>
-
-    <TextView
         android:id="@+id/wwylte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:fontFamily="@font/myfont"
         android:text="What would you like to buy "
-        android:textColor="@color/green"
+        android:textColor="@color/black"
         android:textSize="@dimen/_20ssp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/linear_header"

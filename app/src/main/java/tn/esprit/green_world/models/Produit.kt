@@ -1,5 +1,7 @@
 package tn.esprit.green_world.models
 
+import java.io.Serializable
+
 data class Produit(
     val __v: Int,
     val _id: String,
@@ -10,4 +12,4 @@ data class Produit(
     val quantity: Int,
     val title: String,
     val updatedAt: String
-)
+) : Serializable
