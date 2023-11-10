@@ -15,24 +15,17 @@ class LoginActivity : AppCompatActivity() {
         val rootView = window.decorView.rootView
 
         // Initialisation des TextWatchers, si nécessaire
-        // initTextWatchers()
+     // initTextWatchers()
 
-        // Gestion du clic sur le bouton "S'inscrire"
+
         binding.btnLogin.setOnClickListener {
-            // Validation du formulaire (décommentez si nécessaire)
-            // if (validateForm()) {
-            // Si la validation est réussie, naviguez vers l'activité d'inscription (User_Register).
-            startActivity(Intent(this, User_Register::class.java))
-            // } else {
-            // Si la validation échoue, affichez un Snackbar avec un message d'erreur.
-            // Snackbar.make(rootView, getString(R.string.msg_error_inputs), Snackbar.LENGTH_SHORT).show()
-            // }
+              startActivity(Intent(this, User_Register::class.java))
+
         }
+
+        binding.btnCreateAccount.setOnClickListener {
+            startActivity(Intent(this, User_Register::class.java)) }
     }
 
-    // Méthode de validation du formulaire, si nécessaire
-    // private fun validateForm(): Boolean {
-    //    // Ajoutez votre logique de validation ici
-    //    // Retournez true si la validation réussit, sinon false.
-    // }
+
 }

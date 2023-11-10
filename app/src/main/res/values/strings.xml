@@ -24,7 +24,7 @@
     <string name="btn_login">Login</string>
     <string name="btn_Sign">Sign</string>
     <string name="btn_apple">apple</string>
-    <string name="btn_signup">Submit</string>
+    <string name="btn_signup">Sign up</string>
     <string name="btn_validation">Valider maintenant</string>
     <string name="btn_validation_try">Typo ? try again</string>
 
@@ -35,7 +35,7 @@
 
     <string name="txt_no_reception">Didn\'t receive a verification code?</string>
     <string name="btn_verify">Verify</string>
-    <string name="btn_resend_code"><u>Resend code</u></string>
+    <string name="btn_resend_code"><u>Resend confirmation code</u></string>
     <string name="Content_description_1">Enter the first digit of your validation code</string>
     <string name="Content_description_2">Enter the second digit of your validation code</string>
     <string name="Content_description_3">Enter the third digit of your validation code</string>
@@ -68,5 +68,7 @@
     <string name="green_world">
 Green World
 </string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

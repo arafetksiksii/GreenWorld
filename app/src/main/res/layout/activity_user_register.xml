@@ -4,7 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gestionUser.User_Register">
+    tools:context=".ui.gestionUser.User_Register"
+    >
+
+
+    <ImageView
+        android:id="@+id/imageEllipseNineOne"
+        android:layout_width="366dp"
+        android:layout_height="149dp"
+        android:layout_gravity="top|start"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_ellipse9_81x292"
+        tools:ignore="ContentDescription" />
+
+
+    <ImageView
+        android:id="@+id/imageEllipseTen"
+        android:layout_width="170dp"
+        android:layout_height="68dp"
+        android:layout_gravity="top|end"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_ellipse10"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/img_ellipse10" />
 
 
     <Button

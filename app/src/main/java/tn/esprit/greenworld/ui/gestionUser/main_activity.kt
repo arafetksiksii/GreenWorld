@@ -1,5 +1,6 @@
 package tn.esprit.greenworld.ui.gestionUser
 
+
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -19,27 +20,14 @@ class main_activity :AppCompatActivity(){
         // initTextWatchers()
 
         // Gestion du clic sur le bouton "S'inscrire"
-        binding.btnLogin.setOnClickListener {
-            // Validation du formulaire (décommentez si nécessaire)
-            // if (validateForm()) {
-            // Si la validation est réussie, naviguez vers l'activité d'inscription (User_Register).
-            startActivity(Intent(this, LoginActivity::class.java))
-            // } else {
-            // Si la validation échoue, affichez un Snackbar avec un message d'erreur.
-            // Snackbar.make(rootView, getString(R.string.msg_error_inputs), Snackbar.LENGTH_SHORT).show()
-            // }
-        }
+        binding.frame2.setOnClickListener {
+              startActivity(Intent(this, LoginActivity::class.java))
+             }
 
         // Gestion du clic sur le bouton "S'inscrire"
-        binding.btnSbumit.setOnClickListener {
-            // Validation du formulaire (décommentez si nécessaire)
-            // if (validateForm()) {
-            // Si la validation est réussie, naviguez vers l'activité d'inscription (User_Register).
+        binding.frame3.setOnClickListener {
             startActivity(Intent(this, User_Register::class.java))
-            // } else {
-            // Si la validation échoue, affichez un Snackbar avec un message d'erreur.
-            // Snackbar.make(rootView, getString(R.string.msg_error_inputs), Snackbar.LENGTH_SHORT).show()
-            // }
+
         }
     }
 }

@@ -1,16 +1,20 @@
 package tn.esprit.greenworld.ui.gestionUser
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.databinding.ActivityUserRegisterBinding
 
 class User_Register : AppCompatActivity() {
+
 
     private lateinit var binding: ActivityUserRegisterBinding
 
@@ -37,9 +41,25 @@ class User_Register : AppCompatActivity() {
         }
 
         // Handle Terms and Policy button click
-        binding.btnTermsAndPolicy.setOnClickListener {
-            Snackbar.make(rootView, getString(R.string.msg_coming_soon), Snackbar.LENGTH_SHORT).show()
-        }
+                binding.btnTermsAndPolicy.setOnClickListener {
+                    val snackbar = Snackbar.make(rootView, getString(R.string.msg_coming_soon), Snackbar.LENGTH_SHORT)
+
+                    // Get the Snackbar's layout
+                    val layout = snackbar.view as Snackbar.SnackbarLayout
+
+                    // Get the TextView holding the action button
+                    val textView = layout.findViewById<TextView>(com.google.android.material.R.id.snackbar_action)
+
+                    // Set the text color of the action button
+                    textView.setTextColor(ContextCompat.getColor(this, R.color.white))
+
+                    // Set the background tint to the primary color
+                    layout.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary))
+
+                    // Show the Snackbar
+                    snackbar.show()
+                    startActivity(Intent(this, CommingSoon::class.java))
+                }
 
         // Handle Return button click
         binding.btnReturn.setOnClickListener {
