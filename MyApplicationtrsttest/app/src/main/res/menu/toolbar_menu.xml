@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/item_notification"
+        app:showAsAction="ifRoom"
+        android:title="@string/item_notification" />
+    <item
+        android:id="@+id/app_bar_switch"
+        android:title="mode nuit"
+        app:actionLayout="@layout/switch_item" />
+
+</menu>

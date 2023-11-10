@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/group_6"
+        android:layout_marginTop="78dp"
+        android:layout_marginStart="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <RelativeLayout
+            android:id="@+id/vuesax_linear_search_normal"
+            android:layout_marginTop="13dp"
+            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+            <RelativeLayout
+                android:id="@+id/vuesax_linear_search_normal_ek2"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/search_normal"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <!-- Vous pouvez ajouter des éléments à l'intérieur de cette vue -->
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/frame_4"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="292dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <RelativeLayout
+            android:id="@+id/furnitur_icon"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+            <RelativeLayout
+                android:id="@+id/vuesax_linear_setting_4"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints">
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/rectangle_1700"
+        android:layout_width="344dp"
+        android:layout_height="44dp"
+        android:background="@drawable/rectangle_1700_shape"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="171dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/search_icon"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="183dp" />
+
+    <View
+        android:id="@+id/_bg__frame_4_ek1"
+        android:layout_width="45dp"
+        android:layout_height="31dp"
+        android:background="@drawable/_bg__frame_4_ek1_shape"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="311dp"
+        tools:layout_editor_absoluteY="178dp" />
+
+    <TextView
+        android:id="@+id/search_coffee"
+        android:layout_width="120.42dp"
+        android:layout_height="19.63dp"
+        android:text="@string/search_string"
+        android:textColor="@color/search_coffee_color"
+        android:textSize="14sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="183dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/filter_icon"
+        tools:layout_editor_absoluteX="321dp"
+        tools:layout_editor_absoluteY="179dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

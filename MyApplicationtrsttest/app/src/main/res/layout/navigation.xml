@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout android:id="@+id/details"
+        android:layout_marginTop="140dp"
+        android:layout_marginStart="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <View
+            android:id="@+id/_bg__details_ek1"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/_bg__eventpage_shape" />
+
+
+        <RelativeLayout android:id="@+id/_01"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <View
+                android:id="@+id/_bg___01_ek1"
+                android:layout_width="40.66dp"
+                android:layout_height="26.02dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/bg_shape" />
+
+            <View
+                android:id="@+id/bg"
+                android:layout_width="47dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/bg_shape" />
+
+            <TextView android:id="@+id/all"
+                android:textAllCaps="true"
+                android:textColor="@color/_bg__eventpage_color"
+                android:layout_marginLeft="11.39dp"
+                android:layout_marginTop="3.25dp"
+                android:layout_width="28.975904560089dp"
+                android:layout_height="22.975904560089dp"
+                android:text="@string/all_string"
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout android:id="@+id/_02"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="50.42dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <View   android:id="@+id/_bg___02_ek1"
+                android:background="@drawable/_bg__frame_4_ek1_shape"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_width="73.19dp"
+                android:layout_height="26.02dp" />
+
+            <View   android:id="@+id/bg_ek1"
+                android:background="@drawable/bg_ek1_shape"
+                android:layout_marginStart="-0.81dp"
+                android:layout_marginTop="-0.81dp"
+                android:layout_width="73.19dp"
+                android:layout_height="26.02dp" />
+
+            <TextView
+                android:id="@+id/payment"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginLeft="12.2dp"
+                android:layout_marginTop="3.25dp"
+                android:text="@string/payment_string"
+                android:textAllCaps="true"
+                android:textColor="@color/events_color" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout android:id="@+id/_3"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="137dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <View   android:id="@+id/_bg___3_ek1"
+                android:background="@drawable/_bg__frame_4_ek1_shape"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_width="73.19dp"
+                android:layout_height="26.02dp" />
+
+            <View   android:id="@+id/bg_ek2"
+                android:background="@drawable/bg_ek2_shape"
+                android:layout_marginStart="-0.81dp"
+                android:layout_marginTop="-0.81dp"
+                android:layout_width="73.19dp"
+                android:layout_height="26.02dp" />
+
+            <TextView android:id="@+id/payment_ek1"
+                android:textAllCaps="true"
+                android:textColor="@color/events_color"
+                android:layout_marginLeft="12.2dp"
+                android:layout_marginTop="3.25dp"
+                android:layout_width="55.975904560089dp"
+                android:layout_height="22.975904560089dp"
+                android:text="@string/payment_ek1_string"
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout android:id="@+id/_4"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="224dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <View   android:id="@+id/_bg___4_ek1"
+                android:background="@drawable/_bg__frame_4_ek1_shape"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_width="73.19dp"
+                android:layout_height="26.02dp" />
+
+            <View
+                android:id="@+id/bg_ek3"
+                android:layout_width="73dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="-0.81dp"
+                android:layout_marginTop="-0.81dp"
+                android:background="@drawable/bg_ek3_shape" />
+
+            <TextView android:id="@+id/payment_ek2"
+                android:textAllCaps="true"
+                android:textColor="@color/events_color"
+                android:layout_marginLeft="12.2dp"
+                android:layout_marginTop="3.25dp"
+                android:layout_width="55.975904560089dp"
+                android:layout_height="22.975904560089dp"
+                android:text="@string/payment_ek2_string"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
