@@ -3,28 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout android:id="@+id/details"
-        android:layout_marginTop="140dp"
-        android:layout_marginStart="24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <RelativeLayout
+        android:id="@+id/details"
+        android:layout_width="385dp"
+        android:layout_height="32dp"
         tools:ignore="MissingConstraints">
 
         <View
             android:id="@+id/_bg__details_ek1"
             android:layout_width="match_parent"
-            android:layout_height="21dp"
-            android:layout_marginStart="0dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="0dp"
-            android:background="@drawable/_bg__eventpage_shape" />
+            android:background="@drawable/_bg__details_ek1_shape" />
 
 
-        <RelativeLayout android:id="@+id/_01"
-            android:layout_marginTop="0dp"
-            android:layout_marginStart="0dp"
+        <RelativeLayout
+            android:id="@+id/_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp">
 
             <View
                 android:id="@+id/_bg___01_ek1"
@@ -32,131 +31,135 @@
                 android:layout_height="26.02dp"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
-                android:background="@drawable/bg_shape" />
+                />
 
             <View
                 android:id="@+id/bg"
-                android:layout_width="47dp"
-                android:layout_height="24dp"
+                android:layout_width="40.66dp"
+                android:layout_height="26.02dp"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
                 android:background="@drawable/bg_shape" />
 
-            <TextView android:id="@+id/all"
-                android:textAllCaps="true"
-                android:textColor="@color/_bg__eventpage_color"
-                android:layout_marginLeft="11.39dp"
-                android:layout_marginTop="3.25dp"
+            <TextView
+                android:id="@+id/all"
                 android:layout_width="28.975904560089dp"
                 android:layout_height="22.975904560089dp"
+                android:layout_marginLeft="11.39dp"
+                android:layout_marginTop="3.25dp"
                 android:text="@string/all_string"
-                />
+                android:textAllCaps="true"
+                android:textColor="@color/_bg__welcome_ek2_color" />
 
         </RelativeLayout>
 
 
-        <RelativeLayout android:id="@+id/_02"
-            android:layout_marginTop="0dp"
-            android:layout_marginStart="50.42dp"
+        <RelativeLayout
+            android:id="@+id/_02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
+            android:layout_marginStart="50.42dp"
+            android:layout_marginTop="0dp">
 
-            <View   android:id="@+id/_bg___02_ek1"
-                android:background="@drawable/_bg__frame_4_ek1_shape"
+            <View
+                android:id="@+id/_bg___02_ek1"
+                android:layout_width="73.19dp"
+                android:layout_height="26.02dp"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
-                android:layout_width="73.19dp"
-                android:layout_height="26.02dp" />
+             />
 
-            <View   android:id="@+id/bg_ek1"
-                android:background="@drawable/bg_ek1_shape"
+            <View
+                android:id="@+id/bg_ek1"
+                android:layout_width="73.19dp"
+                android:layout_height="26.02dp"
                 android:layout_marginStart="-0.81dp"
                 android:layout_marginTop="-0.81dp"
-                android:layout_width="73.19dp"
-                android:layout_height="26.02dp" />
+                android:background="@drawable/bg_ek1_shape" />
 
             <TextView
                 android:id="@+id/payment"
-                android:layout_width="wrap_content"
-                android:layout_height="26dp"
+                android:layout_width="61dp"
+                android:layout_height="23dp"
                 android:layout_marginLeft="12.2dp"
                 android:layout_marginTop="3.25dp"
-                android:text="@string/payment_string"
+                android:text="@string/events_string"
                 android:textAllCaps="true"
-                android:textColor="@color/events_color" />
+                android:textColor="@color/home_color" />
 
         </RelativeLayout>
 
 
-        <RelativeLayout android:id="@+id/_3"
-            android:layout_marginTop="0dp"
-            android:layout_marginStart="137dp"
+        <RelativeLayout
+            android:id="@+id/_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
+            android:layout_marginStart="137dp"
+            android:layout_marginTop="0dp">
 
-            <View   android:id="@+id/_bg___3_ek1"
-                android:background="@drawable/_bg__frame_4_ek1_shape"
+            <View
+                android:id="@+id/_bg___3_ek1"
+                android:layout_width="73.19dp"
+                android:layout_height="26.02dp"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
-                android:layout_width="73.19dp"
-                android:layout_height="26.02dp" />
+              />
 
-            <View   android:id="@+id/bg_ek2"
-                android:background="@drawable/bg_ek2_shape"
+            <View
+                android:id="@+id/bg_ek2"
+                android:layout_width="73.19dp"
+                android:layout_height="26.02dp"
                 android:layout_marginStart="-0.81dp"
                 android:layout_marginTop="-0.81dp"
-                android:layout_width="73.19dp"
-                android:layout_height="26.02dp" />
+                android:background="@drawable/bg_ek2_shape" />
 
-            <TextView android:id="@+id/payment_ek1"
-                android:textAllCaps="true"
-                android:textColor="@color/events_color"
+            <TextView
+                android:id="@+id/payment_ek1"
+                android:layout_width="61dp"
+                android:layout_height="23dp"
                 android:layout_marginLeft="12.2dp"
                 android:layout_marginTop="3.25dp"
-                android:layout_width="55.975904560089dp"
-                android:layout_height="22.975904560089dp"
                 android:text="@string/payment_ek1_string"
-                />
+                android:textAllCaps="true"
+                android:textColor="@color/home_color" />
 
         </RelativeLayout>
 
 
-        <RelativeLayout android:id="@+id/_4"
-            android:layout_marginTop="0dp"
-            android:layout_marginStart="224dp"
+        <RelativeLayout
+            android:id="@+id/_02_ek2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
+            android:layout_marginStart="224dp"
+            android:layout_marginTop="0dp">
 
-            <View   android:id="@+id/_bg___4_ek1"
-                android:background="@drawable/_bg__frame_4_ek1_shape"
+            <View
+                android:id="@+id/_bg___02_ek3"
+                android:layout_width="74dp"
+                android:layout_height="26dp"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
-                android:layout_width="73.19dp"
-                android:layout_height="26.02dp" />
+                />
 
             <View
                 android:id="@+id/bg_ek3"
-                android:layout_width="73dp"
+                android:layout_width="74dp"
                 android:layout_height="26dp"
                 android:layout_marginStart="-0.81dp"
                 android:layout_marginTop="-0.81dp"
                 android:background="@drawable/bg_ek3_shape" />
 
-            <TextView android:id="@+id/payment_ek2"
-                android:textAllCaps="true"
-                android:textColor="@color/events_color"
-                android:layout_marginLeft="12.2dp"
-                android:layout_marginTop="3.25dp"
-                android:layout_width="55.975904560089dp"
-                android:layout_height="22.975904560089dp"
+            <TextView
+                android:id="@+id/payment_ek2"
+                android:layout_width="60dp"
+                android:layout_height="23dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="3dp"
                 android:text="@string/payment_ek2_string"
-                />
+                android:textAllCaps="true"
+                android:textColor="@color/home_color" />
 
         </RelativeLayout>
 
     </RelativeLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

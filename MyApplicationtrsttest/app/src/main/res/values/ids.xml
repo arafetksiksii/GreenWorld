@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="welcome" type="id" />
+    <item name="page_welcome_ek1" type="id" />
+    <item name="_bg__welcome_ek2" type="id" />
+</resources>

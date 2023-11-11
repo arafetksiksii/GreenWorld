@@ -1,16 +1,18 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="Base.Theme.NavigationBottom" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/drawer_color</item>
+        <item name="colorPrimaryDark">@color/drawer_color</item>
+        <item name="colorAccent">@color/drawer_color</item>
     </style>
-    <style name="expandedBarTextStyle" parent="AppTheme">
+    <style name="expandedBarTextStyle" parent="Base.Theme.NavigationBottom">
         <!-- Customize your theme here. -->
         <item name="android:textSize">0sp</item>
         <item name="android:textColor">@android:color/transparent</item>
-
+        <item name="colorPrimary">@color/drawer_color</item>
+        <item name="colorPrimaryDark">@color/drawer_color</item>
+        <item name="colorAccent">@color/drawer_color</item>
     </style>
-
+<style name="Theme.NavvigationAndBottom" parent="Base.Theme.NavigationBottom"/>
 </resources>
