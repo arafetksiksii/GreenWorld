@@ -2,6 +2,7 @@ package tn.esprit.green_world.interfaces
 
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -16,5 +17,7 @@ interface CommandeApi {
     fun addProductToCart(@Query("produitId")produitId: String): Call<Commande>
     @GET("commande/cart")
     fun getCommande(): Call<Commande>
+    @DELETE("commande/delete-product")
+    fun deleteProduitFromCommande(@Query("produitId") produitId: String): Call<Commande>
 
 }

@@ -1,12 +1,10 @@
 package tn.esprit.green_world.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.NumberPicker
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -14,8 +12,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import tn.esprit.green_world.R
 import tn.esprit.green_world.models.Commande
 import tn.esprit.green_world.models.Produit
-
-// ... (imports)
+import android.widget.Button
 
 class CommandeAdapter : RecyclerView.Adapter<CommandeAdapter.CommandeViewHolder>() {
 
@@ -52,6 +49,7 @@ class CommandeAdapter : RecyclerView.Adapter<CommandeAdapter.CommandeViewHolder>
             val priceTextView = itemView.findViewById<TextView>(R.id.tvPriceC)
             val quantityTextView = itemView.findViewById<TextView>(R.id.tvQuantityC)
             val imageView = itemView.findViewById<ImageView>(R.id.imgCommande)
+            val removeButton = itemView.findViewById<Button>(R.id.btnRemoveFromCart) // Add this line
 
             titleTextView.text = selectedProduct.title
             priceTextView.text = "Price: ${selectedProduct.price}"
@@ -61,6 +59,15 @@ class CommandeAdapter : RecyclerView.Adapter<CommandeAdapter.CommandeViewHolder>
                 .load(selectedProduct.image)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(imageView)
+
+            // Add an onClickListener to the removeButton
+            removeButton.setOnClickListener {
+                // Remove the selected product from the list and update the RecyclerView
+                val updatedProducts = commande.selectedProducts.toMutableList()
+                updatedProducts.removeAt(adapterPosition)
+                commande.selectedProducts = updatedProducts
+                notifyDataSetChanged()
+            }
         }
     }
 }

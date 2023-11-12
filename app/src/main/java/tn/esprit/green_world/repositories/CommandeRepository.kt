@@ -41,5 +41,18 @@ class CommandeRepository {
         return commandeLiveData
     }
 
+    fun deleteProduct(productId: String) {
+        val call: Call<Commande> = api.deleteProduitFromCommande(productId)
+
+        call.enqueue(object : Callback<Commande> {
+            override fun onResponse(call: Call<Commande>, response: Response<Commande>) {
+                // Handle successful response if needed
+            }
+
+            override fun onFailure(call: Call<Commande>, t: Throwable) {
+                // Handle failure
+            }
+        })
+    }
     // Add other repository methods as needed, for example, a method to add a product to the cart
 }
