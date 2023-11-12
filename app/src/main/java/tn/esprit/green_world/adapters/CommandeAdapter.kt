@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.NumberPicker
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -14,9 +15,7 @@ import tn.esprit.green_world.R
 import tn.esprit.green_world.models.Commande
 import tn.esprit.green_world.models.Produit
 
-// ... (existing imports)
-
-// ... (existing imports)
+// ... (imports)
 
 class CommandeAdapter : RecyclerView.Adapter<CommandeAdapter.CommandeViewHolder>() {
 
@@ -41,41 +40,27 @@ class CommandeAdapter : RecyclerView.Adapter<CommandeAdapter.CommandeViewHolder>
     }
 
     override fun getItemCount(): Int {
-        return 1  // Only one Commande instance is displayed
+        return commande?.selectedProducts?.size ?: 0
     }
 
     inner class CommandeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(commande: Commande) {
-            // Get the list of selected products
-            val selectedProducts = commande.selectedProducts
+            val selectedProduct = commande.selectedProducts[adapterPosition] as Produit
 
-            // Check if the list is not empty
-            if (selectedProducts.isNotEmpty()) {
-                // Bind data to views for each product
-                for (selectedProduct in selectedProducts) {
-                    // Extract information from the product
-                    val product = selectedProduct as Produit // Assuming 'selectedProduct' is a Produit object
+            // Bind data to the product view
+            val titleTextView = itemView.findViewById<TextView>(R.id.tvCommande)
+            val priceTextView = itemView.findViewById<TextView>(R.id.tvPriceC)
+            val quantityTextView = itemView.findViewById<TextView>(R.id.tvQuantityC)
+            val imageView = itemView.findViewById<ImageView>(R.id.imgCommande)
 
-                    // Extract information from the 'product'
-                    val title = selectedProduct.title
-                    val price = selectedProduct.price
-                    val quantity = selectedProduct.quantity
-                    val image = selectedProduct.image
+            titleTextView.text = selectedProduct.title
+            priceTextView.text = "Price: ${selectedProduct.price}"
+            quantityTextView.text = "Quantity: ${selectedProduct.quantity}"
 
-                    Log.d("CommandeAdapter", "Product Title: $title")
-                    Log.d("CommandeAdapter", "Product Price: $price")
-                    Log.d("CommandeAdapter", "Product Quantity: $quantity")
-                    Log.d("CommandeAdapter", "Product Image: $image")
-                }
-            } else {
-                // Handle the case when selectedProducts is empty
-                // You may want to display a message or handle it based on your app logic
-            }
-
-            // Add other bindings as needed
+            Glide.with(itemView.context)
+                .load(selectedProduct.image)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(imageView)
         }
     }
-
-
 }
-
