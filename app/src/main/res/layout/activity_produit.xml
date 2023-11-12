@@ -23,16 +23,17 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"/>
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                app:layout_collapseMode="pin"/>
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_fav" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:layout_collapseMode="pin" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -96,6 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/myfont"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:text="Description :"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15sdp"
@@ -116,7 +118,18 @@
         app:layout_anchorGravity="bottom"
         android:visibility="gone">
 
+
     </com.google.android.material.progressindicator.LinearProgressIndicator>
+
+    <Button
+        android:id="@+id/commande_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:layout_marginTop="@dimen/_400sdp"
+        android:layout_marginLeft="@dimen/_120sdp"
+        android:background="@color/green"
+        />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

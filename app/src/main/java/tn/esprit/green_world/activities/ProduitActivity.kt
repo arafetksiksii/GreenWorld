@@ -7,10 +7,15 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import tn.esprit.green_world.R
 import tn.esprit.green_world.databinding.ActivityProduitBinding
 import tn.esprit.green_world.fragments.ProduitFragment
+import tn.esprit.green_world.models.Commande
 import tn.esprit.green_world.models.Produit
+import tn.esprit.green_world.utils.RetrofitInstance
 import tn.esprit.green_world.viewModel.ProduitDetailViewModel
 
 class ProduitActivity : AppCompatActivity() {
@@ -22,6 +27,7 @@ class ProduitActivity : AppCompatActivity() {
     private lateinit var produitQuantity: String
     private lateinit var produitImage: String
     private lateinit var produitMvvm: ProduitDetailViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +44,33 @@ class ProduitActivity : AppCompatActivity() {
 
         // Observe the LiveData after setting data and initiating the request
         observerProduitDetailLiveData()
+
+        val commandeButton = binding.commandeButton
+
+        commandeButton.setOnClickListener {
+            val produiId = produitId
+            val call = RetrofitInstance.Commandeapi.addProductToCart(produitId)
+
+            call.enqueue(object : Callback<Commande> {
+                override fun onResponse(call: Call<Commande>, response: Response<Commande>) {
+                    if (response.isSuccessful) {
+                        // Handle the successful response here
+                        val updatedCommande = response.body()
+                        // You can do something with the updatedCommande if needed
+                        Toast.makeText(applicationContext, "Product added to cart", Toast.LENGTH_SHORT).show()
+                    } else {
+                        // Handle unsuccessful response
+                        // You can parse the error response using response.errorBody()
+                        Toast.makeText(applicationContext, "Failed to add product to cart", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Commande>, t: Throwable) {
+                    // Handle failure
+                    Toast.makeText(applicationContext, "Network error", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
     }
 
     private fun observerProduitDetailLiveData() {

@@ -11,32 +11,39 @@ import tn.esprit.green_world.models.Produit
 import tn.esprit.green_world.models.ProduitList
 
 class ProduitListAdapter() : RecyclerView.Adapter<ProduitListAdapter.ProduitListViewHolder>() {
-    private var produitsList = ArrayList<Produit>()
+    private var produitList = ArrayList<Produit>()
+    lateinit var onListProductClick:((Produit)-> Unit)
 
     fun setProduitList(produitList: List<Produit>) {
-        this.produitsList = produitList as ArrayList<Produit>
+        this.produitList = produitList as ArrayList<Produit>
         notifyDataSetChanged()
         Log.d("ProduitListAdapter", "setProduitList called with ${produitList.size} products") // Add this log
     }
-
-
-
-    inner class ProduitListViewHolder(val binding: ProductItemBinding):RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProduitListViewHolder {
         return ProduitListViewHolder(
             ProductItemBinding.inflate(LayoutInflater.from(parent.context))
         )
     }
-
     override fun onBindViewHolder(holder: ProduitListViewHolder, position: Int) {
-        Glide.with(holder.itemView).load(produitsList[position].image).into(holder.binding.imgProduit)
-        holder.binding.tvProductName.text= produitsList[position].title
+        val produit = produitList[position]
+        Glide.with(holder.binding.root)
+            .load(produit.image)
+            .into(holder.binding.imgProduit)
+        holder.binding.tvProductName.text= produitList[position].title
+        holder.itemView.setOnClickListener {
+            onListProductClick.invoke(produitList[position])
 
+        }
     }
+
+
+
+
+
 
     override fun getItemCount(): Int {
-        return produitsList.size
+        return produitList.size
     }
-
+    inner class ProduitListViewHolder(val binding: ProductItemBinding):RecyclerView.ViewHolder(binding.root)
 }

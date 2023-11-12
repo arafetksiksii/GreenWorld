@@ -7,15 +7,15 @@ import tn.esprit.green_world.models.Produit
 import tn.esprit.green_world.models.ProduitList
 
 interface ProduitApi {
-    @GET("random-product")
+    @GET("produit/random-product")
     fun getRandomProduit(): Call<Produit>
 
-    @GET("detail")
+    @GET("produit/detail")
     fun getProduitDetails(@Query("id")id:String) :Call<Produit>
 
-    @GET("a")
+    @GET("produit")
     fun getPopularProduit(): Call<List<Produit>>
-    @GET("a")
+    @GET("produit")
     fun getProduit(): Call<ProduitList>
 
 }

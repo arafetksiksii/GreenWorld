@@ -40,6 +40,7 @@ class ProduitFragment : Fragment() {
         super.onCreate(savedInstanceState)
         produitMvvm = ViewModelProvider(this).get(ProduitViewModel::class.java)
         popularProduitAdapter = MostPopularProduct()
+        produitListAdapter = ProduitListAdapter()
     }
 
     override fun onCreateView(
@@ -55,23 +56,43 @@ class ProduitFragment : Fragment() {
 
         preparePopularProduitRecyclerView()
 
-        produitMvvm.getRandomProduit()
+        produitMvvm.getPopularProduit()
+        OnPopularProductClicked()
+
         observerRandomProduit()
         onRandomProductClick()
 
-        // Fetch popular products from the ViewModel
-        produitMvvm.getPopularProduit()
+        produitMvvm.getRandomProduit()
         observerPopularProduitLiveData()
-        OnPopularProductClicked()
+
+        // Fetch popular products from the ViewModel
+
         prepareListProduitRecyclerView()
         produitMvvm.getProducts()
         observeListProduitLiveData()
+        onListProductClicked()
 
         prepareListProduitRecyclerView()
     }
 
+    private fun onListProductClicked() {
+        produitListAdapter.onListProductClick = { produit ->
+            Log.d("ProduitFragment", " Product Clicked: ${produit.description}")
+            Log.d("ProduitFragment", "Product ID: ${produit._id}")
+            Log.d("ProduitFragment", "Product Title: ${produit.title}")
+
+            val intent = Intent(activity, ProduitActivity::class.java)
+            intent.putExtra(ProduitFragment.Product_id, produit._id)
+            intent.putExtra(ProduitFragment.Product_name, produit.title)
+            intent.putExtra(ProduitFragment.Product_description, produit.description)
+            intent.putExtra(ProduitFragment.Product_image, produit.image)
+            intent.putExtra(ProduitFragment.Product_price, produit.price.toString()) // Convert price to string
+            intent.putExtra(ProduitFragment.Product_quantity, produit.quantity.toString()) // Convert quantity to string
+            startActivity(intent)
+        }
+    }
+
     private fun prepareListProduitRecyclerView() {
-        produitListAdapter = ProduitListAdapter()
         binding.recViewStore.apply {
             layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
             adapter = produitListAdapter

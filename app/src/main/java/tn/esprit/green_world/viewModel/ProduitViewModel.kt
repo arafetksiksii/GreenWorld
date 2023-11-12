@@ -14,7 +14,7 @@ import tn.esprit.green_world.utils.RetrofitInstance
 
 class ProduitViewModel : ViewModel() {
     private var randomProduitLiveData = MutableLiveData<Produit>()
-    private var listProduitLiveData = MutableLiveData<List<Produit>?>()
+    private var listProduitLiveData = MutableLiveData<List<Produit>>()
     private var popularProduitLiveData = MutableLiveData<List<Produit>?>() // Updated to hold a list of Produit
 
 
@@ -44,19 +44,27 @@ class ProduitViewModel : ViewModel() {
     }
 
     fun getPopularProduit() {
-        RetrofitInstance.api.getPopularProduit().enqueue(object : Callback<List<Produit>> {
-            override fun onResponse(call: Call<List<Produit>>, response: Response<List<Produit>>) {
+        RetrofitInstance.api.getRandomProduit().enqueue(object : Callback<Produit> {
+            override fun onResponse(call: Call<Produit>, response: Response<Produit>) {
                 if (response.isSuccessful) {
-                    val produitList: List<Produit>? = response.body()
-                    popularProduitLiveData.value = produitList
-                    Log.d("ProduitViewModel", "Received popular products: ${produitList?.size} products")
+                    val produit: Produit? = response.body()
+                    produit?.let {
+                        val productId = it._id
+                        val productTitle = it.title
+
+                        popularProduitLiveData.value = listOf(it)
+                        Log.d("ProduitFragment", "Random Product ID: $productId")
+                        Log.d("ProduitFragment", "Random Product Title: $productTitle")
+                    } ?: run {
+                        Log.d("ProduitFragment", "Random API response body is null")
+                    }
                 } else {
-                    Log.d("ProduitViewModel", "Popular API call was not successful")
+                    Log.d("ProduitFragment", "Random API call was not successful")
                 }
             }
 
-            override fun onFailure(call: Call<List<Produit>>, t: Throwable) {
-                Log.e("ProduitViewModel", "Popular API call failed: ${t.message}")
+            override fun onFailure(call: Call<Produit>, t: Throwable) {
+                Log.e("ProduitFragment", "Random API call failed: ${t.message}")
             }
         })
     }
@@ -90,7 +98,7 @@ class ProduitViewModel : ViewModel() {
     fun observePopularProduitLiveData(): MutableLiveData<List<Produit>?> {
         return popularProduitLiveData
     }
-    fun observeListProduitLiveData(): LiveData<List<Produit>?>{
+    fun observeListProduitLiveData(): LiveData<List<Produit>>{
         return listProduitLiveData
 
     }

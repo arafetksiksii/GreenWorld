@@ -19,15 +19,15 @@ class ProduitDetailViewModel(): ViewModel() {
             override fun onResponse(call: Call<Produit>, response: Response<Produit>) {
                 if (response.body() != null) {
                     val produit = response.body()!!
-                    Log.d("ProduitDetailViewModel", "Received product: $produit")
+                    Log.d("test", "Received product: $produit")
                     produitDetailLiveData.value = produit
                 } else {
-                    Log.d("ProduitDetailViewModel", "Response body is null")
+                    Log.d("test", "Response body is null")
                 }
             }
 
             override fun onFailure(call: Call<Produit>, t: Throwable) {
-                Log.e("ProduitDetailViewModel", "Request failed: ${t.message}")
+                Log.e("test", "Request failed: ${t.message}")
             }
         })
     }
