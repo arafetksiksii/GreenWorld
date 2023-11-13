@@ -5,6 +5,7 @@ import androidx.room.Query
 import androidx.room.Update
 import tn.esprit.greenworld.models.User
 
+
 @Dao
 interface UserDao {
     @Insert
@@ -16,7 +17,7 @@ interface UserDao {
     @Delete
     fun deleteUser(user: User)
 
-    @Query("SELECT * FROM User WHERE idUser = :userId")
+    @Query("SELECT * FROM User WHERE _id = :userId")
     fun getUserById(userId: Long): User
 
     @Query("SELECT * FROM User WHERE email = :email")

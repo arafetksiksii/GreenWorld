@@ -7,7 +7,7 @@ import java.util.Date
 @Entity
 data class User(
     @PrimaryKey(autoGenerate = true)
-    val idUser: Long,
+    val _id: Long,
     val nom: String,
     val prenom : String,
     val dateNaissance :Date,
@@ -15,16 +15,19 @@ data class User(
     val cin:Int,
     val userName:String,
     val email:String,
-    val paswword:String,
+    val password:String,
     val lastPaswword:String,
     val isValid:Boolean,
-    val imageRes: Int,
+    val imageRes: String,
     val role:Roles
 
 ) {
-
-
     override fun toString(): String {
-        return "User(idUser=$idUser, nom='$nom', prenom='$prenom', dateNaissance=$dateNaissance, adress='$adress', cin=$cin, userName='$userName', email='$email', paswword='$paswword', lastPaswword='$lastPaswword', isValid=$isValid, imageRes=$imageRes, role=$role)"
+        return "User(idUser=$_id, nom='$nom', prenom='$prenom', dateNaissance=$dateNaissance, adress='$adress', cin=$cin, userName='$userName', email='$email', paswword='$password', lastPaswword='$lastPaswword', isValid=$isValid, imageRes=$imageRes, role=$role)"
     }
+
 }
+data class User1(
+    val email: String,
+    val password: String
+)
