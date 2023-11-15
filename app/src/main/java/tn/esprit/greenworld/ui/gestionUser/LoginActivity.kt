@@ -9,8 +9,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import tn.esprit.greenworld.R
-import tn.esprit.greenworld.api.Login
-import tn.esprit.greenworld.api.RetrofitImp
+import tn.esprit.greenworld.utils.Login
+import tn.esprit.greenworld.utils.RetrofitImp
 import tn.esprit.greenworld.databinding.ActivityUserLoginBinding
 import tn.esprit.greenworld.models.User
 import tn.esprit.greenworld.models.User1

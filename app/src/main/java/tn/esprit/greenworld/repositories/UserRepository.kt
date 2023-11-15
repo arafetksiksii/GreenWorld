@@ -1,7 +1,7 @@
-package tn.esprit.greenworld.repository
+package tn.esprit.greenworld.repositories
 
 import retrofit2.await
-import tn.esprit.greenworld.api.UserInterface
+import tn.esprit.greenworld.utils.UserInterface
 import tn.esprit.greenworld.models.User
 
 class UserRepository(private val userInterface: UserInterface) {

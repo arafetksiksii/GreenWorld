@@ -1,4 +1,4 @@
-package tn.esprit.greenworld.api
+package tn.esprit.greenworld.utils
 
 import retrofit2.Call
 import retrofit2.http.Body

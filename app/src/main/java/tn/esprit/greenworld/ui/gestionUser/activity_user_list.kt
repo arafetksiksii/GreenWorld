@@ -11,8 +11,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.adapters.User.UserListAdapter
-import tn.esprit.greenworld.api.RetrofitImp
-import tn.esprit.greenworld.api.UserInterface
+import tn.esprit.greenworld.utils.RetrofitImp
+import tn.esprit.greenworld.utils.UserInterface
 import tn.esprit.greenworld.models.User
 
 class UserListActivity : AppCompatActivity() {

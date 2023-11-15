@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import retrofit2.Call
-import tn.esprit.greenworld.api.RetrofitImp
-import tn.esprit.greenworld.api.UserInterface
+import tn.esprit.greenworld.utils.RetrofitImp
+import tn.esprit.greenworld.utils.UserInterface
 import tn.esprit.greenworld.models.User
 
 
