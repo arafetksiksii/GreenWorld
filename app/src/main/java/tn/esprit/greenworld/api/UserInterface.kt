@@ -3,7 +3,6 @@ package tn.esprit.greenworld.api
 import retrofit2.Call
 import retrofit2.http.*
 import tn.esprit.greenworld.models.User
-
 interface UserInterface {
     // Créer un nouvel utilisateur
     @POST("user")
@@ -28,4 +27,6 @@ interface UserInterface {
     // Rechercher un utilisateur par nom
     @GET("user/search")
     fun searchUserByName(@Query("name") name: String): Call<List<User>>
+
+
 }
