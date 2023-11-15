@@ -1,15 +1,44 @@
-*.iml
+# Dossiers générés par l'IDE
+.idea/
+
+# Fichiers de compilation
+*.class
+*.jar
+*.war
+*.ear
+*.hprof
+
+# Fichiers générés par Gradle
+/build/
+/bin/
+/.gradle/
+/*.iml
+/out/
+/buildSrc/
+
+# Fichiers de configuration spécifiques à l'utilisateur
 .gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
 local.properties
+
+# Fichiers de sauvegarde
+*~
+
+# Fichiers de logs
+*.log
+
+# Fichiers macOS
+.DS_Store
+
+# Fichiers Windows
+Thumbs.db
+ehthumbs.db
+
+# Android
+/captures/
+/gradle-wrapper.properties
+
+# Autres fichiers spécifiques à votre projet
+/path/to/your/file
+
+# Ignorer tous les fichiers sous le répertoire app/build
+/app/build/
