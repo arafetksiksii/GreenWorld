@@ -3,7 +3,6 @@ package tn.esprit.greenworld.ui.gestionUser
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
@@ -26,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityUserLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val rootView = window.decorView.rootView
-
+        if (validateEmail() && validatePassword()) {
         binding.btnLogin.setOnClickListener {
 
             RetrofitImp.buildRetrofit().create(Login::class.java).login(
@@ -91,11 +90,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, User_Register::class.java))
         }
     }
-
+    }
     private fun validateEmail(): Boolean {
-        binding.tiEmailLayout.isErrorEnabled = false
+        val email = binding.edtEmail.text.toString().trim()
 
-        if (binding.edtEmail.text.toString().isEmpty()) {
+        if (email.isEmpty()) {
             binding.tiEmailLayout.error = getString(R.string.msg_must_not_be_empty)
             binding.edtEmail.requestFocus()
             return false
@@ -103,8 +102,10 @@ class LoginActivity : AppCompatActivity() {
             binding.tiEmailLayout.isErrorEnabled = false
         }
 
-        if (Patterns.EMAIL_ADDRESS.matcher(binding.edtEmail.text.toString()).matches()) {
-            binding.tiEmailLayout.error = getString(R.string.msg_check_your_email)
+        // Improved email validation using Regex
+        val emailRegex = "^[A-Za-z](.*)([@]{1})(.{1,})(\\.)(.{1,})"
+        if (!email.matches(emailRegex.toRegex())) {
+            binding.tiEmailLayout.error = getString(R.string.msg_invalid_email)
             binding.edtEmail.requestFocus()
             return false
         } else {
@@ -114,10 +115,11 @@ class LoginActivity : AppCompatActivity() {
         return true
     }
 
-    private fun validatePassword(): Boolean {
-        binding.tiPasswordLayout.isErrorEnabled = false
 
-        if (binding.tiPassword.text.toString().isEmpty()) {
+    private fun validatePassword(): Boolean {
+        val password = binding.tiPassword.text.toString().trim()
+
+        if (password.isEmpty()) {
             binding.tiPasswordLayout.error = getString(R.string.msg_must_not_be_empty)
             binding.tiPassword.requestFocus()
             return false
@@ -125,8 +127,37 @@ class LoginActivity : AppCompatActivity() {
             binding.tiPasswordLayout.isErrorEnabled = false
         }
 
-        if (binding.tiPassword.text.toString().length < 6) {
-            binding.tiPasswordLayout.error = getString(R.string.msg_check_your_characters)
+        if (password.length < 8) {
+            binding.tiPasswordLayout.error = getString(R.string.msg_password_length)
+            binding.tiPassword.requestFocus()
+            return false
+        } else {
+            binding.tiPasswordLayout.isErrorEnabled = false
+        }
+
+        // Ajouter des critères de complexité, par exemple :
+        // Exiger au moins une lettre majuscule
+        if (!password.any { it.isUpperCase() }) {
+            binding.tiPasswordLayout.error = getString(R.string.msg_password_uppercase)
+            binding.tiPassword.requestFocus()
+            return false
+        } else {
+            binding.tiPasswordLayout.isErrorEnabled = false
+        }
+
+        // Exiger au moins un chiffre
+        if (!password.any { it.isDigit() }) {
+            binding.tiPasswordLayout.error = getString(R.string.msg_password_digit)
+            binding.tiPassword.requestFocus()
+            return false
+        } else {
+            binding.tiPasswordLayout.isErrorEnabled = false
+        }
+
+        // Exiger au moins un caractère spécial
+        val specialCharacters = "!@#$%^&*()-_+=<>?/{}|"
+        if (!password.any { specialCharacters.contains(it) }) {
+            binding.tiPasswordLayout.error = getString(R.string.msg_password_special_char)
             binding.tiPassword.requestFocus()
             return false
         } else {
@@ -135,4 +166,5 @@ class LoginActivity : AppCompatActivity() {
 
         return true
     }
+
 }
