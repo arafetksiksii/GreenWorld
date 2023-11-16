@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="_bg__frame_31_ek1_color">#28B446</color>
+    <color name="label_text_color">#8E8E8E</color>
+    <color name="recycle_form_color">#2DCC70</color>
+    <color name="rectangle_1_color">#737B7D</color>
+    <color name="colorPrimary">#6A8A20</color>
+    <color name="Primary">#8fb43b</color>
+    <color name="Secondary">#546925</color>
+    <color name="colorSecondary">#546925</color>
+    <color name="drawer_color">#598743</color>
+
+    <color name="colorSecondaryDark">#333744</color>
+    <color name="colorSecondaryLight">#111d40</color>
+    <color name="colorSecondaryOverLay">#CC0c0f18</color>
+    <color name="darkgreen">#437D28</color>
+    <color name="green">#80A370</color>
+    <color name="lightgreen">#D9E5D4</color>
+    <color name="red">#FF0000</color>
+
+    <color name="yellow">#FFFF00</color>
+    <color name="startblue">#E8E82C</color>
+    <color name="endblue">#EDED93</color>
+    <color name="graylight">#5B9C11</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
+</resources>
