@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/home"/>
+
+    <item
+        android:id="@+id/dechets"
+        android:title="camera"
+        android:icon="@drawable/camera"
+        />
+
+
+    <item
+        android:id="@+id/favorite"
+        android:title="@string/favorits_string"
+        android:icon="@drawable/like_icon" />
+    <item
+        android:id="@+id/store"
+        android:title="Store"
+        android:icon="@drawable/shop" />
+
+
+</menu>

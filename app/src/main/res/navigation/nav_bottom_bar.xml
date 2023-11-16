@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_bottom_bar"
+    app:startDestination="@id/dechets">
+    <fragment
+        android:id="@+id/dechets"
+        android:name="com.example.testtt.fragments.dechets"
+        android:label="fragment_dechets"
+        tools:layout="@layout/fragment_dechets" />
+    <fragment
+        android:id="@+id/typedechets"
+        android:name="com.example.testtt.fragments.typedechets"
+        android:label="fragment_typedechets"
+        tools:layout="@layout/fragment_typedechets" />
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.testtt.fragments.EventFragment"
+        android:label="fragment_event"
+        tools:layout="@layout/fragment_event" />
+</navigation>
