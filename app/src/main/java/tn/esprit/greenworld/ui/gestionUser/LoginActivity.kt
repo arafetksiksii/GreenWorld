@@ -2,6 +2,7 @@ package tn.esprit.greenworld.ui.gestionUser
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
@@ -9,11 +10,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import tn.esprit.greenworld.R
-import tn.esprit.greenworld.utils.Login
-import tn.esprit.greenworld.utils.RetrofitImp
 import tn.esprit.greenworld.databinding.ActivityUserLoginBinding
 import tn.esprit.greenworld.models.User
 import tn.esprit.greenworld.models.User1
+import tn.esprit.greenworld.utils.Login
+import tn.esprit.greenworld.utils.RetrofitImp
 
 
 class LoginActivity : AppCompatActivity() {
@@ -36,18 +37,45 @@ class LoginActivity : AppCompatActivity() {
             ).enqueue(object : Callback<User> {
                 override fun onResponse(call: Call<User>, response: Response<User>) {
                     if (response.isSuccessful) {
-                        startActivity(Intent(this@LoginActivity, main_activity::class.java))
-                        finish()
+                        val user = response.body()
+
+                        // Check if user is not null before accessing its properties
+                        user?.let {
+                            // Pass the user data to UserProfil activity
+                            Log.d("LoginActivity", "Login successful. User data: $user")
+
+                            val intent = Intent(this@LoginActivity, UserProfil::class.java)
+                            intent.putExtra("userId", it._id)
+                            intent.putExtra("userName", it.userName)
+                            intent.putExtra("userEmail", it.email)
+                            intent.putExtra("userImageRes", it.imageRes)
+                            startActivity(intent)
+                            finish()
+                        } ?: run {
+                            // Handle the case where user is null (optional)
+                            Log.e("LoginActivity", "User data is null")
+
+                            Snackbar.make(
+                                binding.contextView,
+                                "User data is null",
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                        }
                     } else {
+                        val errorBody = response.errorBody()?.string().toString()
+                        Log.d("LoginActivity", "Login failed. Error: $errorBody")
+
                         Snackbar.make(
                             binding.contextView,
-                            response.errorBody()?.string().toString(),
+                            errorBody,
                             Snackbar.LENGTH_SHORT
                         ).show()
                     }
                 }
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
+                    Log.e("LoginActivity", "Login request failed", t)
+
                     Snackbar.make(
                         binding.contextView,
                         t.message.toString(),
@@ -55,6 +83,7 @@ class LoginActivity : AppCompatActivity() {
                     ).show()
                 }
             })
+
 
         }
 

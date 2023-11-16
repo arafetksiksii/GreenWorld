@@ -7,7 +7,7 @@ import java.util.Date
 @Entity
 data class User(
     @PrimaryKey(autoGenerate = true)
-    val _id: Long,
+    val _id: String,
     val nom: String,
     val prenom : String,
     val dateNaissance :Date,
@@ -30,4 +30,9 @@ data class User(
 data class User1(
     val email: String,
     val password: String
+)
+data class User2(
+    val email: String,
+    val password: String,
+    val userName:String
 )

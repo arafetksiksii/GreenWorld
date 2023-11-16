@@ -36,11 +36,12 @@
             android:name=".ui.gestionUser.User_Register"
             android:exported="false" /> <!-- Activité de lancement -->
         <activity
-            android:name=".ui.gestionUser.LoginActivity"
+            android:name=".ui.gestionUser.UserListActivity"
+
             android:exported="true" />
         <activity
+            android:name=".ui.gestionUser.LoginActivity"
 
-            android:name=".ui.gestionUser.UserListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
