@@ -10,8 +10,15 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.databinding.ActivityUserRegisterBinding
+import tn.esprit.greenworld.models.User
+import tn.esprit.greenworld.models.User2
+import tn.esprit.greenworld.utils.Login
+import tn.esprit.greenworld.utils.RetrofitImp
 
 class User_Register : AppCompatActivity() {
 
@@ -33,7 +40,7 @@ class User_Register : AppCompatActivity() {
         binding.btnSignUp.setOnClickListener {
             if (validateForm()) {
                 // If validation is successful, navigate to the LoginActivity.
-                startActivity(Intent(this, LoginActivity::class.java))
+                registerUser()
             } else {
                 // If validation fails, show a Snackbar with an error message.
                 Snackbar.make(rootView, getString(R.string.msg_error_inputs), Snackbar.LENGTH_SHORT).show()
@@ -191,5 +198,45 @@ class User_Register : AppCompatActivity() {
 
     private fun validateForm(): Boolean {
         return validateFullName() && validateEmail() && validatePassword() && validateConfirmPassword()
+    }
+
+    private fun registerUser() {
+        val user2 = User2(
+            email = binding.tiEmail.text.toString(),
+            password = binding.tiPassword.text.toString(),
+            userName = binding.tiFullName.text.toString(),
+
+        )
+
+        val registerService = RetrofitImp.buildRetrofit().create(Login::class.java)
+        registerService.register(user2).enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                if (response.isSuccessful) {
+                    handleSuccessfulRegistration(response.body())
+                } else {
+                    handleRegistrationFailure(response.errorBody()?.string().toString())
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                handleRegistrationFailure(t.message.toString())
+            }
+        })
+    }
+
+    private fun handleSuccessfulRegistration(user: User?) {
+        // Handle successful registration
+        // Optionally, you can navigate to the login screen
+        startActivity(Intent(this@User_Register, LoginActivity::class.java))
+        finish()
+    }
+
+    private fun handleRegistrationFailure(errorMessage: String) {
+        // Handle registration failure
+        showSnackbar(errorMessage)
+    }
+
+    private fun showSnackbar(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 }
