@@ -13,6 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "pdm"
+rootProject.name = "GreenWorld"
 include(":app")
- 

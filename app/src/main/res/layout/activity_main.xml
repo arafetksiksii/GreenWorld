@@ -4,149 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/colorPrimary"
+    tools:context=".ui.gestionUser.main_activity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="307dp"
+        android:layout_height="292dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="199dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.253"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:srcCompat="@drawable/ic_logof"
+        />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="180dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/green_world"
+        android:textAlignment="center"
+        android:textColor="@color/endblue"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="328dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/main_desc"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <RelativeLayout
+        android:id="@+id/frame_2"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="148dp"
+        android:background="@drawable/button_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
 
         <TextView
-            android:id="@+id/txt_quiz"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="QUIZ"
-            android:textSize="34sp"
-            android:textStyle="bold" />
+            android:id="@+id/login"
+            android:layout_width="180dp"
+            android:layout_height="31dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="13dp"
+            android:text="@string/btn_login"
+            android:textAlignment="center"
+            android:textColor="@color/white"
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_question"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25sp"
-            android:layout_marginTop="40sp"
-            android:layout_marginRight="25sp"
-            app:cardBackgroundColor="@color/material_dynamic_neutral90"
-            app:cardCornerRadius="40dp"
-            app:cardElevation="4dp">
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/frame_3"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="16dp"
 
-                <TextView
-                    android:id="@+id/txt_question_num"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10sp"
-                    android:layout_marginTop="20sp"
-                    android:layout_marginEnd="10sp"
-                    android:text="La question numéro 1 :"
-                    android:textSize="24sp"
-                    android:textStyle="italic" />
+        android:layout_marginBottom="148dp"
+        android:background="@drawable/button_border2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <TextView
+            android:id="@+id/btnSubmit"
+            android:layout_width="180dp"
+            android:layout_height="31dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="13dp"
+            android:text="@string/btn_signup"
+            android:textAlignment="center"
+            android:textColor="@color/Primary"
 
-                <TextView
-                    android:id="@+id/txt_question"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20sp"
-                    android:layout_marginTop="10sp"
-                    android:layout_marginEnd="20sp"
-                    android:layout_marginBottom="20sp"
-                    android:text="zefzersfversgfevsrgfersgersgergvergergfergrergezgergergergergegegergergerg"
-                    android:textSize="20sp"
-                    android:textStyle="italic" />
-            </LinearLayout>
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_background"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="-60sp"
-            app:cardBackgroundColor="#8AE88D"
-            app:cardCornerRadius="40dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card_choix"
-                    android:layout_width="match_parent"
-                    android:layout_height="279dp"
-                    android:layout_marginLeft="25sp"
-                    android:layout_marginTop="100sp"
-                    android:layout_marginRight="25sp"
-                    app:cardCornerRadius="40sp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/btn_choix1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20sp"
-                            android:layout_marginTop="10sp"
-                            android:layout_marginRight="20sp"
-                            android:backgroundTint="#00BCD4"
-                            android:text="Choix 1" />
-
-                        <Button
-                            android:id="@+id/btn_choix2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20sp"
-                            android:layout_marginTop="10sp"
-                            android:layout_marginRight="20sp"
-                            android:backgroundTint="#00BCD4"
-                            android:text="Choix 2" />
-
-                        <Button
-                            android:id="@+id/btn_choix3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20sp"
-                            android:layout_marginTop="10sp"
-                            android:layout_marginRight="20sp"
-                            android:backgroundTint="#00BCD4"
-                            android:text="Choix 3" />
-
-                        <Button
-                            android:id="@+id/btn_choix4"
-                            android:layout_width="321dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20sp"
-                            android:layout_marginTop="10sp"
-                            android:layout_marginRight="20sp"
-                            android:backgroundTint="#00BCD4"
-                            android:text="Choix 4" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <Button
-                    android:id="@+id/btn_voir_resultat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20sp"
-                    android:layout_marginTop="10sp"
-                    android:layout_marginRight="20sp"
-                    android:backgroundTint="#1E5A88"
-                    android:text="Voir votre résultat"
-                    android:visibility="gone" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
