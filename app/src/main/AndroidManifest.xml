@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.gestionUser.main_activity"
+            android:name=".ui.gestionUser.ddddd"
             android:exported="false" />
         <activity
             android:name=".ui.gestionUser.CommingSoon"
@@ -43,12 +43,24 @@
             android:name=".ui.gestionUser.LoginActivity"
 
             android:exported="true">
+
+        </activity>
+
+        <!-- Activité de lancement gestion de gamification -->
+        <activity
+            android:name=".ui.quiz_activity.QuizListActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.quiz_activity.ResultActivity" />
+        <activity
+            android:name=".ui.quiz_activity.MainActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
