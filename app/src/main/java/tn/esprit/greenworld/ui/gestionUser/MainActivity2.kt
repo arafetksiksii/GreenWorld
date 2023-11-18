@@ -6,17 +6,16 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import androidx.appcompat.app.AppCompatActivity
-import tn.esprit.greenworld.databinding.ActivityMainBinding
+import tn.esprit.greenworld.databinding.ActivityMain2Binding
 
+class MainActivity2 :AppCompatActivity(){
 
-class main_activity :AppCompatActivity(){
-
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMain2Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        binding =ActivityMainBinding.inflate(layoutInflater)
+        binding =ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
         val rootView = window.decorView.rootView
         val policy = ThreadPolicy.Builder().permitAll().build()
