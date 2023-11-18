@@ -53,7 +53,11 @@ class LoginActivity : AppCompatActivity() {
                             saveUserToPreferences(it)
                             Log.d("LoginActivity", "Login successful. User data: $user")
 
+<<<<<<< Updated upstream
                             val intent = Intent(this@LoginActivity, MainActivity3::class.java)
+=======
+                            val intent = Intent(this@LoginActivity, MainActivity2::class.java)
+>>>>>>> Stashed changes
                             intent.putExtra("userId", it._id)
                             intent.putExtra("userName", it.userName)
                             intent.putExtra("userEmail", it.email)
@@ -100,7 +104,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, User_Register::class.java))
         }
         binding.btnForgotPassword.setOnClickListener {
+<<<<<<< Updated upstream
             startActivity(Intent(this, User_ForgetPassword::class.java))
+=======
+            startActivity(Intent(this, User_Register::class.java))
+>>>>>>> Stashed changes
         }
 
     }
@@ -140,11 +148,11 @@ class LoginActivity : AppCompatActivity() {
             binding.tiPasswordLayout.isErrorEnabled = false
         }
 
-        if (password.length < 8) {
-            binding.tiPasswordLayout.error = getString(R.string.msg_password_length)
-            binding.tiPassword.requestFocus()
-            return false
-        } else {
+        if (password.length < 6) {
+                binding.tiPasswordLayout.error = getString(R.string.msg_password_length)
+                binding.tiPassword.requestFocus()
+                return false
+            } else {
             binding.tiPasswordLayout.isErrorEnabled = false
         }
 
