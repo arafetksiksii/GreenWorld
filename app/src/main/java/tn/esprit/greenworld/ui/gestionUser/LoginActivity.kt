@@ -1,6 +1,9 @@
 package tn.esprit.greenworld.ui.gestionUser
 
+
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import tn.esprit.greenworld.MainActivity3
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.databinding.ActivityUserLoginBinding
 import tn.esprit.greenworld.models.User
@@ -18,7 +22,12 @@ import tn.esprit.greenworld.utils.RetrofitImp
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserLoginBinding
-
+    // Define a shared preference name
+    private val PREF_NAME = "user_pref"
+    private val USER_ID_KEY = "userId"
+    private val USER_NAME_KEY = "userName"
+    private val USER_EMAIL_KEY = "userEmail"
+    private val USER_IMAGE_KEY = "userImageRes"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,9 +50,10 @@ class LoginActivity : AppCompatActivity() {
                         // Check if user is not null before accessing its properties
                         user?.let {
                             // Pass the user data to UserProfil activity
+                            saveUserToPreferences(it)
                             Log.d("LoginActivity", "Login successful. User data: $user")
 
-                            val intent = Intent(this@LoginActivity, UserProfil::class.java)
+                            val intent = Intent(this@LoginActivity, MainActivity3::class.java)
                             intent.putExtra("userId", it._id)
                             intent.putExtra("userName", it.userName)
                             intent.putExtra("userEmail", it.email)
@@ -169,5 +179,15 @@ class LoginActivity : AppCompatActivity() {
 
         return true
     }
+    private fun saveUserToPreferences(user: User) {
+        val sharedPreferences: SharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
 
+        editor.putString(USER_ID_KEY, user._id)
+        editor.putString(USER_NAME_KEY, user.userName)
+        editor.putString(USER_EMAIL_KEY, user.email)
+        editor.putString(USER_IMAGE_KEY, user.imageRes)
+
+        editor.apply()
+    }
 }
