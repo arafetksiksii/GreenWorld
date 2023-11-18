@@ -38,6 +38,8 @@ class User_Register : AppCompatActivity() {
 
         // Handle Sign Up button click
         binding.btnSignUp.setOnClickListener {
+
+
             if (validateForm()) {
                 // If validation is successful, navigate to the LoginActivity.
                 registerUser()

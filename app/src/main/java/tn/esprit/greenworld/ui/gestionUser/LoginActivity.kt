@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityUserLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val rootView = window.decorView.rootView
-        if (validateEmail() && validatePassword()) {
+
         binding.btnLogin.setOnClickListener {
 
             RetrofitImp.buildRetrofit().create(Login::class.java).login(
@@ -89,7 +89,10 @@ class LoginActivity : AppCompatActivity() {
         binding.btnCreateAccount.setOnClickListener {
             startActivity(Intent(this, User_Register::class.java))
         }
-    }
+        binding.btnForgotPassword.setOnClickListener {
+            startActivity(Intent(this, User_ForgetPassword::class.java))
+        }
+
     }
     private fun validateEmail(): Boolean {
         val email = binding.edtEmail.text.toString().trim()

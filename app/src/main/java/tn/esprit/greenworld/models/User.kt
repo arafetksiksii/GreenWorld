@@ -19,6 +19,7 @@ data class User(
     val lastPaswword:String,
     val isValid:Boolean,
     val imageRes: String,
+    val resetCode: String,
     val role:Roles
 
 ) {
@@ -35,4 +36,9 @@ data class User2(
     val email: String,
     val password: String,
     val userName:String
+)
+
+data class User3(
+    val email: String,
+
 )
