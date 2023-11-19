@@ -11,7 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import tn.esprit.greenworld.MainActivity3
+
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.databinding.ActivityUserLoginBinding
 import tn.esprit.greenworld.models.User
@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
                             saveUserToPreferences(it)
                             Log.d("LoginActivity", "Login successful. User data: $user")
 
-                            val intent = Intent(this@LoginActivity, MainActivity3::class.java)
+                            val intent = Intent(this@LoginActivity, MainActivity2::class.java)
                             intent.putExtra("userId", it._id)
                             intent.putExtra("userName", it.userName)
                             intent.putExtra("userEmail", it.email)

@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import tn.esprit.greenworld.R
 
 import tn.esprit.greenworld.models.Quiz
-import tn.esprit.greenworld.ui.quiz_activity.QuizMainActivity
+import tn.esprit.greenworld.ui.quiz_activity.QuizListActivity
+
 
 //import com.example.pdm.models.Quiz
 
@@ -31,7 +32,7 @@ class QuizAdapter(private val context: Context, private var QuizList: List<Quiz>
         val quiz = QuizList[position]
         holder.bind(quiz)
         holder.itemView.findViewById<Button>(R.id.btn_participer).setOnClickListener {
-            val intent = Intent(context, QuizMainActivity::class.java)
+            val intent = Intent(context, QuizListActivity::class.java)
             // Vous pouvez également passer des données supplémentaires si nécessaire, par exemple:
             intent.putExtra("quizId", quiz._id)
             context.startActivity(intent)
