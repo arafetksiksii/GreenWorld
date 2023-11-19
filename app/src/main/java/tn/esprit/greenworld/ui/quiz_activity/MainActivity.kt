@@ -1,6 +1,7 @@
 package tn.esprit.greenworld.ui.quiz_activity
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     private var questions: List<Question> = listOf()
     private var currentQuestionIndex = 0
     private val userResponses = mutableListOf<Int>()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -139,6 +142,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun calculateScoreAndShowResult() {
+
         var correctAnswers = 0
         val score = calculateScore()
         questions.forEachIndexed { index, question ->

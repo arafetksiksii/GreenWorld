@@ -20,12 +20,17 @@ data class User(
     val isValid:Boolean,
     val imageRes: String,
     val resetCode: String,
-    val role:Roles
+    val role:Roles,
+    val score :Int
 
 ) {
+
+
+
     override fun toString(): String {
-        return "User(idUser=$_id, nom='$nom', prenom='$prenom', dateNaissance=$dateNaissance, adress='$adress', cin=$cin, userName='$userName', email='$email', paswword='$password', lastPaswword='$lastPaswword', isValid=$isValid, imageRes=$imageRes, role=$role)"
+        return "User(_id='$_id', nom='$nom', prenom='$prenom', dateNaissance=$dateNaissance, adress='$adress', cin=$cin, userName='$userName', email='$email', password='$password', lastPaswword='$lastPaswword', isValid=$isValid, imageRes='$imageRes', resetCode='$resetCode', role=$role, score='$score')"
     }
+
 
 }
 data class User1(
@@ -40,5 +45,11 @@ data class User2(
 
 data class User3(
     val email: String,
+
+    )
+data class User4(
+    val _id: String,
+    val score: Int
+
 
 )

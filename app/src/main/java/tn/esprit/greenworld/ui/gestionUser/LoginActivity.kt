@@ -11,11 +11,11 @@ import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import tn.esprit.greenworld.MainActivity3
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.databinding.ActivityUserLoginBinding
 import tn.esprit.greenworld.models.User
 import tn.esprit.greenworld.models.User1
+import tn.esprit.greenworld.ui.quiz_activity.QuizListActivity
 import tn.esprit.greenworld.utils.Login
 import tn.esprit.greenworld.utils.RetrofitImp
 
@@ -52,12 +52,10 @@ class LoginActivity : AppCompatActivity() {
                             // Pass the user data to UserProfil activity
                             saveUserToPreferences(it)
                             Log.d("LoginActivity", "Login successful. User data: $user")
+                            Log.d("bbbbbbbbb",it._id)
 
-<<<<<<< Updated upstream
-                            val intent = Intent(this@LoginActivity, MainActivity3::class.java)
-=======
-                            val intent = Intent(this@LoginActivity, MainActivity2::class.java)
->>>>>>> Stashed changes
+                            val intent = Intent(this@LoginActivity, QuizListActivity::class.java)
+
                             intent.putExtra("userId", it._id)
                             intent.putExtra("userName", it.userName)
                             intent.putExtra("userEmail", it.email)
@@ -104,11 +102,9 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, User_Register::class.java))
         }
         binding.btnForgotPassword.setOnClickListener {
-<<<<<<< Updated upstream
-            startActivity(Intent(this, User_ForgetPassword::class.java))
-=======
+
             startActivity(Intent(this, User_Register::class.java))
->>>>>>> Stashed changes
+
         }
 
     }

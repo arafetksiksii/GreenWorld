@@ -14,11 +14,9 @@
         android:theme="@style/Theme.GreenWorld"
         android:usesCleartextTraffic="true"
         tools:targetApi="31" >
+
         <activity
-            android:name=".ui.gestionUser.User_ForgetPassword"
-            android:exported="false" />
-        <activity
-            android:name=".ui.gestionUser.ddddd"
+            android:name=".ui.gestionUser.MainActivity2"
             android:exported="false" />
         <activity
             android:name=".ui.gestionUser.CommingSoon"
@@ -45,6 +43,11 @@
             android:name=".ui.gestionUser.LoginActivity"
 
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
 
@@ -52,11 +55,7 @@
         <activity
             android:name=".ui.quiz_activity.QuizListActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.quiz_activity.ResultActivity" />
         <activity
