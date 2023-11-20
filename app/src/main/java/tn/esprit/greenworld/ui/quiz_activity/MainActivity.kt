@@ -59,8 +59,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnVoirResultat.setOnClickListener {
-            calculateScoreAndShowResult()
-        }
+            calculateScoreAndShowResult()        }
 
         // Initialisation du MediaPlayer pour l'effet sonore
         mediaPlayer = MediaPlayer.create(this, R.raw.matrrioox_ticking_timer_05_sec)
@@ -114,17 +113,14 @@ class MainActivity : AppCompatActivity() {
         userResponses.add(userResponse)
         countDownTimer.cancel()
 
-        if (mediaPlayer.isPlaying) {
-            mediaPlayer.pause() // Pause the sound if it's playing
-        }
-
-        currentQuestionIndex++
-        if (currentQuestionIndex < questions.size) {
+        if (currentQuestionIndex < questions.size - 1) {
+            currentQuestionIndex++
             showQuestion(questions[currentQuestionIndex])
         } else {
+            // Ne démarrez pas l'activité ResultActivity ici
+            // Juste afficher le bouton pour voir le résultat
             val btnVoirResultat = findViewById<Button>(R.id.btn_voir_resultat)
             btnVoirResultat.visibility = View.VISIBLE
-            btnVoirResultat.performClick() // Simulez un clic sur le bouton pour voir le résultat
         }
     }
 

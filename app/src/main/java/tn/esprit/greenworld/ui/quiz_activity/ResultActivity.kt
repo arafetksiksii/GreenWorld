@@ -2,6 +2,7 @@ package tn.esprit.greenworld.ui.quiz_activity
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
@@ -22,6 +23,13 @@ class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.result)
+
+        // Initialisation du MediaPlayer pour l'effet sonore des résultats
+        var mediaPlayer = MediaPlayer.create(this, R.raw.result_congratulations)
+        mediaPlayer.start() // Jouez le son dès que l'activité démarre
+
+        // Assurez-vous de libérer le MediaPlayer lorsque vous avez fini avec
+        mediaPlayer.setOnCompletionListener { mp -> mp.release() }
 
         val score = intent.getIntExtra("SCORE", 0)
         val totalQuestions = intent.getIntExtra("TOTAL_QUESTIONS", 0)
