@@ -17,7 +17,7 @@ class ProduitListAdapter() : RecyclerView.Adapter<ProduitListAdapter.ProduitList
     fun setProduitList(produitList: List<Produit>) {
         this.produitList = produitList as ArrayList<Produit>
         notifyDataSetChanged()
-        Log.d("ProduitListAdapter", "setProduitList called with ${produitList.size} products") // Add this log
+        Log.d("ProduitListAdapter", "setProduitList called with ${produitList.size} products")
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProduitListViewHolder {
@@ -30,6 +30,7 @@ class ProduitListAdapter() : RecyclerView.Adapter<ProduitListAdapter.ProduitList
         Glide.with(holder.binding.root)
             .load(produit.image)
             .into(holder.binding.imgProduit)
+        Log.d("produitimage", produit.image)
         holder.binding.tvProductName.text= produitList[position].title
         holder.itemView.setOnClickListener {
             onListProductClick.invoke(produitList[position])

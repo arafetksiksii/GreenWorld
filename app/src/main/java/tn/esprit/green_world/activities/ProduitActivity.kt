@@ -1,5 +1,6 @@
 package tn.esprit.green_world.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,7 +16,7 @@ import tn.esprit.green_world.R
 import tn.esprit.green_world.databinding.ActivityProduitBinding
 import tn.esprit.green_world.fragments.ProduitFragment
 import tn.esprit.green_world.models.Commande
-import tn.esprit.green_world.models.Produit
+import tn.esprit.green_world.models.Favproduit
 import tn.esprit.green_world.utils.RetrofitInstance
 import tn.esprit.green_world.viewModel.ProduitDetailViewModel
 
@@ -46,6 +48,7 @@ class ProduitActivity : AppCompatActivity() {
         observerProduitDetailLiveData()
 
         val commandeButton = binding.commandeButton
+        val favproduitButton = binding.favProduitButton
 
         commandeButton.setOnClickListener {
             val produiId = produitId
@@ -57,7 +60,18 @@ class ProduitActivity : AppCompatActivity() {
                         // Handle the successful response here
                         val updatedCommande = response.body()
                         // You can do something with the updatedCommande if needed
-                        Toast.makeText(applicationContext, "Product added to cart", Toast.LENGTH_SHORT).show()
+
+                        // Display a Snackbar
+                        val snackbar = Snackbar.make(
+                            binding.root,
+                            "Product added to cart",
+                            Snackbar.LENGTH_LONG
+                        )
+                        snackbar.setAction("Visit Cart") {
+                            // Handle click on "Visit Cart"
+                            startActivity(Intent(applicationContext, CommandeActivity::class.java))
+                        }
+                        snackbar.show()
                     } else {
                         // Handle unsuccessful response
                         // You can parse the error response using response.errorBody()
@@ -67,15 +81,64 @@ class ProduitActivity : AppCompatActivity() {
 
                 override fun onFailure(call: Call<Commande>, t: Throwable) {
                     // Handle failure
-                    Toast.makeText(applicationContext, "Network error", Toast.LENGTH_SHORT).show()
+                    val snackbar = Snackbar.make(
+                        binding.root,
+                        "Product added to cart",
+                        Snackbar.LENGTH_LONG
+                    )
+                    snackbar.setAction("Visit Cart") {
+                        // Handle click on "Visit Cart"
+                        startActivity(Intent(applicationContext, CommandeActivity::class.java))
+                    }
+                    snackbar.show()                }
+            })
+        }
+        favproduitButton.setOnClickListener {
+
+            val call = RetrofitInstance.Commandeapi.addProductToFav(produitId)
+
+            call.enqueue(object : Callback<Favproduit> {
+                override fun onResponse(call: Call<Favproduit>, response: Response<Favproduit>) {
+                    if (response.isSuccessful) {
+                        // Handle the successful response here
+                        val updatedFavProduit = response.body()
+                        // You can do something with the updatedFavProduit if needed
+
+                        // Show a simple Toast message
+                        Toast.makeText(applicationContext, "Product added to favorites", Toast.LENGTH_SHORT).show()
+
+                        // Optionally, navigate to the Favorites activity
+
+                        // Log success
+                        Log.d("FavProduit", "Product added to favorites successfully")
+                    } else {
+                        // Handle unsuccessful response
+                        // You can parse the error response using response.errorBody()
+                        val errorMessage = response.errorBody()?.string() ?: "Unknown error"
+                        Log.e("FavProduit", "Failed to add product to favorites. Error: $errorMessage")
+
+                        Toast.makeText(applicationContext, "Failed to add product to favorites", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Favproduit>, t: Throwable) {
+                    // Handle failure
+                    Log.e("FavProduit", "Failed to add product to favorites. Throwable: ${t.message}", t)
+
+                    Toast.makeText(applicationContext, "Failed to add product to favorites", Toast.LENGTH_SHORT).show()
                 }
             })
         }
+
+
+
+
     }
 
     private fun observerProduitDetailLiveData() {
         produitMvvm.obersverProduitDetailLiveData().observe(this, Observer { produit ->
             produit?.let {
+                Log.d("ProduitActivity", "Product Data Received: ${produit._id}")
                 Log.d("ProduitActivity", "Product Data Received: ${produit.title}")
                 binding.tvPrice.text = "Price: ${produit.price.toString()}TND"
                 binding.tvDescription.text = "Description: ${produit.description}"
@@ -115,6 +178,7 @@ class ProduitActivity : AppCompatActivity() {
         Glide.with(applicationContext)
             .load(produitImage)
             .into(binding.imgProduitDetail)
+        Log.d("ProduitImage", produitImage)
         binding.collapsingtoolbar.title = produitTitle
         binding.collapsingtoolbar.setCollapsedTitleTextColor(resources.getColor(R.color.white))
         binding.collapsingtoolbar.setExpandedTitleColor(resources.getColor(R.color.darkgreen))

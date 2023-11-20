@@ -8,7 +8,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import tn.esprit.green_world.models.Produit
-import tn.esprit.green_world.models.ProduitItem
 import tn.esprit.green_world.models.ProduitList
 import tn.esprit.green_world.utils.RetrofitInstance
 
@@ -75,6 +74,7 @@ class ProduitViewModel : ViewModel() {
             override fun onResponse(call: Call<ProduitList>, response: Response<ProduitList>) {
                 if (response.isSuccessful) {
                     response.body()?.let { produitList ->
+
                         listProduitLiveData.postValue(produitList)
                         Log.d("ProduitViewModel", "Received ${produitList.size} products")
                     } ?: Log.d("ProduitViewModel", "Response body is null")

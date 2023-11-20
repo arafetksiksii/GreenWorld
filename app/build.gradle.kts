@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-parcelize")
 }
 
 
@@ -56,6 +57,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
     implementation("com.github.bumptech.glide:glide:4.12.0")
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.17")
+    implementation("com.stripe:stripe-android:20.34.4")
+
+
 
     // Other dependencies...
 

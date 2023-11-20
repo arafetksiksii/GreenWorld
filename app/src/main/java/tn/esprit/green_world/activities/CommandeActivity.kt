@@ -1,7 +1,9 @@
 package tn.esprit.green_world.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import tn.esprit.green_world.R
 import tn.esprit.green_world.adapters.CommandeAdapter
 import tn.esprit.green_world.databinding.ActivityCommandeBinding
+import tn.esprit.green_world.utils.RetrofitInstance
 import tn.esprit.green_world.viewModel.CommandeViewModel
 
 class CommandeActivity : AppCompatActivity() {
@@ -21,12 +24,17 @@ class CommandeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_commande)
-        
 
+        val btnProceedToPayment: Button = findViewById(R.id.btnProceedToPayment)
+        btnProceedToPayment.setOnClickListener {
+            // Navigate to the payment activity
+            val intent = Intent(this, PaymentActivity::class.java)
+            startActivity(intent)
+        }
         // Set up RecyclerView
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        commandeAdapter = CommandeAdapter()
+        commandeAdapter = CommandeAdapter(RetrofitInstance)
         recyclerView.adapter = commandeAdapter
 
         // Set up ViewModel
@@ -38,6 +46,8 @@ class CommandeActivity : AppCompatActivity() {
 
             commande?.let {
                 commandeAdapter.setCommande(it)
+                commandeAdapter.setTotalPrice(it.totalPrice) // Assuming totalPrice is a Double or any appropriate type
+
                 Log.d("CommandeActivity", "Received Commande data from ViewModel.")
             }
         })
