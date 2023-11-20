@@ -3,6 +3,7 @@ package tn.esprit.greenworld.utils
 import retrofit2.Call
 import retrofit2.http.*
 import tn.esprit.greenworld.models.User
+import tn.esprit.greenworld.models.User4
 import tn.esprit.greenworld.models.User5
 
 interface UserInterface {

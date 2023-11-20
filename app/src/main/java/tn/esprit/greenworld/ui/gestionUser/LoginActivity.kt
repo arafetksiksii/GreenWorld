@@ -55,9 +55,8 @@ class LoginActivity : AppCompatActivity() {
                             Log.d("LoginActivity", "Login successful. User data: $user")
                             Log.d("bbbbbbbbb",it._id)
 
-                            val intent = Intent(this@LoginActivity, QuizListActivity::class.java)
 
-                            val intent = Intent(this@LoginActivity, UserUpdate::class.java)
+                            val intent = Intent(this@LoginActivity, QuizListActivity::class.java)
                             intent.putExtra("userId", it._id)
                             intent.putExtra("userName", it.userName)
                             intent.putExtra("userEmail", it.email)
