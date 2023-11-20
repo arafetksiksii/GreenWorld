@@ -2,6 +2,7 @@ package tn.esprit.greenworld.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 import java.util.Date
 
 @Entity
@@ -48,7 +49,7 @@ data class User3(
 
     )
 data class User4(
-    val _id: String,
+    @SerializedName("_id") val id: String,
     val score: Int
 
 

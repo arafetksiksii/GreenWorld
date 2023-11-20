@@ -3,6 +3,7 @@ package tn.esprit.greenworld.ui.quiz_activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -56,6 +57,8 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private fun updateScore(userId: String, newScore: Int) {
+        Log.d("ResultActivity", "Updating score for userID: $userId with new score: $newScore")
+
         RetrofitImp.buildRetrofit().create(UserInterface::class.java)
             .updateScoreById(User4( userId,newScore))
             .enqueue(object : Callback<User> {

@@ -68,6 +68,8 @@
     <string name="msg_password_digit">Le mot de passe doit contenir au moins un chiffre.</string>
     <string name="msg_password_special_char">Le mot de passe doit contenir au moins un caractère spécial parmi</string>
     <string name="msg_password_length">Le mot de passe doit contenir au moins 8 caractères.</string>
+    <string name="formatted_time">%02d s</string>
+    <string name="time_up">Temps écoulé!</string>
 
     <!--  Main  -->
     <string name="main_desc">Every action counts in preserving our precious nature</string>

@@ -1,166 +1,167 @@
 package tn.esprit.greenworld.ui.quiz_activity
 
 import android.content.Intent
-import android.content.SharedPreferences
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.Response
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.models.Question
 import tn.esprit.greenworld.utils.QuizApi
 import tn.esprit.greenworld.utils.RetrofitImp
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
     private var questions: List<Question> = listOf()
     private var currentQuestionIndex = 0
     private val userResponses = mutableListOf<Int>()
-
-
+    private lateinit var countDownTimer: CountDownTimer
+    private lateinit var txtCompteur: TextView
+    private val timeLeftInMillis: Long = 30000 // 30 secondes pour chaque question
+    private lateinit var mediaPlayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val txtQuiz = findViewById<TextView>(R.id.txt_quiz)
-        val txtQuestionNum = findViewById<TextView>(R.id.txt_question_num)
-        val txtQuestion = findViewById<TextView>(R.id.txt_question)
+        txtCompteur = findViewById(R.id.txt_compteur)
         val btnChoix1 = findViewById<Button>(R.id.btn_choix1)
         val btnChoix2 = findViewById<Button>(R.id.btn_choix2)
         val btnChoix3 = findViewById<Button>(R.id.btn_choix3)
         val btnChoix4 = findViewById<Button>(R.id.btn_choix4)
-        val btnNextQuestion = findViewById<Button>(R.id.btn_voir_resultat)
+        val btnVoirResultat = findViewById<Button>(R.id.btn_voir_resultat)
         val quizId = intent.getStringExtra("quizId") ?: return
         val quizApi = RetrofitImp.retrofit.create(QuizApi::class.java)
 
         quizApi.getQuestionsForQuiz(quizId).enqueue(object : Callback<List<Question>> {
-            override fun onResponse(call: Call<List<Question>>, response: retrofit2.Response<List<Question>>) {
+            override fun onResponse(call: Call<List<Question>>, response: Response<List<Question>>) {
                 if (response.isSuccessful) {
                     questions = response.body() ?: emptyList()
-                    // Afficher la première question
-                    showQuestion(questions?.firstOrNull())
+                    showQuestion(questions.firstOrNull())
                 }
             }
 
             override fun onFailure(call: Call<List<Question>>, t: Throwable) {
-                // Gérer l'échec ici, par exemple en affichant un message d'erreur
+                // Gérer l'échec ici
             }
         })
 
+        val choiceButtons = listOf(btnChoix1, btnChoix2, btnChoix3, btnChoix4)
+        choiceButtons.forEachIndexed { index, button ->
+            button.setOnClickListener { recordAnswerAndShowNextQuestion(index) }
+        }
 
+        btnVoirResultat.setOnClickListener {
+            calculateScoreAndShowResult()
+        }
 
-        // Configuration des écouteurs de clics pour les boutons de choix
-        btnChoix1.setOnClickListener {
-            showNextQuestion(0)
-        }
-        btnChoix2.setOnClickListener {
-            showNextQuestion(1)
-        }
-        btnChoix3.setOnClickListener {
-            showNextQuestion(2)
-        }
-        btnChoix4.setOnClickListener {
-            showNextQuestion(3)
-        }
-        btnNextQuestion.setOnClickListener {
-            // Gérez le clic pour passer à la question suivante
-        }
+        // Initialisation du MediaPlayer pour l'effet sonore
+        mediaPlayer = MediaPlayer.create(this, R.raw.matrrioox_ticking_timer_05_sec)
     }
 
     private fun showQuestion(question: Question?) {
-        // Assurez-vous que la question n'est pas nulle
         question?.let {
-            // Mettez à jour le texte de la question
             val txtQuestion = findViewById<TextView>(R.id.txt_question)
             txtQuestion.text = it.question
 
-            val btnVoirResultat = findViewById<Button>(R.id.btn_voir_resultat)
-            if (currentQuestionIndex == questions.size - 1) {
-                // C'est la dernière question
-                btnVoirResultat.visibility = View.VISIBLE
-                btnVoirResultat.setOnClickListener {
-                    calculateScoreAndShowResult()
-                }
+            val buttons = listOf(
+                findViewById<Button>(R.id.btn_choix1),
+                findViewById<Button>(R.id.btn_choix2),
+                findViewById<Button>(R.id.btn_choix3),
+                findViewById<Button>(R.id.btn_choix4)
+            )
 
-            } else {
-                // Ce n'est pas la dernière question
-                btnVoirResultat.visibility = View.GONE
+            buttons.forEachIndexed { index, button ->
+                button.text = it.choix.getOrElse(index) { "" }
+                button.visibility = if (it.choix.size > index) View.VISIBLE else View.GONE
             }
 
-            // Mettez à jour les boutons de choix avec les options de la question
-            val btnChoix1 = findViewById<Button>(R.id.btn_choix1)
-            val btnChoix2 = findViewById<Button>(R.id.btn_choix2)
-            val btnChoix3 = findViewById<Button>(R.id.btn_choix3)
-            val btnChoix4 = findViewById<Button>(R.id.btn_choix4)
+            val btnVoirResultat = findViewById<Button>(R.id.btn_voir_resultat)
+            btnVoirResultat.visibility = if (currentQuestionIndex >= questions.size - 1) View.VISIBLE else View.GONE
 
-            // Supposons que 'choix' est une liste de String dans votre modèle Question
-            btnChoix1.text = it.choix.getOrElse(0) { "" }
-            btnChoix2.text = it.choix.getOrElse(1) { "" }
-            btnChoix3.text = it.choix.getOrElse(2) { "" }
-            btnChoix4.text = it.choix.getOrElse(3) { "" }
-
-            // Configurez les écouteurs de clic pour chaque bouton si nécessaire
-            btnChoix1.setOnClickListener { showNextQuestion(0) }
-            btnChoix2.setOnClickListener { showNextQuestion(1) }
-            btnChoix3.setOnClickListener { showNextQuestion(2) }
-            btnChoix4.setOnClickListener { showNextQuestion(3) }
-        } ?: run {
-            // Si la question est nulle, vous pouvez afficher un message d'erreur ou fermer l'activité
+            startCountDown()
         }
     }
 
-    private fun showNextQuestion(userResponse: Int) {
-        // Enregistrer la réponse de l'utilisateur
-        userResponses.add(userResponse)
+    private fun startCountDown() {
+        countDownTimer = object : CountDownTimer(timeLeftInMillis, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val secondsLeft = millisUntilFinished / 1000
+                txtCompteur.text = String.format(Locale.getDefault(), "%02d", secondsLeft)
 
-        // Passer à la question suivante
+                // Jouer un son durant les 5 dernières secondes
+                if (secondsLeft <= 5) {
+                    mediaPlayer.start()
+                }
+            }
+
+            override fun onFinish() {
+                txtCompteur.text = getString(R.string.time_up)
+                mediaPlayer.stop() // Arrêtez le son lorsqu'il est terminé
+                recordAnswerAndShowNextQuestion(-1) // -1 pour une réponse non donnée
+            }
+        }.start()
+    }
+
+    private fun recordAnswerAndShowNextQuestion(userResponse: Int) {
+        userResponses.add(userResponse)
+        countDownTimer.cancel()
+
+        if (mediaPlayer.isPlaying) {
+            mediaPlayer.pause() // Pause the sound if it's playing
+        }
+
         currentQuestionIndex++
         if (currentQuestionIndex < questions.size) {
             showQuestion(questions[currentQuestionIndex])
         } else {
-            // Toutes les questions ont été répondues
-            // Vous pouvez maintenant calculer le score ou passer à un nouvel écran
-            calculateScore()
+            val btnVoirResultat = findViewById<Button>(R.id.btn_voir_resultat)
+            btnVoirResultat.visibility = View.VISIBLE
+            btnVoirResultat.performClick() // Simulez un clic sur le bouton pour voir le résultat
         }
     }
 
-    private fun calculateScore(): Int {
+    private fun calculateScoreAndShowResult() {
         var score = 0
-        // Supposons que 'questions' est une liste de vos objets Question et que 'userResponses' est une liste des indices des réponses de l'utilisateur
         questions.forEachIndexed { index, question ->
-            // Vérifiez si l'indice de la réponse de l'utilisateur correspond à l'indice de la réponse correcte de la question
             if (question.reponse_correcte == userResponses[index]) {
                 score++
             }
         }
-        return score
-    }
 
-
-    private fun calculateScoreAndShowResult() {
-
-        var correctAnswers = 0
-        val score = calculateScore()
-        questions.forEachIndexed { index, question ->
-            // Ici on suppose que la reponse_correcte dans le modèle Question est l'indice de la bonne réponse
-            if (question.reponse_correcte == userResponses[index]) {
-                correctAnswers++
-            }
-        }
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("SCORE", score)
         intent.putExtra("TOTAL_QUESTIONS", questions.size)
-        intent.putExtra("CORRECT_ANSWERS", correctAnswers)
-
+        intent.putExtra("CORRECT_ANSWERS", score)
         startActivity(intent)
-        finish() // Optionnel, termine l'activité actuelle si vous ne voulez pas que l'utilisateur revienne au quiz
+        finish()
     }
 
+    override fun onPause() {
+        super.onPause()
+        if (this::countDownTimer.isInitialized) {
+            countDownTimer.cancel()
+        }
+        if (mediaPlayer.isPlaying) {
+            mediaPlayer.pause()
+        }
+    }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        if (this::countDownTimer.isInitialized) {
+            countDownTimer.cancel()
+        }
+        if (mediaPlayer.isPlaying) {
+            mediaPlayer.stop()
+        }
+        mediaPlayer.release()
+    }
 }
-
