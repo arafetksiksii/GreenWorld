@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -26,23 +27,27 @@ import tn.esprit.greenworld.utils.UserInterface
 
 class UserUpdate : AppCompatActivity() {
     var config: HashMap<String, String> = HashMap()
+    private lateinit var binding: ActivityUserUpdateBinding
+    private lateinit var selectedImageView: ImageView
+    private lateinit var sharedPreferences: SharedPreferences // Déplacer ici
 
-    // Récupérer l'ID de l'utilisateur depuis les SharedPreferences
-    // Get user data from SharedPreferences
-    val sharedPreferences: SharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE)
-    val userId = sharedPreferences.getString("userId", "")
-    val imageUrl=sharedPreferences.getString("imageRes","")
 
     companion object {
         const val PICK_IMAGE_REQUEST = 1
     }
 
-    private lateinit var binding:ActivityUserUpdateBinding
-    private lateinit var selectedImageView: ImageView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_update)
+        binding = ActivityUserUpdateBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+// Initialiser sharedPreferences ici
+        sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE)
+
+
 
 
         // Check if MediaManager is already initialized
@@ -70,6 +75,7 @@ class UserUpdate : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Select an image first", Toast.LENGTH_SHORT).show()
             }
+            updateUserp()
         }
     }
 
@@ -130,15 +136,21 @@ class UserUpdate : AppCompatActivity() {
             }
         }).dispatch()
     }
-    private fun updateUser() {
+    private fun updateUserp() {
+        // Get user data from SharedPreferences
+       // val sharedPreferences: SharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE)
+        val userId = sharedPreferences.getString("userId", "")
+        val imageUrl=sharedPreferences.getString("imageRes","")
+        Log.d("hhhhhhhhhhh","jjjjjjjjjjjjjjjj")
         val user5 = User5(
-            _id = userId.toString(),
+            id = userId?.toString() ?: "", // Assurez-vous que userId n'est pas null
             email = binding.tiEmail.text.toString(),
-            password = binding.tiPassword.text.toString(),
-            userName = binding.tiFullName.text.toString(),
+            nom = binding.tiEmail.text.toString(), // Utilisez le champ correct pour le nom
+            prenom = binding.tiEmail.text.toString(), // Utilisez le champ correct pour le prénom
+            userName = binding.tiFullName.text.toString(), // Assurez-vous que tiFullName est le champ correct
             adress = binding.tiAdress.text.toString(),
             cin = binding.tiCin.text.toString(),
-            imageRes = imageUrl.toString()
+            imageRes = imageUrl?.toString() ?: "" // Assurez-vous que imageUrl n'est pas null
         )
 
         val imageService = RetrofitImp.buildRetrofit().create(UserInterface::class.java)
@@ -158,7 +170,6 @@ class UserUpdate : AppCompatActivity() {
             }
         })
     }
-
     private fun handleSuccessfulupdate(user: User?) {
         // Handle successful registration
         // Optionally, you can navigate to the login screen

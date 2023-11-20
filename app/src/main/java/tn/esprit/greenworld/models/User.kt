@@ -43,20 +43,12 @@ data class User3(
 
 )
 data class User5(
-    val _id: String
+    val id: String,
     val email: String,
-    val password: String,
+    val nom: String,
+    val prenom: String,
     val userName: String,
     val adress: String,
     val cin: String ,
     val imageRes: String
-)
-data class User6(
-    val _id: String
-    val email: String,
-    val password: String,
-    val userName: String,
-    val adress: String,
-    val cin: String ,
-
 )

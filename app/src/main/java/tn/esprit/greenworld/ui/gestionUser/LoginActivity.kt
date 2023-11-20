@@ -13,6 +13,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 import tn.esprit.greenworld.R
+import tn.esprit.greenworld.UserUpdate
 import tn.esprit.greenworld.databinding.ActivityUserLoginBinding
 import tn.esprit.greenworld.models.User
 import tn.esprit.greenworld.models.User1
@@ -53,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
                             saveUserToPreferences(it)
                             Log.d("LoginActivity", "Login successful. User data: $user")
 
-                            val intent = Intent(this@LoginActivity, MainActivity2::class.java)
+                            val intent = Intent(this@LoginActivity, UserUpdate::class.java)
                             intent.putExtra("userId", it._id)
                             intent.putExtra("userName", it.userName)
                             intent.putExtra("userEmail", it.email)
