@@ -3,6 +3,7 @@ package tn.esprit.greenworld.repositories
 import retrofit2.await
 import tn.esprit.greenworld.utils.UserInterface
 import tn.esprit.greenworld.models.User
+import tn.esprit.greenworld.models.User5
 
 class UserRepository(private val userInterface: UserInterface) {
 
@@ -17,9 +18,7 @@ class UserRepository(private val userInterface: UserInterface) {
     }
 
     // Mettre à jour les informations d'un utilisateur
-    suspend fun updateUser(userId: Long, updatedUser: User): User? {
-        return userInterface.updateUser(userId, updatedUser).await()
-    }
+
 
     // Supprimer un utilisateur
     suspend fun deleteUser(userId: Long): Void {

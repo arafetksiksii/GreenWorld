@@ -54,3 +54,14 @@ data class User4(
 
 
 )
+
+data class User5(
+    val id: String,
+    val email: String,
+    val nom: String,
+    val prenom: String,
+    val userName: String,
+    val adress: String,
+    val cin: String ,
+    val imageRes: String
+)
