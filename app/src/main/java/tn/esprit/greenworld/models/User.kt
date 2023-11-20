@@ -49,7 +49,7 @@ data class User3(
 
     )
 data class User4(
-    @SerializedName("_id") val id: String,
+    val id: String,
     val score: Int
 
 

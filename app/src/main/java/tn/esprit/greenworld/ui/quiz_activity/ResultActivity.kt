@@ -86,8 +86,11 @@ class ResultActivity : AppCompatActivity() {
     private fun handleSuccessfulRegistration(user: User?) {
         // Handle successful registration
         // Optionally, you can navigate to the login screen
-        startActivity(Intent(this@ResultActivity, LoginActivity::class.java))
-        finish()
+        Toast.makeText(
+            this@ResultActivity,
+            "Error: socore updated",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun handleRegistrationFailure(errorMessage: String) {
