@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item android:title="home"
+    android:icon="@drawable/ic_home"
+    android:id="@+id/homeFragment"/>
+
+    <item android:title="favorite"
+        android:icon="@drawable/ic_heart"
+        android:id="@+id/favoriteFragment"/>
+
+        <item android:title="camera"
+            android:icon="@drawable/ic_cam"/>
+
+    <item android:title="store"
+        android:icon="@drawable/ic_shop"
+        android:id="@+id/produitFragment"/>
+</menu>

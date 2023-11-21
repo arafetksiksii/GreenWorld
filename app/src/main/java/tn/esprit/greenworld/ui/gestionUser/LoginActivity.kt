@@ -11,12 +11,12 @@ import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.UserUpdate
 import tn.esprit.greenworld.databinding.ActivityUserLoginBinding
 import tn.esprit.greenworld.models.User
 import tn.esprit.greenworld.models.User1
+import tn.esprit.greenworld.ui.quiz_activity.QuizListActivity
 import tn.esprit.greenworld.utils.Login
 import tn.esprit.greenworld.utils.RetrofitImp
 
@@ -53,8 +53,10 @@ class LoginActivity : AppCompatActivity() {
                             // Pass the user data to UserProfil activity
                             saveUserToPreferences(it)
                             Log.d("LoginActivity", "Login successful. User data: $user")
+                            Log.d("bbbbbbbbb",it._id)
 
-                            val intent = Intent(this@LoginActivity, UserUpdate::class.java)
+
+                            val intent = Intent(this@LoginActivity, QuizListActivity::class.java)
                             intent.putExtra("userId", it._id)
                             intent.putExtra("userName", it.userName)
                             intent.putExtra("userEmail", it.email)
@@ -101,7 +103,9 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, User_Register::class.java))
         }
         binding.btnForgotPassword.setOnClickListener {
-            startActivity(Intent(this, User_ForgetPassword::class.java))
+
+            startActivity(Intent(this, User_Register::class.java))
+
         }
 
     }
@@ -141,11 +145,11 @@ class LoginActivity : AppCompatActivity() {
             binding.tiPasswordLayout.isErrorEnabled = false
         }
 
-        if (password.length < 8) {
-            binding.tiPasswordLayout.error = getString(R.string.msg_password_length)
-            binding.tiPassword.requestFocus()
-            return false
-        } else {
+        if (password.length < 6) {
+                binding.tiPasswordLayout.error = getString(R.string.msg_password_length)
+                binding.tiPassword.requestFocus()
+                return false
+            } else {
             binding.tiPasswordLayout.isErrorEnabled = false
         }
 

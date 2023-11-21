@@ -3,6 +3,7 @@ package tn.esprit.greenworld.utils
 import retrofit2.Call
 import retrofit2.http.*
 import tn.esprit.greenworld.models.User
+import tn.esprit.greenworld.models.User4
 import tn.esprit.greenworld.models.User5
 
 interface UserInterface {
@@ -29,6 +30,9 @@ interface UserInterface {
     // Rechercher un utilisateur par nom
     @GET("user/search")
     fun searchUserByName(@Query("name") name: String): Call<List<User>>
+
+    @PUT("user/updateProfilById")
+    fun updateScoreById(@Body updatedUser: User4): Call<User>
 
 
 }

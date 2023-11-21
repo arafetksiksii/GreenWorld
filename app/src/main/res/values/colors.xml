@@ -22,6 +22,93 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+    <color name="darkgreen">#437D28</color>
+    <color name="green">#80A370</color>
+    <color name="lightgreen">#D9E5D4</color>
+    <color name="vert">#437D28</color>
+    <color name="vert_pistache">#B7DAA6</color>
 
+    <color name="black">#FF000000</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+
+
+    <color name="home">#1194AA</color>
+    <color name="like">#C9379D</color>
+    <color name="notification">#AE7E0F</color>
+    <color name="camera">#5B37B7</color>
+
+    <color name="_bg__frame_31_ek1_color">#28B446</color>
+    <color name="label_text_color">#8E8E8E</color>
+    <color name="recycle_form_color">#2DCC70</color>
+    <color name="rectangle_1_color">#737B7D</color>
+
+    <color name="pinkColor">#FF003B</color>
+    <color name="tansparentColor">#00FFFFFF</color>
+
+    <color name="colorPrimaryDark">#375de4</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="smokyWhite">#fafafa</color>
+    <color name="lightText">#c9d3f7</color>
+    <color name="hintColor">#b7c1e4</color>
+    <color name="searchBarColor">#0023a1</color>
+    <color name="greenBtnColor">#48ceb9</color>
+    <color name="lightBlue">#e6f2ff</color>
+    <color name="textBlue">#268eff</color>
+    <color name="deepBlue">#425186</color>
+    <color name="greyDate">#cdcfd1</color>
+    <color name="timeBackgroundGreen">#e8feed</color>
+    <color name="greenJoinBtnColor">#00bb5a</color>
+    <color name="lightGrey">#D8D8D8</color>
+    <!-- eventpage colors -->
+
+
+    <color name="_bg__eventpage_color">#FFFFFF</color>
+    <color name="events_color">#437C28</color>
+    <color name="_bg__component_1_ek1_color">#000000</color>
+    <color name="search_coffee_color">#979797</color>
+    <color name="rectangle_9_color">#F7F6F6</color>
+    <color name="bg_ek1_color">#ffffff</color>
+    <color name="drawer">#437D28</color>
+    <!-- navigation_drawer_full_screen_brand colors -->
+
+    <color name="_bg__frame_34627_ek1_color">#000000</color>
+    <color name="_bg__avatar_ek1_color">#FFD88D</color>
+    <color name="_81_color">#ffffff</color>
+    <color name="chaimet_esprit_tn_color">#B6DAA6</color>
+    <color name="_bg__nav_item_ek1_color">#FFFFFF</color>
+    <color name="calendar_ek2_color">#437C28</color>
+    <color name="_bg__frame_34624_ek1_color">#B0E5FC</color>
+    <color name="_bg__frame_34624_ek3_color">#FA9A9A</color>
+    <color name="_bg__frame_34624_ek5_color">#B5EACD</color>
+    <color name="light_color">#1A1D1F</color>
+    <color name="drawer_color">#598743</color>
+
+    <color name="light_green_200_99">#99b6daa6</color>
+    <color name="bluegray_50">#eff1f5</color>
+    <color name="gray_500">#979797</color>
+    <color name="teal_500">#0bab7c</color>
+    <color name="black_900">#000000</color>
+    <color name="green_800_99">#99437c28</color>
+    <color name="gray_900">#151921</color>
+    <color name="green_800">#437c28</color>
+    <color name="gray_200">#efede9</color>
+    <color name="white_A700">#ffffff</color>
+    <color name="black_900_26">#26000000</color>
+    <!-- welcome colors -->
+
+
+    <color name="_bg__welcome_ek2_color">#FFFFFF</color>
+    <color name="home_color">#437C28</color>
+    <color name="search_color">#979797</color>
+    <color name="bg_ek5_color">#EFF1F5</color>
+    <color name="flat_50__off__upto___color">#151921</color>
+    <color name="copy_code_color">#0BAB7C</color>
+    <color name="lavender">#8692f7</color>
 
 </resources>
