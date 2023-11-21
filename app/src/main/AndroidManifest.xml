@@ -22,15 +22,16 @@
         android:theme="@style/Theme.GreenWorld"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <!-- ////////////////////////Gestion User////////////////////////-->
         <activity
             android:name=".ui.gestionUser.LoginActivity"
             android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-        </activity>
-        <activity
-            android:name=".activities.EventsMainPage"
-            android:exported="false" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity>
         <activity
             android:name=".ui.gestionUser.User_ForgetPassword"
             android:exported="false" />
@@ -54,10 +55,14 @@
             android:exported="false" />
         <activity
             android:name=".ui.gestionUser.User_Register"
-            android:exported="false" /> <!-- Activité de lancement -->
+            android:exported="false" />
         <activity
             android:name=".ui.gestionUser.UserListActivity"
             android:exported="true" />
+
+        <!-- ////////////////////////////////////////////////////////////// -->
+
+
         <activity
             android:name=".activities.ReservationActivity"
             android:exported="false" />
@@ -100,12 +105,11 @@
         <activity
             android:name=".activities.MainActivity4"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.EventsMainPage"
+            android:exported="false" />
         <!-- Facebook -->
 
     </application>
