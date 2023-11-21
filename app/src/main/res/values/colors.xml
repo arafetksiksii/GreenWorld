@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+
     <color name="white">#FFFFFFFF</color>
-    <color name="_bg__frame_31_ek1_color">#28B446</color>
-    <color name="label_text_color">#8E8E8E</color>
-    <color name="recycle_form_color">#2DCC70</color>
-    <color name="rectangle_1_color">#737B7D</color>
     <color name="colorPrimary">#6A8A20</color>
     <color name="Primary">#8fb43b</color>
     <color name="Secondary">#546925</color>
@@ -14,11 +10,8 @@
     <color name="colorSecondaryDark">#333744</color>
     <color name="colorSecondaryLight">#111d40</color>
     <color name="colorSecondaryOverLay">#CC0c0f18</color>
-    <color name="darkgreen">#437D28</color>
-    <color name="green">#80A370</color>
-    <color name="lightgreen">#D9E5D4</color>
-    <color name="red">#FF0000</color>
 
+    <color name="red">#FF0000</color>
     <color name="yellow">#FFFF00</color>
     <color name="startblue">#E8E82C</color>
     <color name="endblue">#EDED93</color>
@@ -29,6 +22,35 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+    <color name="darkgreen">#437D28</color>
+    <color name="green">#80A370</color>
+    <color name="lightgreen">#D9E5D4</color>
+    <color name="vert">#437D28</color>
+    <color name="vert_pistache">#B7DAA6</color>
+
+    <color name="black">#FF000000</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+
+
+    <color name="home">#1194AA</color>
+    <color name="like">#C9379D</color>
+    <color name="notification">#AE7E0F</color>
+    <color name="camera">#5B37B7</color>
+
+    <color name="_bg__frame_31_ek1_color">#28B446</color>
+    <color name="label_text_color">#8E8E8E</color>
+    <color name="recycle_form_color">#2DCC70</color>
+    <color name="rectangle_1_color">#737B7D</color>
+
+    <color name="pinkColor">#FF003B</color>
+    <color name="tansparentColor">#00FFFFFF</color>
+
     <color name="colorPrimaryDark">#375de4</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="smokyWhite">#fafafa</color>
@@ -45,11 +67,6 @@
     <color name="lightGrey">#D8D8D8</color>
     <!-- eventpage colors -->
 
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
 
     <color name="_bg__eventpage_color">#FFFFFF</color>
     <color name="events_color">#437C28</color>
@@ -71,8 +88,7 @@
     <color name="_bg__frame_34624_ek5_color">#B5EACD</color>
     <color name="light_color">#1A1D1F</color>
     <color name="drawer_color">#598743</color>
-    <color name="vert">#437D28</color>
-    <color name="vert_pistache">#B7DAA6</color>
+
     <color name="light_green_200_99">#99b6daa6</color>
     <color name="bluegray_50">#eff1f5</color>
     <color name="gray_500">#979797</color>
@@ -94,4 +110,5 @@
     <color name="flat_50__off__upto___color">#151921</color>
     <color name="copy_code_color">#0BAB7C</color>
     <color name="lavender">#8692f7</color>
+
 </resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/drawer_color"
+    android:orientation="vertical"
+    tools:context=".activities.CustomCalendar">
+
+  <TextView
+      android:id="@+id/myDate"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="CurrentDate"
+      android:textAlignment="center"
+      android:textColor="@color/white"
+      android:textSize="23sp"
+      android:textStyle="bold"
+      android:layout_marginLeft="105dp"
+      android:layout_marginTop="48dp"
+      tools:ignore="MissingConstraints" />
+
+<LinearLayout
+    android:layout_marginTop="48dp"
+    android:layout_marginLeft="44dp"
+    android:layout_width="300dp"
+    android:background="@drawable/bg_calen"
+    android:layout_height="wrap_content"
+  >
+  <CalendarView
+      android:id="@+id/calenderView"
+      android:layout_width="wrap_content"
+      android:layout_height="310dp"
+    >
+  </CalendarView>
+
+</LinearLayout>
+</LinearLayout>

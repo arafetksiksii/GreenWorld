@@ -1,14 +1,30 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/eventMainPage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightGrey">
+    android:background="@color/lightGrey"
+
+    tools:context=".activities.EventsMainPage">
+
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="44dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+        tools:ignore="MissingConstraints" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/eventMainCard"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="389dp"
+        android:layout_height="596dp"
         android:layout_marginTop="20dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="20dp"
@@ -126,9 +142,8 @@
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
                                     android:background="@drawable/time_background"
-                                    >
+                                    android:orientation="horizontal">
 
                                     <ImageView
                                         android:layout_width="wrap_content"
@@ -151,44 +166,50 @@
 
 
                     </LinearLayout>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:text="Description"
                         android:textColor="@android:color/black"
-                        android:layout_marginTop="10dp"
                         android:textSize="15sp"></TextView>
+
                     <TextView
                         android:id="@+id/description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:text="@string/desc"
                         android:textColor="@android:color/darker_gray"
-                        android:textSize="15sp"
-                        android:layout_marginTop="5dp"></TextView>
+                        android:textSize="15sp"></TextView>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal">
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
                                 android:text="creator"
                                 android:textColor="@android:color/black"
-                                android:layout_marginTop="10dp"
                                 android:textSize="15sp"></TextView>
+
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:gravity="center"
                                 android:orientation="horizontal">
+
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -202,15 +223,17 @@
                                     android:textColor="@android:color/darker_gray"></TextView>
 
                             </LinearLayout>
+
                         </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:layout_gravity="start|center"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -218,6 +241,7 @@
                             android:orientation="vertical"
 
                             >
+
                             <TextView
                                 android:id="@+id/nb_participant"
                                 android:layout_width="match_parent"
@@ -227,17 +251,79 @@
                                 android:textAlignment="center"
                                 android:textColor="@color/textBlue"
                                 android:textSize="15sp"
-                                android:textStyle="bold"></TextView>
+                                android:textStyle="bold" />
                         </LinearLayout>
+
                         <TextView
-                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_marginLeft="5dp"
                             android:maxLines="1"
                             android:text="are interested"
-                            android:textColor="@android:color/darker_gray"></TextView>
+                            android:textColor="@android:color/darker_gray" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/facebook"
+                            android:src="@drawable/ic_facebook"
+                            android:layout_margin="10dp"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"/>
+                        <ImageView
+                            android:id="@+id/google"
+                            android:src="@drawable/ic_google"
+                            android:layout_margin="10dp"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"/>
+                        <ImageView
+                            android:id="@+id/twitter"
+                            android:src="@drawable/ic_twitter"
+                            android:layout_margin="10dp"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/commenter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:layout_weight="9"
+                            android:backgroundTint="@color/greenJoinBtnColor"
+                            android:elevation="10dp"
+                            android:text="Commenter"
+                            android:textColor="@android:color/white"
+                            app:cornerRadius="20dp">
+
+                        </com.google.android.material.button.MaterialButton>
+
+
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Liste des Commentaires"
+                        android:textSize="@dimen/_20sdp"
+                        android:textStyle="bold"
+                        android:textColor="@color/drawer_color"
+                        android:paddingBottom="@dimen/_20sdp"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewCom"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                        android:clipToPadding="false"
+                        android:paddingStart="0dp"
+                        android:paddingEnd="0dp"
+                        android:orientation="vertical"
+                        tools:listitem="@layout/commentaires_item"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -261,6 +347,7 @@
         >
 
         <ImageView
+            android:id="@+id/btnEvent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/round_cancle_btn"
@@ -281,7 +368,9 @@
             android:elevation="10dp"
             android:text="JOIN"
             android:textColor="@android:color/white">
-            ></com.google.android.material.button.MaterialButton>
+
+            </com.google.android.material.button.MaterialButton>
+
 
     </LinearLayout>
 

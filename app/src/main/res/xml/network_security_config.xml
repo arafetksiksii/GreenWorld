@@ -2,6 +2,7 @@
 <network-security-config>
     <base-config cleartextTrafficPermitted="true">
         <trust-anchors>
+            <!-- Trust preinstalled CAs -->
             <certificates src="system" />
         </trust-anchors>
     </base-config>

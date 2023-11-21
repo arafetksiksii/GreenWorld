@@ -1,9 +1,8 @@
 <resources>
-    <string name="app_name">testtt</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="recycle_form_string">Recycle Form</string>
-    <string name="selected_date_time">%1$s %2$s</string>
+    <string name="app_name">GreenWorld</string>
+    <!-- Gestion User  -->
+
+    <!-- Gestion User-Login  -->
     <string name="input_email">Email</string>
     <string name="input_suffix_Email">\@gmail.com</string>
     <string name="input_full_name">FullName</string>
@@ -12,6 +11,8 @@
     <string name="txt_or">OR</string>
     <string name="txt_forgot_password">Forgot Password</string>
     <string name="btn_remember_me">Remember Me</string>
+    <string name="msg_invalid_email">Adresse e-mail non valide. Veuillez saisir une adresse e-mail valide.</string>
+
     <string name="btn_forgot_password">Forgot password ?</string>
 
     <string name="txt_otp_validation">Please enter the 4-digit code we sent to your email address</string>
@@ -62,6 +63,13 @@
     <string name="msg_error_inputs">You Have some errors in your inputs!</string>
     <string name="msg_error_wrong_code">Wrong code!</string>
     <string name="msg_coming_soon">Coming soon :)</string>
+    <!--  Password validation  -->
+    <string name="msg_password_uppercase">Le mot de passe doit contenir au moins une lettre majuscule.</string>
+    <string name="msg_password_digit">Le mot de passe doit contenir au moins un chiffre.</string>
+    <string name="msg_password_special_char">Le mot de passe doit contenir au moins un caractère spécial parmi</string>
+    <string name="msg_password_length">Le mot de passe doit contenir au moins 8 caractères.</string>
+    <string name="formatted_time">%02d s</string>
+    <string name="time_up">Temps écoulé!</string>
 
     <!--  Main  -->
     <string name="main_desc">Every action counts in preserving our precious nature</string>
@@ -71,8 +79,20 @@ Green World
 </string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- TODO: Remove or change this placeholder text -->
 
-<!--chaima -->
+
+    <!--  STATICS  -->
+
+    <string name="facebook_client_token">b11b19cf6002767cf2ec5683bd3da0c8</string>
+
+    <string name="facebook_app_id">739564591530426</string>
+    <!--  ErrorsMessages  -->
+
+    <!--  Main  -->
+
+
+    <!--chaima -->
     <string name="dashboard_heading">Find Amazing events happening around you.</string>
     <string name="dashboard_sub_title">480 events around you</string>
     <string name="search_bar_hint">search for an event...</string>
@@ -81,5 +101,7 @@ Green World
     <string name="favorits_string">Favorites</string>
 
     <string name="item_notification">Notification</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">VOTRE_CLE_API</string>
+
 
 </resources>
