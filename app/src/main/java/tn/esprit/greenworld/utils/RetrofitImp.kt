@@ -4,6 +4,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import tn.esprit.greenworld.API.ReservationApi
 
 object RetrofitImp {
 
@@ -27,5 +28,8 @@ object RetrofitImp {
 
     fun buildRetrofit(): Retrofit {
         return retrofit
+    }
+    fun createReservationApi(): ReservationApi {
+        return retrofit.create(ReservationApi::class.java)
     }
 }

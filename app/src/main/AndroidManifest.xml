@@ -5,9 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
+        android:name=".MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -22,12 +25,12 @@
         <activity
             android:name=".ui.gestionUser.LoginActivity"
             android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity>
         <activity
             android:name=".ui.gestionUser.User_ForgetPassword"
             android:exported="false" />
@@ -51,20 +54,29 @@
             android:exported="false" />
         <activity
             android:name=".ui.gestionUser.User_Register"
-            android:exported="false" /> <!-- Activité de lancement -->
-
+            android:exported="false" />
         <activity
             android:name=".ui.gestionUser.UserListActivity"
             android:exported="true" />
+
+        <!-- ////////////////////////////////////////////////////////////// -->
+
+
+        <activity
+            android:name=".activities.ReservationActivity"
+            android:exported="false" />
         <activity
             android:name=".UserUpdate"
-
-            android:exported="false">
-
-        </activity> <!-- Activité de lancement gestion de gamification -->
+            android:exported="false"></activity> <!-- Activité de lancement gestion de gamification -->
+        <activity
+            android:name=".activities.CustomCalendar"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MapActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.quiz_activity.QuizListActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity android:name=".ui.quiz_activity.ResultActivity" />
         <activity
             android:name=".ui.quiz_activity.MainActivity"
@@ -72,33 +84,33 @@
         <activity
             android:name=".activities.PaymentActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
-                    android:scheme="myapp"
-                    android:host="payment-success" />
+                    android:host="payment-success"
+                    android:scheme="myapp" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.CommandeActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.ProduitActivity"
             android:exported="false" />
-
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.MainActivity4"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
+        <activity
+            android:name=".activities.EventsMainPage"
+            android:exported="false" />
+        <!-- Facebook -->
+
     </application>
 
 </manifest>

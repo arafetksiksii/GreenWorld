@@ -9,7 +9,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "tn.esprit.greenworld"
+        applicationId = "com.example.testtt"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -73,13 +73,19 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
     implementation ("com.squareup.picasso:picasso:2.71828")
     implementation ("com.cloudinary:cloudinary-android:2.5.0")
-
+    //chaima
+    val preference_version = "1.2.1"
+    implementation ("com.google.android.gms:play-services-maps:17.0.1")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.preference:preference:1.2.1")
+    implementation("androidx.preference:preference-ktx:$preference_version")
+    implementation ("org.osmdroid:osmdroid-android:6.1.7")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    implementation ("com.facebook.android:facebook-android-sdk:+")
+    implementation ("com.facebook.android:facebook-share:+")
 
 
 
 
 }
-
-
-
 
