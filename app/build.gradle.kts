@@ -59,6 +59,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
     implementation("com.github.bumptech.glide:glide:4.12.0")
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.17")
+    implementation("com.google.code.gson:gson:2.8.6")
 
     // Other dependencies...
 

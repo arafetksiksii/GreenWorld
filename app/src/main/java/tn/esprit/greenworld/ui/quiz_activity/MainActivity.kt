@@ -8,11 +8,13 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.models.Question
+import tn.esprit.greenworld.models.QuestionAndAnswers
 import tn.esprit.greenworld.utils.QuizApi
 import tn.esprit.greenworld.utils.RetrofitImp
 import java.util.Locale
@@ -26,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var txtCompteur: TextView
     private val timeLeftInMillis: Long = 30000 // 30 secondes pour chaque question
     private lateinit var mediaPlayer: MediaPlayer
+    private val questionAndAnswersList = mutableListOf<QuestionAndAnswers>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,6 +117,18 @@ class MainActivity : AppCompatActivity() {
         userResponses.add(userResponse)
         countDownTimer.cancel()
 
+        val currentQuestion = questions[currentQuestionIndex]
+        val userAnswer = if (userResponse in currentQuestion.choix.indices) currentQuestion.choix[userResponse] else "Pas de réponse"
+        val correctAnswer = currentQuestion.choix[currentQuestion.reponse_correcte]
+
+        val questionAndAnswers = QuestionAndAnswers(
+            question = currentQuestion.question,
+            userAnswer = userAnswer,
+            correctAnswer = correctAnswer
+        )
+
+        questionAndAnswersList.add(questionAndAnswers)
+
         if (currentQuestionIndex < questions.size - 1) {
             currentQuestionIndex++
             showQuestion(questions[currentQuestionIndex])
@@ -132,10 +148,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        val gson = Gson()
+        val questionAndAnswersJson = gson.toJson(questionAndAnswersList)
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("SCORE", score)
         intent.putExtra("TOTAL_QUESTIONS", questions.size)
         intent.putExtra("CORRECT_ANSWERS", score)
+        intent.putExtra("QUESTIONS_AND_ANSWERS", questionAndAnswersJson)
         startActivity(intent)
         finish()
     }

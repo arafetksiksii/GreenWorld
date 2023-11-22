@@ -14,11 +14,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import okio.IOException
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import tn.esprit.greenworld.R
+import tn.esprit.greenworld.models.QuestionAndAnswers
 import tn.esprit.greenworld.models.User
 import tn.esprit.greenworld.models.User4
 import tn.esprit.greenworld.ui.gestionUser.LoginActivity
@@ -31,6 +34,12 @@ class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.result)
+
+        val gson = Gson()
+        val questionAndAnswersJson = intent.getStringExtra("QUESTIONS_AND_ANSWERS")
+        val typee = object : TypeToken<List<QuestionAndAnswers>>() {}.type
+        val questionAndAnswersList = gson.fromJson<List<QuestionAndAnswers>>(questionAndAnswersJson, typee)
+
 
         // Initialisation du MediaPlayer pour l'effet sonore des résultats
         val mediaPlayer = MediaPlayer.create(this, R.raw.result_congratulations)
@@ -63,21 +72,17 @@ class ResultActivity : AppCompatActivity() {
         }
 
         val pdfDocument = PdfDocument()
-        val pageInfo = PdfDocument.PageInfo.Builder(600, 800, 1).create()
+        val pageInfo = PdfDocument.PageInfo.Builder(700, 1200, 1).create()
         val page = pdfDocument.startPage(pageInfo)
-        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.img_titre_quiz)
 
 
         val canvas = page.canvas
-        val paint = Paint().apply { textSize = 16f }
+        val paint = Paint().apply { textSize = 30f }
 
         // Positionnez l'image en haut du document
-        val imageX = (pageInfo.pageWidth - bitmap.width) / 2f  // Centrer horizontalement
-        val imageY = 10f  // Un peu d'espace à partir du haut
-        var y = imageY + bitmap.height + 20  // Ajoutez la hauteur de l'image plus un peu d'espace
+        var y = 25f  // Un peu d'espace à partir du haut
 
 
-        canvas.drawBitmap(bitmap, imageX, imageY, null)
 
         canvas.drawText("Résultats du Quiz", 10f, y, paint)
         y += paint.descent() - paint.ascent()
@@ -86,6 +91,24 @@ class ResultActivity : AppCompatActivity() {
         y += paint.descent() - paint.ascent()
 
         canvas.drawText("Score: $score / $totalQuestions", 10f, y, paint)
+        y += paint.descent() - paint.ascent()
+        // Ajouter les questions et les réponses dans le PDF
+        for (qa in questionAndAnswersList) {
+            // Écrire la question
+            canvas.drawText("Question: ${qa.question}", 10f, y, paint)
+            y += paint.descent() - paint.ascent()
+
+            // Écrire la réponse de l'utilisateur
+            canvas.drawText("Votre réponse: ${qa.userAnswer}", 10f, y, paint)
+            y += paint.descent() - paint.ascent()
+
+            // Écrire la bonne réponse
+            canvas.drawText("Réponse correcte: ${qa.correctAnswer}", 10f, y, paint)
+            y += paint.descent() - paint.ascent()
+
+            // Ajouter un espace entre les questions
+            y += 10f
+        }
         pdfDocument.finishPage(page)
 
         val filePath = File(getExternalFilesDir(null), "ResultatsQuiz.pdf")
