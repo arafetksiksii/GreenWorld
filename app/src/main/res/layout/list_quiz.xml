@@ -13,14 +13,32 @@
     <ImageView
         android:id="@+id/img_quiz_titre"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         app:srcCompat="@drawable/img_titre_quiz" />
+
+    <Button
+        android:id="@+id/btn_voir_classement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#3BCF41"
+        android:text="Voir votre classement"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_quiz"
+        app:layout_constraintTop_toBottomOf="@+id/txt_quiz_desc" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RV_list_quiz"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_height="450dp"
         tools:itemCount="4"
-        tools:listitem="@layout/item_quiz" />
+        tools:listitem="@layout/item_quiz">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>
