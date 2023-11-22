@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.GreenWorld"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAl-A_rQ2VqMgPy3N1nhUmTFr52KuyzNEA" />
+
+        <activity
+            android:name=".ui.gestionUser.LoginActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".activities.EventsMainPage"
+            android:exported="false" />
+        <activity
+            android:name=".ui.gestionUser.User_ForgetPassword"
+            android:exported="false" />
+        <activity
+            android:name=".ui.gestionUser.MainActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".ui.gestionUser.CommingSoon"
+            android:exported="false" />
+        <activity
+            android:name=".ui.gestionUser.User_RentialiseMotPasse"
+            android:exported="false" />
+        <activity
+            android:name=".ui.gestionUser.User_ValidationCode"
+            android:exported="false" />
+        <activity
+            android:name=".ui.gestionUser.User_Validation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.gestionUser.UserProfil"
+            android:exported="false" />
+        <activity
+            android:name=".ui.gestionUser.User_Register"
+            android:exported="false" /> <!-- Activité de lancement -->
+        <activity
+            android:name=".ui.gestionUser.UserListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.ReservationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserUpdate"
+            android:exported="false" /> <!-- Activité de lancement gestion de gamification -->
+        <activity
+            android:name=".activities.CustomCalendar"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.quiz_activity.QuizListActivity"
+            android:exported="false" />
+        <activity android:name=".ui.quiz_activity.ResultActivity" />
+        <activity
+            android:name=".ui.quiz_activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.PaymentActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="payment-success"
+                    android:scheme="myapp" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.CommandeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ProduitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MapsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.valider_dechets"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Maindechets"
+
+            android:exported="false" />
+        <activity
+            android:name=".activities.MainActivity4"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
