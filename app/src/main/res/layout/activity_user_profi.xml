@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/transparent"
-    tools:context=".ui.gestionUser.UserProfil">
+   >
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -23,7 +23,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/gradientbackground"
+                android:background="@drawable/ic_account"
                 android:orientation="vertical">
 
                 <ImageView
