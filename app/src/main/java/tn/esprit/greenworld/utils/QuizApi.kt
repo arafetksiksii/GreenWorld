@@ -3,6 +3,7 @@ package tn.esprit.greenworld.utils
 
 import retrofit2.Call
 import retrofit2.http.*
+import tn.esprit.greenworld.models.ClassementItem
 import tn.esprit.greenworld.models.Question
 import tn.esprit.greenworld.models.Quiz
 
@@ -11,4 +12,6 @@ interface QuizApi {
     fun getQuizzes(): Call<List<Quiz>>
     @GET("question/aaa/{quizId}")
     fun getQuestionsForQuiz(@Path("quizId") quizId: String): Call<List<Question>>
+    @GET("user")
+    fun getClassement(): Call<List<ClassementItem>>
 }

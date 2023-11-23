@@ -1,7 +1,9 @@
 package tn.esprit.greenworld.ui.quiz_activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -47,5 +49,12 @@ class QuizListActivity : AppCompatActivity() {
                 Log.e("QuizListActivity", "Failed to fetch quizzes: ${t.message}")
             }
         })
+
+        val btnVoirClassement: Button = findViewById(R.id.btn_voir_classement)
+        btnVoirClassement.setOnClickListener {
+            // Démarrer l'activité ClassementActivity
+            val intent = Intent(this, ClassementActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
