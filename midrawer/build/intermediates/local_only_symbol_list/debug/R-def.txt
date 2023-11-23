@@ -1,0 +1,9 @@
+R_DEF: Internal format may change without notice
+local
+attr? sliderType
+id doorIn
+id doorOut
+id scroll
+id slide
+string app_name
+styleable MIDrawerView sliderType

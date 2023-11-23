@@ -40,40 +40,55 @@ class LoginActivity : AppCompatActivity() {
 
             RetrofitImp.buildRetrofit().create(Login::class.java).login(
                 User1(
-                    email = binding.edtEmail.text.toString(),
-                    password = binding.tiPassword.text.toString()
+                   // email = binding.edtEmail.text.toString(),
+                   // password = binding.tiPassword.text.toString()
+                            email = "zouzou14@gmail.com",
+                    password = "Catvcatv11**"
+
                 )
             ).enqueue(object : Callback<User> {
                 override fun onResponse(call: Call<User>, response: Response<User>) {
                     if (response.isSuccessful) {
                         val user = response.body()
+                        if (user != null) {
+                            Log.d("eeeeeeeeeee", user.toString())
+                            // Access the "user" property directly
+                            val userObject = user
+                            if (userObject != null) {
+                                // Pass the user data to UserProfil activity
+                                saveUserToPreferences(userObject)
+                                Log.d("LoginActivity", "Login successful. User data: $userObject")
+                                Log.d("bbbbbbbbb", userObject._id)
 
-                        // Check if user is not null before accessing its properties
-                        user?.let {
-                            // Pass the user data to UserProfil activity
-                            saveUserToPreferences(it)
-                            Log.d("LoginActivity", "Login successful. User data: $user")
-                            Log.d("bbbbbbbbb",it._id)
+                                val intent = Intent(this@LoginActivity, UserUpdate::class.java)
+                                intent.putExtra("userId", userObject._id)
+                                intent.putExtra("userName", userObject.userName)
+                                intent.putExtra("userEmail", userObject.email)
+                                intent.putExtra("userImageRes", userObject.imageRes)
+                                startActivity(intent)
+                                finish()
+                            } else {
+                                // Handle the case where the "user" property is null
+                                Log.e("LoginActivity", "User object is null")
 
-
-                            val intent = Intent(this@LoginActivity, QuizListActivity::class.java)
-                            intent.putExtra("userId", it._id)
-                            intent.putExtra("userName", it.userName)
-                            intent.putExtra("userEmail", it.email)
-                            intent.putExtra("userImageRes", it.imageRes)
-                            startActivity(intent)
-                            finish()
-                        } ?: run {
-                            // Handle the case where user is null (optional)
-                            Log.e("LoginActivity", "User data is null")
+                                Snackbar.make(
+                                    binding.contextView,
+                                    "User object is null",
+                                    Snackbar.LENGTH_SHORT
+                                ).show()
+                            }
+                        } else {
+                            // Handle the case where the entire response body is null
+                            Log.e("LoginActivity", "Response body is null")
 
                             Snackbar.make(
                                 binding.contextView,
-                                "User data is null",
+                                "Response body is null",
                                 Snackbar.LENGTH_SHORT
                             ).show()
                         }
                     } else {
+                        // Handle the case where the response is not successful
                         val errorBody = response.errorBody()?.string().toString()
                         Log.d("LoginActivity", "Login failed. Error: $errorBody")
 
@@ -84,6 +99,7 @@ class LoginActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
+
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
                     Log.e("LoginActivity", "Login request failed", t)
@@ -104,7 +120,7 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.btnForgotPassword.setOnClickListener {
 
-            startActivity(Intent(this, User_Register::class.java))
+            startActivity(Intent(this, User_ForgetPassword::class.java))
 
         }
 
