@@ -59,6 +59,7 @@
             android:exported="true">
 
         </activity>
+        <activity android:name=".ui.quiz_activity.ClassementActivity" />
         <activity android:name=".ui.quiz_activity.ResultActivity" />
         <activity
             android:name=".ui.quiz_activity.MainActivity"
