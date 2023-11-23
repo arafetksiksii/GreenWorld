@@ -4,12 +4,21 @@
         <item name="android:background">@color/black_overlay</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Light mode specific attributes -->
+        <item name="android:windowBackground">@color/white</item>
+        <!-- Add more light mode attributes as needed -->
+
+        <!-- Dark mode specific attributes -->
+        <item name="android:windowBackground">@color/black</item>
+        <!-- Add more dark mode attributes as needed -->
     </style>
 
     <style name="AppTheme.NoActionBar">

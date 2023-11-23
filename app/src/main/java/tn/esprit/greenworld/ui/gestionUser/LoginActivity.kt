@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import tn.esprit.greenworld.MIDrawerActivity
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.UserUpdate
 import tn.esprit.greenworld.databinding.ActivityUserLoginBinding
@@ -21,7 +22,7 @@ import tn.esprit.greenworld.utils.Login
 import tn.esprit.greenworld.utils.RetrofitImp
 
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : MIDrawerActivity() {
     private lateinit var binding: ActivityUserLoginBinding
     // Define a shared preference name
     private val PREF_NAME = "user_pref"
@@ -60,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
                                 Log.d("LoginActivity", "Login successful. User data: $userObject")
                                 Log.d("bbbbbbbbb", userObject._id)
 
-                                val intent = Intent(this@LoginActivity, UserUpdate::class.java)
+                                val intent = Intent(this@LoginActivity, MIDrawerActivity::class.java)
                                 intent.putExtra("userId", userObject._id)
                                 intent.putExtra("userName", userObject.userName)
                                 intent.putExtra("userEmail", userObject.email)
@@ -70,6 +71,7 @@ class LoginActivity : AppCompatActivity() {
                             } else {
                                 // Handle the case where the "user" property is null
                                 Log.e("LoginActivity", "User object is null")
+                                val intent = Intent(this@LoginActivity, MIDrawerActivity::class.java)
 
                                 Snackbar.make(
                                     binding.contextView,
