@@ -3,7 +3,16 @@ import Commande from "../models/commande.js";
 import Produit from"../models/produit.js";
 import stripe from "stripe";
 import nodemailer from 'nodemailer';
+import { deleteCommandeById } from '../controllers/commande.js';
 import { authenticateUser } from "../middlewares/authMiddleware.js";
+import {
+  getAllUsers,
+  addUser,
+  getUserById,
+  updateUserById,
+  deleteUserById,
+} from "../controllers/user.js";
+
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -18,7 +27,7 @@ const stripeClient = stripe(stripeSecretKey);
 
 // Create a new "commande"
 // Create a new "commande"
-router.post('/',authenticateUser, async (req, res) => {
+router.post('/', async (req, res) => {
   const userId = req.user.id;
   try {
     const { selectedProducts } = req.body;
@@ -41,7 +50,7 @@ router.post('/',authenticateUser, async (req, res) => {
 
 // Add products to a "commande"
 // Add products to a "commande"
-router.post('/add-products',authenticateUser, async (req, res) => {
+router.post('/add-products', authenticateUser, async (req, res) => {
   try {
     const userId = req.user.id;
     const produitId = req.query.produitId;
@@ -101,7 +110,7 @@ router.post('/add-products',authenticateUser, async (req, res) => {
 
 router.delete('/delete-product', async (req, res) => {
   try {
-    const userId = "6550afa009316488cc193ed1";
+    const userId = "655f7a41e7c5d11f0bd76ea0";
     const produitId = req.query.produitId;
 
     // Fetch the existing command for the user
@@ -151,7 +160,7 @@ router.delete('/delete-product', async (req, res) => {
 // Retrieve a "commande" by its ID
 router.get('/cart', async (req, res) => {
   try {
-    const userId = "6550afa009316488cc193ed1";
+    const userId = "655f7a41e7c5d11f0bd76ea0";
 
     const commande = await Commande.findOne({ userId });
 
@@ -166,7 +175,7 @@ router.get('/cart', async (req, res) => {
 });
 router.post('/create-payment-intent', async (req, res) => {
   try {
-    const userId = "6550afa009316488cc193ed1";
+    const userId = "655f7a41e7c5d11f0bd76ea0";
 
     // Retrieve the existing command for the user
     const commande = await Commande.findOne({ userId });
@@ -200,7 +209,10 @@ router.post('/create-payment-intent', async (req, res) => {
       if (error) {
         console.error('Error sending email:', error);
       } else {
+         deleteCommandeById(commande._id);
+
         console.log('Email sent:', info.response);
+        
       }
     });
 

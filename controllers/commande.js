@@ -55,10 +55,17 @@ const getCommandeById = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
+export async function deleteCommandeById(commandeId) {
+  try {
+    await Commande.findByIdAndDelete(commandeId);
+  } catch (error) {
+    console.error('Error deleting command:', error);
+    throw new Error('Error deleting command');
+  }
+}
 export default {
   createCommande,
   addProductsToCommande,
-
+  deleteCommandeById,
   getCommandeById,
 };
