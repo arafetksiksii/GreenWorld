@@ -3,6 +3,7 @@ import Commande from "../models/commande.js";
 import Produit from"../models/produit.js";
 import stripe from "stripe";
 import nodemailer from 'nodemailer';
+import { authenticateUser } from "../middlewares/authMiddleware.js";
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -17,8 +18,8 @@ const stripeClient = stripe(stripeSecretKey);
 
 // Create a new "commande"
 // Create a new "commande"
-router.post('/', async (req, res) => {
-  const userId = "6550afa009316488cc193ed1"
+router.post('/',authenticateUser, async (req, res) => {
+  const userId = req.user.id;
   try {
     const { selectedProducts } = req.body;
 
@@ -40,9 +41,9 @@ router.post('/', async (req, res) => {
 
 // Add products to a "commande"
 // Add products to a "commande"
-router.post('/add-products', async (req, res) => {
+router.post('/add-products',authenticateUser, async (req, res) => {
   try {
-    const userId = "6550afa009316488cc193ed1";
+    const userId = req.user.id;
     const produitId = req.query.produitId;
 
     // Fetch the existing commande for the user
