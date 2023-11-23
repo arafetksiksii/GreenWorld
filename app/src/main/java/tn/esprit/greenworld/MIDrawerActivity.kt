@@ -1,5 +1,8 @@
 package tn.esprit.greenworld
 
+
+import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
@@ -8,28 +11,45 @@ import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import com.facebook.login.LoginFragment
 
 import com.mindinventory.midrawer.MIDrawerView
 import com.mindinventory.midrawer.MIDrawerView.Companion.MI_TYPE_DOOR_IN
 import com.mindinventory.midrawer.MIDrawerView.Companion.MI_TYPE_DOOR_OUT
 import com.mindinventory.midrawer.MIDrawerView.Companion.MI_TYPE_SLIDE
 import com.mindinventory.midrawer.MIDrawerView.Companion.MI_TYPE_SLIDE_WITH_CONTENT
+import tn.esprit.green_world.fragments.HomeFragment
 
 import tn.esprit.greenworld.databinding.ActivityMainnavbaraBinding
+import tn.esprit.greenworld.databinding.FavproduitFragmentBinding
+import tn.esprit.greenworld.fragments.EventFragment
+import tn.esprit.greenworld.ui.gestionUser.UserProfileFragment
 
-class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
+import tn.esprit.greenworld.ui.gestionUser.User_Register
+
+open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
 
     val TAG = "MIDrawerActivity"
     private var slideType = 0
     private lateinit var activityMainBinding: ActivityMainnavbaraBinding
+    private lateinit var imageView: ImageView
+    private lateinit var sharedPreferences: SharedPreferences // Déplacer ici
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainnavbaraBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
+
         // Set color for the container's content as transparent
         activityMainBinding.drawerLayout.setScrimColor(Color.TRANSPARENT)
+
 
         activityMainBinding.navScroll.setOnClickListener(this)
         activityMainBinding.navSlide.setOnClickListener(this)
@@ -42,9 +62,29 @@ class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         actionbar?.setDisplayHomeAsUpEnabled(true)
         actionbar?.setHomeAsUpIndicator(R.drawable.home)
 
+
+         sharedPreferences = this.getSharedPreferences("user_pref", AppCompatActivity.MODE_PRIVATE)
+        val userImageRes = sharedPreferences.getString("userImageRes", "")
+        // Load user image using Glide
+        val circularImageView = findViewById<ImageView>(R.id.circularImageView)
+        Glide.with(this)
+            .load(userImageRes) // Replace with the actual resource or URL
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.ic_apple)
+                    .error(R.drawable.ellipse_background)
+                    .circleCrop() // Apply circular cropping
+                    .diskCacheStrategy(DiskCacheStrategy.ALL) // Caching strategy
+            )
+            .into(circularImageView)
+
+
+
+
         // Implement the drawer listener
         activityMainBinding.drawerLayout.setMIDrawerListener(object : MIDrawerView.MIDrawerEvents {
             override fun onDrawerOpened(drawerView: View) {
+
                 super.onDrawerOpened(drawerView)
                 Log.d(TAG, "Drawer Opened")
             }
@@ -54,6 +94,25 @@ class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
                 Log.d(TAG, "Drawer closed")
             }
         })
+        //dark mode
+
+        val currentNightMode = resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
+        when (currentNightMode) {
+            android.content.res.Configuration.UI_MODE_NIGHT_YES -> {
+                // Night mode is active
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+            android.content.res.Configuration.UI_MODE_NIGHT_NO -> {
+                // Night mode is not active, use the default light mode
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+            else -> {
+                // Use the default light mode
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+
+
     }
 
     override fun onBackPressed() {
@@ -102,9 +161,11 @@ class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         when (slideType) {
             MI_TYPE_SLIDE_WITH_CONTENT -> {
                 activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.scroll)
+                replaceFragment(EventFragment())
             }
             MI_TYPE_SLIDE -> {
                 activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.slide)
+                replaceFragment(UserProfileFragment())
             }
             MI_TYPE_DOOR_IN -> {
                 activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.doorIn)
@@ -138,5 +199,10 @@ class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         view.isClickable = false
         view.postDelayed({ view.isClickable = true }, DELAY_IN_MS)
     }
-
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.commit()
+    }
 }

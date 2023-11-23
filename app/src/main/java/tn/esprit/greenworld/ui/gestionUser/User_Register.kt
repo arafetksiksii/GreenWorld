@@ -13,6 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import tn.esprit.greenworld.MIDrawerActivity
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.databinding.ActivityUserRegisterBinding
 import tn.esprit.greenworld.models.User
@@ -20,7 +21,7 @@ import tn.esprit.greenworld.models.User2
 import tn.esprit.greenworld.utils.Login
 import tn.esprit.greenworld.utils.RetrofitImp
 
-class User_Register : AppCompatActivity() {
+class User_Register : MIDrawerActivity() {
 
 
     private lateinit var binding: ActivityUserRegisterBinding

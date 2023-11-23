@@ -57,7 +57,7 @@ class UserListActivity : AppCompatActivity() {
         })
     }
     private fun navigateToUserProfile(user: User) {
-        val intent = Intent(this, UserProfil::class.java)
+        val intent = Intent(this, UserProfileFragment::class.java)
         intent.putExtra("userId", user._id)
         intent.putExtra("userName", user.userName)
         intent.putExtra("userEmail", user.userName)
