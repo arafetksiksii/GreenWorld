@@ -84,7 +84,7 @@ dependencies {
     implementation ("com.facebook.android:facebook-android-sdk:+")
     implementation ("com.facebook.android:facebook-share:+")
 
-
+    implementation ("com.github.mindinventory:minavdrawer:1.2.2")
 
 
 }

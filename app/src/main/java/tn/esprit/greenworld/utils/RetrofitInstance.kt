@@ -10,10 +10,10 @@ import tn.esprit.greenworld.interfaces.CommandeApi
 
 object RetrofitInstance {
 
-
+   var a ="http://10.0.2.2:9090/"
     val api: ProduitApi by lazy {
         Retrofit.Builder()
-            .baseUrl("http://192.168.56.1:9090/")
+            .baseUrl(a)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ProduitApi::class.java)
@@ -21,7 +21,7 @@ object RetrofitInstance {
 
     val Commandeapi: CommandeApi by lazy {
         Retrofit.Builder()
-            .baseUrl("http://192.168.56.1:9090/")
+            .baseUrl(a)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(CommandeApi::class.java)
@@ -29,7 +29,7 @@ object RetrofitInstance {
 
     val apiEvent: EventApi by lazy {
         Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:9090/")
+            .baseUrl(a)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(EventApi::class.java)
@@ -37,14 +37,14 @@ object RetrofitInstance {
 
     val apii: TypeApi by lazy {
         Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:9090/")
+            .baseUrl(a)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(TypeApi::class.java)
     }
     val apiii: CommentApi by lazy {
         Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:9090/")
+            .baseUrl(a)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(CommentApi::class.java)

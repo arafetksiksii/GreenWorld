@@ -102,6 +102,29 @@ Green World
 
     <string name="item_notification">Notification</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">VOTRE_CLE_API</string>
+    <string name="title_activity_drawer">drawer</string>
+
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+
+
+
+
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Edit Profil</string>
+    <string name="scroll">Gestion_Produit</string>
+    <string name="slide">Slide</string>
+    <string name="door">Door</string>
+    <string name="doorIn">Login</string>
+    <string name="doorOut">LoginOut</string>
 
 
 </resources>

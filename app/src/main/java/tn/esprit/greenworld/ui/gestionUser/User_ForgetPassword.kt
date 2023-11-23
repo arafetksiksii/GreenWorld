@@ -1,5 +1,6 @@
 package tn.esprit.greenworld.ui.gestionUser
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -24,41 +25,34 @@ class User_ForgetPassword : AppCompatActivity() {
 
         binding.btnForgetPassword.setOnClickListener {
             RetrofitImp.buildRetrofit().create(Login::class.java).sendResetCode(
-                User3(
-                    email = binding.editTextEmail.text.toString(),
-
-                )
+                User3(email = binding.editTextEmail.text.toString())
             ).enqueue(object : Callback<User> {
                 override fun onResponse(call: Call<User>, response: Response<User>) {
                     if (response.isSuccessful) {
-                        // Handle the successful response from the server
-                        // For example, show a success message or navigate to another screen
                         val user = response.body()
+                        Log.d("ssssssssssssssssss",user.toString())
                         user?.let {
-                            // Pass the user data to UserProfil activity
-                            Log.d("LoginActivity", "Login successful. User data: $user")
+                            // Save values to shared preferences
+                            val sharedPreferences =
+                                getSharedPreferences("user_data", Context.MODE_PRIVATE)
+                            val editor = sharedPreferences.edit()
+                            editor.putString("userId", it._id)
+                            editor.putString("resetCode", it.resetCode)
+                            editor.putString("userEmail", it.email)
+                            editor.apply()
 
-                            val intent = Intent(this@User_ForgetPassword, User_Validation::class.java)
-                            intent.putExtra("userId", it._id)
-                            intent.putExtra("resetCode", it.resetCode)
-                            intent.putExtra("userEmail", it.email)
-
-                            startActivity(intent)
+                            // Start the User_Validation activity
+                            startActivity(Intent(this@User_ForgetPassword, User_Validation::class.java))
                             finish()
                         } ?: run {
-                            // Handle the case where user is null (optional)
-                            Log.e("LoginActivity", "User data is null")
-
                             Toast.makeText(
                                 this@User_ForgetPassword,
-                                "User NOt Found ",
+                                "User Not Found",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
-
                     } else {
                         // Handle the response in case of an error
-                        // For example, show an error message with the specific error code
                         Toast.makeText(
                             this@User_ForgetPassword,
                             "Error: ${response.code()} - ${response.errorBody()?.string()}",
@@ -68,15 +62,15 @@ class User_ForgetPassword : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
-                    // Handle the failure of the request
-                    // For example, show a network error message
+                    // Handle the failure case
                     Toast.makeText(
                         this@User_ForgetPassword,
-                        "Network error: ${t.message}",
+                        "Network Error: ${t.message}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             })
         }
+
     }
 }

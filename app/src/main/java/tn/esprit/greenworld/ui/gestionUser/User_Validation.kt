@@ -15,7 +15,9 @@ class User_Validation :AppCompatActivity(){
         binding.btnValidation.setOnClickListener {
             startActivity(Intent(this, User_ValidationCode::class.java))
         }
-
+binding.btnCreateAccount.setOnClickListener {
+    startActivity(Intent(this, User_ValidationCode::class.java))
+}
     }
 
 
