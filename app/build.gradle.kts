@@ -83,9 +83,12 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
     implementation ("com.facebook.android:facebook-android-sdk:+")
     implementation ("com.facebook.android:facebook-share:+")
-
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation ("com.github.mindinventory:minavdrawer:1.2.2")
-
+    implementation("io.github.muddz:styleabletoast:2.4.0")
+    implementation ("com.fasterxml.jackson.core:jackson-core:2.13.0")
+    implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.0")
+    implementation ("com.applandeo:material-calendar-view:1.9.0-rc03")
 
 }
 

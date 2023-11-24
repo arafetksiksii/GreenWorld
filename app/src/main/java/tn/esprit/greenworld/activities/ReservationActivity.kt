@@ -2,21 +2,19 @@ package tn.esprit.greenworld.activities
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.widget.DatePicker
 import android.widget.TimePicker
-import tn.esprit.greenworld.API.ReservationApi
-import tn.esprit.greenworld.adapters.EventAdapter
-import tn.esprit.greenworld.databinding.ReservationBinding
-import tn.esprit.greenworld.fragments.EventFragment
-import tn.esprit.greenworld.models.Reservation
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import tn.esprit.greenworld.API.ReservationApi
+import tn.esprit.greenworld.adapters.EventAdapter
+import tn.esprit.greenworld.databinding.ReservationBinding
+import tn.esprit.greenworld.models.Reservation
 import tn.esprit.greenworld.utils.RetrofitImp
 
 import java.util.Calendar
@@ -68,6 +66,10 @@ class ReservationActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         binding.reservez.setOnClickListener{
             saveReservation()
         }
+        binding.fermer.setOnClickListener{
+            onBackPressed()
+
+        }
     }
 
     private fun saveReservation() {
@@ -76,7 +78,9 @@ class ReservationActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
             showSnackbar("Veuillez sélectionner une date.")
             return
         }
-        val reservationDate = "$saveDay-$saveMonth-$saveYear $saveHour:$saveMinute"
+        val cal = Calendar.getInstance()
+        cal.set(saveYear, saveMonth, saveDay, saveHour, saveMinute)
+        val reservationDate = cal.time
 
         try {
             val reservation = Reservation(
@@ -139,13 +143,15 @@ class ReservationActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
     }
 
     private fun handleSuccessfulRegistration(events: Reservation?) {
-        startActivity(Intent(this@ReservationActivity, EventFragment::class.java))
-        finish()
+        val customDialog = CustomDialog(this)
+        customDialog.show()
     }
 
     private fun handleRegistrationFailure(errorMessage: String) {
         // Handle registration failure
         showSnackbar(errorMessage)
+
+
     }
 
     private fun showSnackbar(message: String) {

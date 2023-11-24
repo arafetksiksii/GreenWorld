@@ -29,6 +29,7 @@ import tn.esprit.green_world.fragments.HomeFragment
 import tn.esprit.greenworld.databinding.ActivityMainnavbaraBinding
 import tn.esprit.greenworld.databinding.FavproduitFragmentBinding
 import tn.esprit.greenworld.fragments.EventFragment
+import tn.esprit.greenworld.fragments.ProduitFragment
 import tn.esprit.greenworld.ui.gestionUser.UserProfileFragment
 
 import tn.esprit.greenworld.ui.gestionUser.User_Register
@@ -161,7 +162,7 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         when (slideType) {
             MI_TYPE_SLIDE_WITH_CONTENT -> {
                 activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.scroll)
-                replaceFragment(EventFragment())
+                replaceFragment(ProduitFragment())
             }
             MI_TYPE_SLIDE -> {
                 activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.slide)
