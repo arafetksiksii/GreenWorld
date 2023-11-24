@@ -21,7 +21,7 @@ interface CommandeApi {
         @SerializedName("clientSecret") val clientSecret: String
     )
     @POST("commande/add-products")
-    fun addProductToCart(@Query("produitId")produitId: String): Call<Commande>
+    fun addProductToCart(@Query("produitId")produitId: String,userId:String): Call<Commande>
     @GET("commande/cart")
     fun getCommande(): Call<Commande>
     @DELETE("commande/delete-product")

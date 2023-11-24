@@ -83,6 +83,7 @@ class ProduitFragment : Fragment() {
 
             val intent = Intent(activity, ProduitActivity::class.java)
             intent.putExtra(ProduitFragment.Product_id, produit._id)
+
             intent.putExtra(ProduitFragment.Product_name, produit.title)
             intent.putExtra(ProduitFragment.Product_description, produit.description)
             intent.putExtra(ProduitFragment.Product_image, produit.image)

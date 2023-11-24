@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import tn.esprit.greenworld.activities.CustomCalendar
 import tn.esprit.greenworld.activities.EventsMainPage
 import tn.esprit.greenworld.adapters.EventAdapter
 import tn.esprit.greenworld.databinding.FragmentEventBinding
@@ -49,6 +50,10 @@ class EventFragment : Fragment(), RecycleViewEvent {
         onListEventClicked()
         binding.map.setOnClickListener {
             val intent = Intent(requireContext(), MapActivity::class.java)
+            startActivity(intent)
+        }
+        binding.calender.setOnClickListener{
+            val intent = Intent(requireContext(), CustomCalendar::class.java)
             startActivity(intent)
         }
     }

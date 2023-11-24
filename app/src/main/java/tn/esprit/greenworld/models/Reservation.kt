@@ -1,7 +1,12 @@
 package tn.esprit.greenworld.models
+import com.fasterxml.jackson.annotation.JsonFormat
+
+import java.util.Date
 
 data class Reservation(
-    val date_reservation: String = "2023-11-02T00:00:00Z",
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "UTC")
+
+    val date_reservation: Date,
 
     val eventID: String,
     val userID: String

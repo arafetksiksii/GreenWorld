@@ -10,6 +10,13 @@
     app:sliderType="scroll"
     tools:openDrawer="start">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+
+        />
+
     <include
         android:id="@+id/include_toolbar"
         layout="@layout/app_bar_main"
@@ -116,19 +123,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="70dp"
-       android:paddingRight="@dimen/_29sdp"
+            android:paddingRight="@dimen/_29sdp"
             android:gravity="center_horizontal">
-
-            <!-- Vos autres éléments de menu ici -->
 
             <ImageView
                 android:id="@+id/circularImageView"
                 android:layout_width="169dp"
-                android:layout_height="146dp"
-                android:background="@drawable/circle_background"
-                android:src="@drawable/circle_background" />
+                android:layout_height="169dp"
+                android:src="@drawable/circle_background"
+                android:scaleType="centerCrop"/>
 
-            <!-- Assurez-vous de créer un fichier drawable/circle_background.xml pour le fond circulaire -->
         </LinearLayout>
     </com.google.android.material.navigation.NavigationView>
 

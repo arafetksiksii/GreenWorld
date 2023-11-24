@@ -13,6 +13,7 @@ import tn.esprit.greenworld.R
 import tn.esprit.greenworld.models.Quiz
 import tn.esprit.greenworld.ui.quiz_activity.MainActivity
 
+
 //import com.example.pdm.models.Quiz
 
 class QuizAdapter(private val context: Context, private var QuizList: List<Quiz>) : RecyclerView.Adapter<QuizAdapter.QuizViewHolder>() {
@@ -30,7 +31,7 @@ class QuizAdapter(private val context: Context, private var QuizList: List<Quiz>
     override fun onBindViewHolder(holder: QuizViewHolder, position: Int) {
         val quiz = QuizList[position]
         holder.bind(quiz)
-        holder.itemView.findViewById<Button>(R.id.btn_participer).setOnClickListener {
+        holder.itemView.findViewById<Button>(R.id.btn_participer1).setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)
             // Vous pouvez également passer des données supplémentaires si nécessaire, par exemple:
             intent.putExtra("quizId", quiz._id)

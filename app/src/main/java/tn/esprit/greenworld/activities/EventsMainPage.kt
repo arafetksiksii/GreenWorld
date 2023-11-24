@@ -64,70 +64,79 @@ class EventsMainPage : AppCompatActivity() {
         binding.btnEvent.setOnClickListener {
             onBackPressed()
         }
-//        FacebookSdk.sdkInitialize(applicationContext)
-       // callbackManager = CallbackManager.Factory.create()
-        /* binding.facebook.setOnClickListener {
-            val message: String = binding.titreEvent.text.toString()
-            val imageUri = Uri.parse(eventImage)
-            val facebookShareUrl = "https://www.facebook.com/sharer/sharer.php?u=$imageUri&quote=$message"
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(facebookShareUrl))
-            try {
-                startActivity(intent)
-            } catch (e: ActivityNotFoundException) {
-                Toast.makeText(this, "Aucune application de navigation n'est installée sur cet appareil", Toast.LENGTH_SHORT).show()
-            }
-  */
-
-
-        binding.commenter.setOnClickListener {
-            val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putString("event_id", eventId)
-            editor.putString("user_id", userID)
-            editor.apply()
-
-            val bottomSheetFragment = CommentBottomSheet()
-            bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
-        }
+       FacebookSdk.sdkInitialize(applicationContext)
+        callbackManager = CallbackManager.Factory.create()
+         binding.facebook.setOnClickListener {
+             val message: String = binding.titreEvent.text.toString()
+             val imageUri = Uri.parse(eventImage)
+             val facebookShareUrl =
+                 "https://www.facebook.com/sharer/sharer.php?u=$imageUri&quote=$message"
+             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(facebookShareUrl))
+             try {
+                 startActivity(intent)
+             } catch (e: ActivityNotFoundException) {
+                 Toast.makeText(
+                     this,
+                     "Aucune application de navigation n'est installée sur cet appareil",
+                     Toast.LENGTH_SHORT
+                 ).show()
+             }
 
 
 
-        binding.participer.setOnClickListener { event ->
-            val intent = Intent(this, ReservationActivity::class.java)
-            intent.putExtra("event_id", eventId)
-            intent.putExtra("event_titre", eventTitle)
-            intent.putExtra("event_image", eventImage)
-            intent.putExtra("event_description", eventDescription)
-            intent.putExtra("event_location", eventLocation)
-            intent.putExtra("event_nbParticpant", eventnbParticipant.toString())
-            val userId = "654f70fb5cb452f9138dbf46"
-            intent.putExtra("user_id", userId)
-
-            startActivity(intent)
-        }
-        commentRepository.getCommentsByEvent(eventId) { comments ->
-            if (comments != null) {
-                // Log the number of comments
-                Log.d("Comments", "Number of comments: ${comments.size}")
-
-                // Log comments
-                for (comment in comments) {
-                    Log.d("Comments", "Comment ID: ${comment._id}, Content: ${comment.Contenu}")
+             binding.commenter.setOnClickListener {
+                 Log.d("eddddddddtdtd","bbbbbbbbbbbbbbbbbbbb")
+                 val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                 val editor = sharedPreferences.edit()
+                 editor.putString("event_id", eventId)
+                 editor.putString("user_id", userID)
+                 editor.apply()
+                 Log.d("eddddddddtdtd2","bbbbbbbbbbbbbbbbbbbb")
+                 val bottomSheetFragment = CommentBottomSheet()
+                 bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
+                 Log.d("eddddddddtdtd33","bbbbbbbbbbbbbbbbbbbb")
+             }
 
 
 
-                }
+             binding.participer.setOnClickListener { event ->
+                 val intent = Intent(this, ReservationActivity::class.java)
+                 intent.putExtra("event_id", eventId)
+                 intent.putExtra("event_titre", eventTitle)
+                 intent.putExtra("event_image", eventImage)
+                 intent.putExtra("event_description", eventDescription)
+                 intent.putExtra("event_location", eventLocation)
+                 intent.putExtra("event_nbParticpant", eventnbParticipant.toString())
+                 val userId = "654f70fb5cb452f9138dbf46"
+                 intent.putExtra("user_id", userId)
 
-                val commentAdapter = CommentAdapter(comments)
-                recyclerView.adapter = commentAdapter
-                    commentAdapter.notifyDataSetChanged()
+                 startActivity(intent)
+             }
+             commentRepository.getCommentsByEvent(eventId) { comments ->
+                 if (comments != null) {
+                     // Log the number of comments
+                     Log.d("Comments", "Number of comments: ${comments.size}")
 
-                } else {
-                    // Handle the case where fetching comments failed
-                    Log.e("Comments", "Failed to fetch comments")
-                }
-        }
-    }
+                     // Log comments
+                     for (comment in comments) {
+                         Log.d(
+                             "Comments",
+                             "Comment ID: ${comment._id}, Content: ${comment.Contenu}"
+                         )
+
+
+                     }
+
+                     val commentAdapter = CommentAdapter(comments)
+                     recyclerView.adapter = commentAdapter
+                     commentAdapter.notifyDataSetChanged()
+
+                 } else {
+                     // Handle the case where fetching comments failed
+                     Log.e("Comments", "Failed to fetch comments")
+                 }
+             }
+         }}
 
     private fun observerEventDetailLiveData() {
         eventMvvm.obersverEventDetailLiveData().observe(this, Observer { event ->
@@ -177,18 +186,18 @@ class EventsMainPage : AppCompatActivity() {
         }
     }
 
-    /*fun partagerContenuSurFacebook() {
+    fun partagerContenuSurFacebook() {
         shareLinkContent()
     }
-*/
-  /*  private fun shareLinkContent() {
+
+ private fun shareLinkContent() {
         val shareDialog = ShareDialog(this)
         val shareLinkContent: ShareLinkContent = ShareLinkContent.Builder()
             .setContentUrl(Uri.parse("https://www.facebook.com/profile.php?id=61553646785355&is_tour_dismissed=true"))
             .build()
         shareDialog.show(shareLinkContent)
-    }*/
-  /*  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    }
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         // Assurez-vous que le requestCode correspond au code de demande de callbackManager
@@ -198,7 +207,7 @@ class EventsMainPage : AppCompatActivity() {
         }
     }
 
-   */
+
 }
 
 

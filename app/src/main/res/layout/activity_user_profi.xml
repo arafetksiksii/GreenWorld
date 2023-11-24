@@ -1,16 +1,19 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gestionUser.UserProfil"
-    android:background="@color/transparent">
+    android:background="@color/transparent"
+   >
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="405dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -20,156 +23,141 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/gradientbackground"
+                android:background="@drawable/ic_account"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/imageViewProfile"
-                    android:layout_width="119dp"
-                    android:layout_height="88dp"
+                    android:layout_width="229dp"
+                    android:layout_height="228dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="45dp"
-                    android:src="@drawable/buttonstyleithgradient" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="35dp"
-                    android:background="@drawable/buttonstyleithgradient"
-                    android:text="Follow Me"
-                    android:textColor="#fff" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/circle_background" />
 
                 <TextView
                     android:id="@+id/textViewName"
-                    android:layout_below="@id/imageViewProfile"
-                    android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/imageViewProfile"
+                    android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:text="Zouaoui Aymen"
                     android:textColor="#fff"
                     android:textSize="21sp"
                     android:textStyle="bold" />
+
             </LinearLayout>
 
-            <!-- CardView for Statistics -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="400dp"
-                android:layout_height="120dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="275dp"
-                app:cardBackgroundColor="@color/endblue">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="3">
-
-                    <!-- Statistics Section -->
-                    <!-- (You can customize this part based on your needs) -->
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
         </RelativeLayout>
 
         <!-- Contact Information Section -->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="396dp"
+        android:layout_height="274dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="39dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <!-- Email -->
+
+        <!-- Phone Number -->
+
         <LinearLayout
-            android:layout_width="284dp"
-            android:layout_height="202dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="45dp"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp">
 
-            <!-- Email -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_email_black_24dp" />
+
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="25dp">
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="éééééééééél"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_email_black_24dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp">
 
-                <TextView
-                    android:id="@+id/textViewEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="éééééééééél"
-                    android:textStyle="bold" />
-            </LinearLayout>
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_phone_android_black_24dp" />
 
-            <!-- Phone Number -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-                android:paddingLeft="25dp">
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="+266 666 666"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_phone_android_black_24dp" />
+        <!-- Add to Group -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="+266 666 666"
-                    android:textStyle="bold" />
-            </LinearLayout>
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_group_add_black_24dp" />
 
-            <!-- Add to Group -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-                android:paddingLeft="25dp">
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="Add to group"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_group_add_black_24dp" />
+        <!-- Show All Comments -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Add to group"
-                    android:textStyle="bold" />
-            </LinearLayout>
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_forum_black_24dp" />
 
-            <!-- Show All Comments -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-                android:paddingLeft="25dp">
-
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_forum_black_24dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Show all comments"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="Show all comments"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

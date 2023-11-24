@@ -4,6 +4,224 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Maindechets">
+    android:background="@color/white"
+    tools:context=".activities.Maindechets">
+
+    <ImageView
+        android:id="@+id/imageEllipseNineOne"
+        android:layout_width="262dp"
+        android:layout_height="866dp"
+        android:layout_gravity="top|start"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_ellipse9_81x292"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/imageEllipseTen"
+        android:layout_width="263dp"
+        android:layout_height="153dp"
+        android:layout_gravity="top|end"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_ellipse10"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/img_ellipse10" />
+
+    <ImageView
+        android:id="@+id/imageEllipseTen11"
+        android:layout_width="241dp"
+        android:layout_height="192dp"
+        android:layout_gravity="top|end"
+
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="712dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@+id/imageEllipseNineOne"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cercle"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/cercle" />
+
+    <Button
+        android:id="@+id/btnReturn"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ivText"
+        android:layout_width="239dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="196dp"
+        android:padding="10dp"
+        android:text="Recyclage"
+        android:textColor="@color/drawer_color"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.691"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiTypeLayout"
+        android:layout_width="370dp"
+        android:layout_height="67dp"
+        android:layout_margin="20dp"
+        android:hint="Type"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/titype"
+            android:layout_width="match_parent"
+            android:background="@color/tansparentColor"
+            android:layout_height="wrap_content"
+            android:drawablePadding="90dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiDateLayout"
+        android:background="@color/tansparentColor"
+
+        android:layout_width="283dp"
+        android:layout_height="53dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="122dp"
+        android:hint="Date"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tiTypeLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/selectedDateTextView"
+            android:layout_width="match_parent"
+            android:background="@color/tansparentColor"
+
+            android:layout_height="61dp"
+            android:drawablePadding="90dp" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/btndate"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="24dp"
+
+        android:background="@drawable/baseline_date_range_24"
+        android:contentDescription="Sélectionner la date et l'heure"
+        app:layout_constraintBottom_toTopOf="@+id/tiWeightLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tiDateLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tiTypeLayout"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiWeightLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Weight"
+        android:layout_margin="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tiDateLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiWeight"
+            android:layout_width="match_parent"
+            android:background="@color/tansparentColor"
+
+            android:layout_height="wrap_content"
+            android:drawablePadding="90dp"
+            android:duplicateParentState="false"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiAdresseLayout"
+        android:layout_width="308dp"
+        android:layout_height="67dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="24dp"
+        android:hint="Adresse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tiWeightLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiAdresse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:background="@color/tansparentColor"
+            android:drawablePadding="90dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/idIVQrcode"
+        android:layout_width="44dp"
+        android:layout_height="37dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="QR Code"
+        android:visibility="invisible"
+
+        app:layout_constraintBottom_toTopOf="@+id/btnSend"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="@color/darkgreen"
+        android:text="Envoyer"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tiAdresseLayout"
+        app:layout_constraintVertical_bias="0.261" />
+
+    <ImageButton
+        android:id="@+id/buttonShowOnMap"
+        android:layout_width="47dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/baseline_location_on_24"
+        android:text="Show on Map"
+        app:layout_constraintBottom_toTopOf="@+id/idIVQrcode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toEndOf="@+id/tiAdresseLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tiWeightLayout"
+        app:layout_constraintVertical_bias="0.96" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

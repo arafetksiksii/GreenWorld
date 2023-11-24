@@ -4,12 +4,21 @@
         <item name="android:background">@color/black_overlay</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Light mode specific attributes -->
+        <item name="android:windowBackground">@color/white</item>
+        <!-- Add more light mode attributes as needed -->
+
+        <!-- Dark mode specific attributes -->
+        <item name="android:windowBackground">@color/black</item>
+        <!-- Add more dark mode attributes as needed -->
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -20,5 +29,39 @@
     <style name="AppTheme.AppBarOverlay" parent="Theme.AppCompat.Light.NoActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="Theme.AppCompat.Light.NoActionBar" />
+    <style name="RoundedDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@drawable/bg_calen</item>
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+    <style name="mytoast">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#FFFFFF</item> <!-- Couleur de texte blanche -->
+        <item name="stFont">@font/myfont</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#8BC34A</item> <!-- Couleur de fond verte -->
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeWidth">3dp</item>
+        <item name="stStrokeColor">#8BC34A</item>
+        <item name="stLength">LONG</item>
+        <item name="stGravity">top</item>
+        <item name="stRadius">5dp</item>
+    </style>
+    <style name="errorToast">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#FFFFFF</item> <!-- Couleur de texte blanche -->
+        <item name="stFont">@font/myfont</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#DC1F12</item> <!-- Couleur de fond verte -->
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeWidth">3dp</item>
+        <item name="stStrokeColor">#D61304</item>
+        <item name="stLength">LONG</item>
+        <item name="stGravity">top</item>
+        <item name="stRadius">5dp</item>
+    </style>
 
 </resources>
