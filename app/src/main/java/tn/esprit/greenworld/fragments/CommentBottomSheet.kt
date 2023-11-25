@@ -51,8 +51,7 @@ class CommentBottomSheet : DialogFragment() {
     private fun postComment() {
         val eventId = binding.eventID.text.toString()
         val commentContent = binding.commentText.text.toString()
-        val userId = sharedPreferences.getString("userId", "")
-        val userName = sharedPreferences.getString("user_pref", "")
+
 
         if (commentContent.isNotEmpty()) {
             val newComment = Comment(
@@ -60,7 +59,7 @@ class CommentBottomSheet : DialogFragment() {
                 Contenu = commentContent,
                 date = Date(),
                 eventID = eventId,
-                userID = userId.toString(),
+                userID = "655df4f9538f8ac439dc1297",
                 __v = 0
             )
 

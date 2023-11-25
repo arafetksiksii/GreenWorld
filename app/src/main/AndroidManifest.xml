@@ -18,32 +18,46 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.GreenWorld"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
-        <activity
-            android:name=".activities.PaymentActivity"
-            android:exported="false" />
+        tools:targetApi="31"
 
+        >
+        <activity
+            android:name=".ui.quiz_activity.QuizListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.quiz_activity.ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.quiz_activity.MainActivity"
+            android:exported="false" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDUnviG60k8SrTSNvs1rQvoy55Sp5zatAY" /> <!-- nav  bar -->
         <activity
-            android:name=".MIDrawerActivity"
-            android:exported="true"></activity> <!-- //////////////////////////////////////// -->
+            android:name=".activities.PaymentActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="myapp"
+                    android:host="payment-success" />
+            </intent-filter>
+        </activity> <!-- //////////////////////////////////////// -->
         <activity
-            android:name=".ui.quiz_activity.QuizListActivity"
+            android:name=".MIDrawerActivity"
+
 
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.EventsMainPage"
@@ -73,7 +87,7 @@
             android:name=".ui.gestionUser.User_Validation"
             android:exported="false" />
         <activity
-            android:name=".ui.gestionUser.UserProfil"
+            android:name=".ui.gestionUser.UserProfileFragment"
             android:exported="false" />
         <activity
             android:name=".ui.gestionUser.User_Register"
@@ -85,7 +99,7 @@
             android:name=".activities.ReservationActivity"
             android:exported="false" />
         <activity
-            android:name=".UserUpdate"
+            android:name=".ui.gestionUser.UserUpdate"
             android:exported="false" />
         <!-- Activité de lancement gestion de gamification -->
         <activity
@@ -99,11 +113,14 @@
             android:exported="false" />
         <activity
             android:name=".ui.gestionUser.LoginActivity"
-            android:exported="false" />
-        <activity android:name=".ui.quiz_activity.ResultActivity" />
-        <activity
-            android:name=".ui.quiz_activity.MainActivityQuizQ"
-            android:exported="false" />
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
         <activity
             android:name=".Home"
 

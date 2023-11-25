@@ -60,7 +60,7 @@ class ProduitActivity : AppCompatActivity() {
 
             val userId = sharedPreferences.getString("Token", "")
             Log.d("ttttttttttttttttt",userId.toString())
-            val call = RetrofitInstance.Commandeapi.addProductToCart(produitId,userId.toString())
+            val call = RetrofitInstance.Commandeapi.addProductToCart(produitId)
 
             call.enqueue(object : Callback<Commande> {
                 override fun onResponse(call: Call<Commande>, response: Response<Commande>) {
@@ -120,10 +120,11 @@ class ProduitActivity : AppCompatActivity() {
                         // Log success
                         Log.d("FavProduit", "Product added to favorites successfully")
                     } else {
-                        // Handle unsuccessful response
-                        // You can parse the error response using response.errorBody()
-                        val errorMessage = response.errorBody()?.string() ?: "Unknown error"
-                        Log.e("FavProduit", "Failed to add product to favorites. Error: $errorMessage")
+                        val updatedFavProduit = response.body()
+                        // You can do something with the updatedFavProduit if needed
+
+                        // Show a simple Toast message
+                        Toast.makeText(applicationContext, "Product added to favorites", Toast.LENGTH_SHORT).show()
 
                         Toast.makeText(applicationContext, "Failed to add product to favorites", Toast.LENGTH_SHORT).show()
                     }

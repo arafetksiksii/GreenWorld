@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,7 +16,6 @@ import tn.esprit.greenworld.UserUpdate
 import tn.esprit.greenworld.databinding.ActivityUserLoginBinding
 import tn.esprit.greenworld.models.User
 import tn.esprit.greenworld.models.User1
-import tn.esprit.greenworld.ui.quiz_activity.QuizListActivity
 import tn.esprit.greenworld.utils.Login
 import tn.esprit.greenworld.utils.RetrofitImp
 
@@ -30,6 +28,7 @@ class LoginActivity : MIDrawerActivity() {
     private val USER_NAME_KEY = "userName"
     private val USER_EMAIL_KEY = "userEmail"
     private val USER_IMAGE_KEY = "userImageRes"
+    private val USER_TOKEN_KEY = "tokenLogin"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,10 +40,10 @@ class LoginActivity : MIDrawerActivity() {
 
             RetrofitImp.buildRetrofit().create(Login::class.java).login(
                 User1(
-                   // email = binding.edtEmail.text.toString(),
-                   // password = binding.tiPassword.text.toString()
-                            email = "zouzou14@gmail.com",
-                    password = "Catvcatv11**"
+                   email = binding.edtEmail.text.toString(),
+                   password = binding.tiPassword.text.toString()
+                      //      email = "zouzou14@gmail.com",
+                   // password = "Catvcatv11**"
 
                 )
             ).enqueue(object : Callback<User> {
@@ -71,7 +70,7 @@ class LoginActivity : MIDrawerActivity() {
                             } else {
                                 // Handle the case where the "user" property is null
                                 Log.e("LoginActivity", "User object is null")
-                                val intent = Intent(this@LoginActivity, MIDrawerActivity::class.java)
+                                val intent = Intent(this@LoginActivity, UserProfileFragment::class.java)
 
                                 Snackbar.make(
                                     binding.contextView,
@@ -210,7 +209,29 @@ class LoginActivity : MIDrawerActivity() {
         editor.putString(USER_NAME_KEY, user.userName)
         editor.putString(USER_EMAIL_KEY, user.email)
         editor.putString(USER_IMAGE_KEY, user.imageRes)
-
+        editor.putString(USER_TOKEN_KEY,user.token)
         editor.apply()
+    }
+
+
+    // New method for logout
+    private fun logout() {
+        val sharedPreferences: SharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+        // Clear all saved user data from shared preferences
+        editor.remove(USER_ID_KEY)
+        editor.remove(USER_NAME_KEY)
+        editor.remove(USER_EMAIL_KEY)
+        editor.remove(USER_IMAGE_KEY)
+        editor.remove(USER_TOKEN_KEY)
+
+        // Apply changes
+        editor.apply()
+
+        // Redirect to the login screen or any other appropriate action
+        val intent = Intent(this@LoginActivity, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
