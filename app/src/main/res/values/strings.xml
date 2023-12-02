@@ -117,7 +117,7 @@ Green World
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Edit Profil</string>
-    <string name="scroll">Update Profil</string>
+    <string name="scroll">Profil</string>
     <string name="slide">GestionGamification</string>
     <string name="door">Door</string>
     <string name="doorIn">Gestion Event</string>

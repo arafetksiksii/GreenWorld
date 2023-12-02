@@ -23,6 +23,7 @@ import tn.esprit.greenworld.models.Favproduit
 import tn.esprit.greenworld.utils.RetrofitInstance
 import tn.esprit.greenworld.viewmodel.ProduitDetailViewModel
 
+
 class ProduitActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProduitBinding
     private lateinit var produitId: String

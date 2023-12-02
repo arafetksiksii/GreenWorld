@@ -98,9 +98,10 @@
         <activity
             android:name=".activities.ReservationActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.gestionUser.UserUpdate"
-            android:exported="false" />
+        <activity android:name=".UserUpdate"
+            android:exported="true">
+            <!-- Add any necessary intent filters or other configuration here -->
+        </activity>
         <!-- Activité de lancement gestion de gamification -->
         <activity
             android:name=".activities.Maindechets"

@@ -40,10 +40,10 @@ class LoginActivity : MIDrawerActivity() {
 
             RetrofitImp.buildRetrofit().create(Login::class.java).login(
                 User1(
-                   email = binding.edtEmail.text.toString(),
-                   password = binding.tiPassword.text.toString()
-                      //      email = "zouzou14@gmail.com",
-                   // password = "Catvcatv11**"
+                  // email = binding.edtEmail.text.toString(),
+                   //password = binding.tiPassword.text.toString()
+                          email = "cexepis601@kxgif.com",
+                    password = "Catvcatv11"
 
                 )
             ).enqueue(object : Callback<User> {
@@ -58,7 +58,7 @@ class LoginActivity : MIDrawerActivity() {
                                 // Pass the user data to UserProfil activity
                                 saveUserToPreferences(userObject)
                                 Log.d("LoginActivity", "Login successful. User data: $userObject")
-                                Log.d("bbbbbbbbb", userObject._id)
+                                Log.d("bbbbbbbbb", userObject.toString())
 
                                 val intent = Intent(this@LoginActivity, MIDrawerActivity::class.java)
                                 intent.putExtra("userId", userObject._id)
@@ -70,7 +70,7 @@ class LoginActivity : MIDrawerActivity() {
                             } else {
                                 // Handle the case where the "user" property is null
                                 Log.e("LoginActivity", "User object is null")
-                                val intent = Intent(this@LoginActivity, UserProfileFragment::class.java)
+                               // val intent = Intent(this@LoginActivity, UserProfileFragment::class.java)
 
                                 Snackbar.make(
                                     binding.contextView,
@@ -209,11 +209,12 @@ class LoginActivity : MIDrawerActivity() {
         editor.putString(USER_NAME_KEY, user.userName)
         editor.putString(USER_EMAIL_KEY, user.email)
         editor.putString(USER_IMAGE_KEY, user.imageRes)
-        editor.putString(USER_TOKEN_KEY,user.token)
+        editor.putString(USER_TOKEN_KEY, user.token)
         editor.apply()
+
+        // Add logs to check values after saving
+        Log.d("UserProfileFragment", "Saved UserID: ${user._id}, UserName: ${user.userName}, UserEmail: ${user.email}, UserImageRes: ${user.imageRes}, UserToken: ${user.token}")
     }
-
-
     // New method for logout
     private fun logout() {
         val sharedPreferences: SharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
