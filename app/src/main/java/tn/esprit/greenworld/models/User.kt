@@ -22,6 +22,7 @@ data class User(
     val imageRes: String,
     val resetCode: String,
     val role:Roles,
+    val token:String,
     val score :Int
 
 ) {

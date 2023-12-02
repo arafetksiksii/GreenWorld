@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.valider_dechets">
+
+    <ImageView
+        android:id="@+id/imageEllipseTen"
+        android:layout_width="263dp"
+        android:layout_height="153dp"
+        android:layout_gravity="top|end"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_ellipse10"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/img_ellipse10" />
+
+    <ImageView
+        android:id="@+id/imageEllipseTen11"
+        android:layout_width="230dp"
+        android:layout_height="169dp"
+        android:layout_gravity="top|end"
+
+        android:layout_marginStart="264dp"
+        android:layout_marginTop="700dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@+id/imageEllipseNineOne"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cercle"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/cercle" />
+
+    <ImageView
+        android:id="@+id/imageEllipseNineOne11"
+        android:layout_width="238dp"
+        android:layout_height="193dp"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="84dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ppp"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/recycle"
+        android:layout_width="141dp"
+        android:layout_height="173dp"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="276dp"
+        android:layout_marginTop="600dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/recycle"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/imageEllipseNineOne"
+        android:layout_width="266dp"
+        android:layout_height="925dp"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_ellipse9_81x292"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="184dp"
+        android:text="Type"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="184dp"
+        android:text=""
+        android:textColor="@color/drawer_color"
+        android:textSize="23sp"
+        app:layout_constraintStart_toEndOf="@+id/type"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Date :"
+        android:textColor="@color/black"
+
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/type"
+        tools:layout_editor_absoluteX="24dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tidate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="240dp"
+        android:text=""
+        android:textColor="@color/drawer_color"
+
+        android:textSize="23sp"
+        app:layout_constraintStart_toEndOf="@+id/date"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tiweight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="300dp"
+        android:text=""
+        android:textColor="@color/drawer_color"
+        android:textSize="23sp"
+        app:layout_constraintStart_toEndOf="@+id/weight"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tiadresse"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="348dp"
+        android:text=""
+        android:textColor="@color/drawer_color"
+        android:textSize="23sp"
+        app:layout_constraintStart_toEndOf="@+id/adresse"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Weight :"
+        android:textColor="@color/black"
+
+        android:textSize="23sp"
+
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/date"
+        tools:layout_editor_absoluteX="24dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/adresse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Adresse :"
+        android:textColor="@color/black"
+
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/weight"
+        tools:layout_editor_absoluteX="24dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/Qrcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="424dp"
+        android:text="Scanne Your Qr Code :"
+        android:textColor="@color/drawer_color"
+        android:textSize="23sp"
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/qrImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/qrImageView"
+        android:layout_width="253dp"
+        android:layout_height="256dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="4dp"
+        android:contentDescription="QR Code"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

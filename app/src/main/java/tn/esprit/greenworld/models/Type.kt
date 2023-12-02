@@ -3,7 +3,6 @@ package tn.esprit.greenworld.models
 import java.io.Serializable
 
 data class Type (
-
 val __v: Int,
 val _id: String,
 val createdAt: String,

@@ -9,11 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import tn.esprit.greenworld.UserUpdate
+import tn.esprit.greenworld.activities.CustomCalendar
 import tn.esprit.greenworld.activities.EventsMainPage
 import tn.esprit.greenworld.adapters.EventAdapter
 import tn.esprit.greenworld.databinding.FragmentEventBinding
 import tn.esprit.greenworld.viewModel.EventViewModel
 import tn.esprit.greenworld.activities.MapActivity
+import tn.esprit.greenworld.ui.quiz_activity.QuizListActivity
+
 import tn.esprit.greenworld.utils.RecycleViewEvent
 
 class EventFragment : Fragment(), RecycleViewEvent {
@@ -51,8 +55,18 @@ class EventFragment : Fragment(), RecycleViewEvent {
             val intent = Intent(requireContext(), MapActivity::class.java)
             startActivity(intent)
         }
-    }
+        binding.calender.setOnClickListener {
+            val intent = Intent(requireContext(), CustomCalendar::class.java)
+            startActivity(intent)
+        }
 
+            binding.btnProfil.setOnClickListener {
+                val intent = Intent(requireContext(), QuizListActivity::class.java)
+                startActivity(intent)
+            }
+
+
+    }
     private fun prepareListEventRecyclerView() {
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 1, GridLayoutManager.VERTICAL, false)

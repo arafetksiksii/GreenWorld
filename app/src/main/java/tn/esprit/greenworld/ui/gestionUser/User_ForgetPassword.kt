@@ -39,6 +39,8 @@ class User_ForgetPassword : AppCompatActivity() {
                             editor.putString("userId", it._id)
                             editor.putString("resetCode", it.resetCode)
                             editor.putString("userEmail", it.email)
+                            editor.putString("token", it.token)
+                            Log.d("token",it.token.toString())
                             editor.apply()
 
                             // Start the User_Validation activity

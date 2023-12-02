@@ -1,10 +1,13 @@
 package tn.esprit.greenworld.activities
 
 import android.content.Intent
+import android.content.SharedPreferences
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -20,6 +23,7 @@ import tn.esprit.greenworld.models.Favproduit
 import tn.esprit.greenworld.utils.RetrofitInstance
 import tn.esprit.greenworld.viewmodel.ProduitDetailViewModel
 
+
 class ProduitActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProduitBinding
     private lateinit var produitId: String
@@ -30,28 +34,33 @@ class ProduitActivity : AppCompatActivity() {
     private lateinit var produitImage: String
     private lateinit var produitMvvm: ProduitDetailViewModel
 
+    private lateinit var sharedPreferences: SharedPreferences // Déplacer ici
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityProduitBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        super.onCreate(savedInstanceState);
+        sharedPreferences = getSharedPreferences("user_pref", AppCompatActivity.MODE_PRIVATE);
+        binding = ActivityProduitBinding.inflate(layoutInflater);
+        setContentView(binding.root);
+        produitMvvm = ViewModelProvider(this).get(ProduitDetailViewModel::class.java);
 
-        produitMvvm = ViewModelProvider(this).get(ProduitDetailViewModel::class.java)
-
-        getProduitInformationFromIntent()
-        setInformationInViews()
+        getProduitInformationFromIntent();
+        setInformationInViews();
 
         // Now that you have produitId, you can request data using the ViewModel
-        produitMvvm.getProduitDetail(produitId)
+        produitMvvm.getProduitDetail(produitId);
 
         // Observe the LiveData after setting data and initiating the request
-        observerProduitDetailLiveData()
+        observerProduitDetailLiveData();
 
-        val commandeButton = binding.commandeButton
-        val favproduitButton = binding.favProduitButton
+        val commandeButton = binding.commandeButton;
+        val favproduitButton = binding.favProduitButton;
 
         commandeButton.setOnClickListener {
-            val produiId = produitId
+                 val produiId = produitId
+            sharedPreferences = getSharedPreferences("user_pref", AppCompatActivity.MODE_PRIVATE)
+
+            val userId = sharedPreferences.getString("Token", "")
+            Log.d("ttttttttttttttttt",userId.toString())
             val call = RetrofitInstance.Commandeapi.addProductToCart(produitId)
 
             call.enqueue(object : Callback<Commande> {
@@ -112,10 +121,11 @@ class ProduitActivity : AppCompatActivity() {
                         // Log success
                         Log.d("FavProduit", "Product added to favorites successfully")
                     } else {
-                        // Handle unsuccessful response
-                        // You can parse the error response using response.errorBody()
-                        val errorMessage = response.errorBody()?.string() ?: "Unknown error"
-                        Log.e("FavProduit", "Failed to add product to favorites. Error: $errorMessage")
+                        val updatedFavProduit = response.body()
+                        // You can do something with the updatedFavProduit if needed
+
+                        // Show a simple Toast message
+                        Toast.makeText(applicationContext, "Product added to favorites", Toast.LENGTH_SHORT).show()
 
                         Toast.makeText(applicationContext, "Failed to add product to favorites", Toast.LENGTH_SHORT).show()
                     }
@@ -165,6 +175,7 @@ class ProduitActivity : AppCompatActivity() {
         produitPrice = intent.getStringExtra(ProduitFragment.Product_price) ?: ""
         produitQuantity = intent.getStringExtra(ProduitFragment.Product_quantity) ?: ""
         produitImage = intent.getStringExtra(ProduitFragment.Product_image) ?: ""
+        // Initialiser sharedPreferences ici
 
         Log.d("ProduitActivity", "Received produitId: $produitId")
         Log.d("ProduitActivity", "Received produitTitle: $produitTitle")

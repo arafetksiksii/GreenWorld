@@ -44,17 +44,26 @@
                     android:orientation="horizontal"
                     android:layout_gravity="center_vertical">
 
-                    <ImageButton
-                        android:layout_width="69dp"
-                        android:layout_height="49dp"
-                        android:background="@drawable/baseline_map_24" />
-<Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/map"
-android:text="Map"
+                    <Button
+                        android:id="@+id/btnProfil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Quiz" />
 
-    />
+                    <Button
+                        android:id="@+id/calender"
+                        android:layout_width="53dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/calendarchaima"
+
+                        />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/map"
+                        android:text="Map"
+
+                        />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -64,21 +73,6 @@ android:text="Map"
                         android:textSize="16sp" />
                 </LinearLayout>
 
-
-                <!-- Example: Improving search bar -->
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10.00dp"
-                    android:height="50dp"
-                    android:background="@drawable/search_bar_background"
-                    android:drawableStart="@drawable/search_icon"
-                    android:drawableEnd="@drawable/filtre"
-                    android:hint="@string/search_bar_hint"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
 
             </LinearLayout>
 
@@ -97,17 +91,6 @@ android:text="Map"
         android:orientation="vertical"
         tools:listitem="@layout/event_item"/>
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottomAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/white"
-        app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="50dp"
-        tools:ignore="BottomAppBar">
 
-
-    </com.google.android.material.bottomappbar.BottomAppBar>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

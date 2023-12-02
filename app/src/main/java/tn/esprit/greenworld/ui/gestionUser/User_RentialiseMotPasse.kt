@@ -102,7 +102,7 @@ class User_RentialiseMotPasse:AppCompatActivity() {
         // val sharedPreferences: SharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE)
 
         val sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE)
-        val userId = sharedPreferences.getString("userId", "")
+        val userId = sharedPreferences.getString("token", "")
 
         Log.d("hhhhhhhhhhh",userId.toString())
         val user1 = User1(

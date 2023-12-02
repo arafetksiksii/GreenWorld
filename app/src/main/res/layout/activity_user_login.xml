@@ -50,7 +50,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,7 +83,7 @@
             android:textColor="@color/Primary"
             android:textColorHighlight="@color/Primary"
             android:textColorHint="@color/Primary"
-            android:textColorLink="@color/Primary"
+            android:textColorLink="@color/_bg__component_1_ek1_color"
             tools:ignore="Deprecated" />
 
     </com.google.android.material.textfield.TextInputLayout>

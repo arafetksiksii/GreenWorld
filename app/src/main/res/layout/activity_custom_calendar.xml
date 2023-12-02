@@ -9,32 +9,44 @@
     android:orientation="vertical"
     tools:context=".activities.CustomCalendar">
 
+  <ImageView
+      android:padding="15dp"
+      android:id="@+id/fermer"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/round_cancle_btn"
+      android:elevation="30dp"
+      tools:ignore="ContentDescription" />
   <TextView
       android:id="@+id/myDate"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="CurrentDate"
+      android:text="Date des évennements"
       android:textAlignment="center"
       android:textColor="@color/white"
       android:textSize="23sp"
       android:textStyle="bold"
-      android:layout_marginLeft="105dp"
+      android:layout_marginStart="105dp"
       android:layout_marginTop="48dp"
-      tools:ignore="MissingConstraints" />
+      tools:ignore="HardcodedText,MissingConstraints" />
 
-<LinearLayout
-    android:layout_marginTop="48dp"
-    android:layout_marginLeft="44dp"
-    android:layout_width="300dp"
-    android:background="@drawable/bg_calen"
-    android:layout_height="wrap_content"
-  >
-  <CalendarView
-      android:id="@+id/calenderView"
-      android:layout_width="wrap_content"
-      android:layout_height="310dp"
-    >
-  </CalendarView>
+  <LinearLayout
+      android:layout_marginTop="48dp"
+      android:layout_marginStart="44dp"
+      android:layout_width="300dp"
+      android:background="@drawable/bg_calen"
+      android:layout_height="wrap_content"
+      >
+    <com.applandeo.materialcalendarview.CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:headerColor="@color/Primary"
+        app:todayLabelColor="@color/drawer_color"
+        android:background="@drawable/rounded_calendar_background"
 
-</LinearLayout>
+        />
+
+  </LinearLayout>
+
 </LinearLayout>
