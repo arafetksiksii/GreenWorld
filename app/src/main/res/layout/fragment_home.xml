@@ -3,12 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.HomeFragment">
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Des Conseils"
+            android:textColor="@color/drawer_color"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:padding="40dp"
+            ></TextView>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/nature"
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="home" />
+            ></ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Privilégier les produits en vrac, ou dans de grands contenants, utiliser des sacs réutilisables, ne pas acheter d'eau en bouteille, éviter les produits jetables comme la vaisselle en plastique… Ce sont quelques-uns des petits gestes qui permettent de limiter sa production de déchets."
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textStyle="bold"
+
+            android:padding="40dp"
+            ></TextView>
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="217dp"
+            android:src="@drawable/nature2"
+
+            ></ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Les problèmes environnementaux sont devenus de plus en plus graves. Pour sauver la planète, chaque habitant doit réduire son empreinte écologique et participer à diverses actions environnementales. Voici quelques exemples d’attitudes essentielles pour protéger la nature."
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textStyle="bold"
+
+            android:padding="40dp"
+            ></TextView>
+    </LinearLayout>
 
 </FrameLayout>

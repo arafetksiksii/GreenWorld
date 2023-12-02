@@ -1,6 +1,7 @@
 package tn.esprit.greenworld
 
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
@@ -13,6 +14,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -25,14 +27,20 @@ import com.mindinventory.midrawer.MIDrawerView.Companion.MI_TYPE_DOOR_OUT
 import com.mindinventory.midrawer.MIDrawerView.Companion.MI_TYPE_SLIDE
 import com.mindinventory.midrawer.MIDrawerView.Companion.MI_TYPE_SLIDE_WITH_CONTENT
 import tn.esprit.green_world.fragments.HomeFragment
+import tn.esprit.greenworld.activities.MapActivity
 
 import tn.esprit.greenworld.databinding.ActivityMainnavbaraBinding
 import tn.esprit.greenworld.databinding.FavproduitFragmentBinding
 import tn.esprit.greenworld.fragments.EventFragment
 import tn.esprit.greenworld.fragments.ProduitFragment
+import tn.esprit.greenworld.fragments.typedechets
+import tn.esprit.greenworld.ui.gestionUser.LoginActivity
 import tn.esprit.greenworld.ui.gestionUser.UserProfileFragment
 
+import tn.esprit.greenworld.ui.gestionUser.User_ForgetPassword
+
 import tn.esprit.greenworld.ui.gestionUser.User_Register
+import tn.esprit.greenworld.ui.quiz_activity.QuizListActivity
 
 open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -41,7 +49,13 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var activityMainBinding: ActivityMainnavbaraBinding
     private lateinit var imageView: ImageView
     private lateinit var sharedPreferences: SharedPreferences // Déplacer ici
-
+    // Define a shared preference name
+    private val PREF_NAME = "user_pref"
+    private val USER_ID_KEY = "userId"
+    private val USER_NAME_KEY = "userName"
+    private val USER_EMAIL_KEY = "userEmail"
+    private val USER_IMAGE_KEY = "userImageRes"
+    private val USER_TOKEN_KEY = "tokenLogin"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainnavbaraBinding.inflate(layoutInflater)
@@ -62,7 +76,6 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         val actionbar = supportActionBar
         actionbar?.setDisplayHomeAsUpEnabled(true)
         actionbar?.setHomeAsUpIndicator(R.drawable.home)
-
 
          sharedPreferences = this.getSharedPreferences("user_pref", AppCompatActivity.MODE_PRIVATE)
         val userImageRes = sharedPreferences.getString("userImageRes", "")
@@ -136,6 +149,7 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
                 slideType = MI_TYPE_SLIDE
                 updateSliderTypeEvents()
             }
+
             R.id.nav_doorIn -> {
                 avoidDoubleClicks(activityMainBinding.navDoorIn)
                 slideType = MI_TYPE_DOOR_IN
@@ -159,21 +173,33 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
 
     var handler: Handler? = null
     var runnable: Runnable = Runnable {
+        activityMainBinding.logout.setOnClickListener { logout() }
         when (slideType) {
             MI_TYPE_SLIDE_WITH_CONTENT -> {
                 activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.scroll)
-                replaceFragment(ProduitFragment())
+                val intent = Intent(this, UserUpdate::class.java)
+                startActivity(intent)
             }
+
             MI_TYPE_SLIDE -> {
-                activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.slide)
-                replaceFragment(UserProfileFragment())
-            }
+                activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.scroll)
+                replaceFragment(ProduitFragment())  }
             MI_TYPE_DOOR_IN -> {
                 activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.doorIn)
+                replaceFragment(EventFragment())
+
             }
             MI_TYPE_DOOR_OUT -> {
                 activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.doorOut)
+                replaceFragment(typedechets())
             }
+            MI_TYPE_DOOR_OUT -> {
+                activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.dechet)
+                replaceFragment(typedechets())
+            }
+
+
+
         }
         activityMainBinding.drawerLayout.setSliderType(slideType)
         handler = null
@@ -205,5 +231,26 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()
+    }
+
+    // New method for logout
+    private fun logout() {
+        val sharedPreferences: SharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+        // Clear all saved user data from shared preferences
+        editor.remove(USER_ID_KEY)
+        editor.remove(USER_NAME_KEY)
+        editor.remove(USER_EMAIL_KEY)
+        editor.remove(USER_IMAGE_KEY)
+        editor.remove(USER_TOKEN_KEY)
+
+        // Apply changes
+        editor.apply()
+
+        // Redirect to the login screen or any other appropriate action
+
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 }

@@ -5,68 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserUpdate">
+    tools:context=".ui.gestionUser.UserUpdate">
 
     <!-- Champs d'entrée pour les informations de l'utilisateur -->
 
-    <EditText
-        android:id="@+id/tiEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="477dp" />
-
-    <EditText
-        android:id="@+id/tiPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tiEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="312dp" />
-
-    <EditText
-        android:id="@+id/tiFullName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tiPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Full Name"
-        tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="383dp" />
-
-    <EditText
-        android:id="@+id/tiAdress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tiFullName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Address"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="148dp" />
 
     <!-- Bouton pour la sélection d'image -->
 
     <!-- ImageView pour afficher l'image sélectionnée -->
-
-    <EditText
-        android:id="@+id/tiCin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tiAdress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="CIN"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="536dp" />
 
     <Button
         android:id="@+id/selectImageButton"
@@ -79,16 +25,6 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="237dp" />
 
-    <ImageView
-        android:id="@+id/selectedImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/selectImageButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        />
-
     <!-- Bouton pour téléverser l'image vers Cloudinary -->
 
     <Button
@@ -98,7 +34,120 @@
         android:text="Téléverser vers Cloudinary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/selectedImageView"
-        tools:layout_editor_absoluteY="214dp" />
+        app:layout_constraintTop_toBottomOf="@+id/selectImageButton" />
+    <ImageView
+        android:id="@+id/imageEllipseTen"
+        android:layout_width="265dp"
+        android:layout_height="105dp"
+        android:layout_gravity="top|end"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_ellipse10"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/img_ellipse10" />
+
+    <ImageView
+        android:id="@+id/imageEllipseTen11"
+        android:layout_width="241dp"
+        android:layout_height="192dp"
+        android:layout_gravity="top|end"
+
+        android:layout_marginStart="-50dp"
+        android:layout_marginTop="604dp"
+        android:layout_marginEnd="170dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/cercle"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/cercle" />
+
+    <ImageView
+        android:id="@+id/imageEllipseNineOne"
+        android:layout_width="262dp"
+        android:layout_height="866dp"
+        android:layout_gravity="top|start"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toStartOf="@+id/imageEllipseTen"
+        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_ellipse9_81x292"
+        tools:ignore="ContentDescription" />
+
+    <EditText
+        android:id="@+id/tiEmail"
+        android:layout_width="412dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="20dp"
+        android:hint="Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectedImageView" />
+
+    <EditText
+        android:id="@+id/tiPassword"
+        android:layout_width="412dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="20dp"
+        android:hint="Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tiEmail" />
+
+    <EditText
+        android:id="@+id/tiFullName"
+        android:layout_width="412dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="20dp"
+        android:hint="Full Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tiPassword" />
+
+    <EditText
+        android:id="@+id/tiAdress"
+        android:layout_width="412dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="20dp"
+        android:hint="Address"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tiFullName" />
+
+    <EditText
+        android:id="@+id/tiCin"
+        android:layout_width="412dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="20dp"
+        android:hint="CIN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tiAdress" />
+
+    <ImageView
+        android:id="@+id/selectedImageView"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="25dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/circle"
+        android:padding="3dp"
+        android:scaleType="centerInside"
+
+        android:src="@drawable/avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

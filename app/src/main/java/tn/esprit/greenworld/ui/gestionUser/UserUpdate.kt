@@ -22,6 +22,7 @@ import tn.esprit.greenworld.databinding.ActivityUserUpdateBinding
 import tn.esprit.greenworld.models.User
 import tn.esprit.greenworld.models.User5
 import tn.esprit.greenworld.ui.gestionUser.LoginActivity
+
 import tn.esprit.greenworld.utils.RetrofitImp
 import tn.esprit.greenworld.utils.UserInterface
 
@@ -52,11 +53,11 @@ class UserUpdate : AppCompatActivity() {
 
         // Check if MediaManager is already initialized
 
-            // Initialize Cloudinary with configuration
-            config["cloud_name"] = "dznvwntjn"
-            config["api_key"] = "972319243848173"
-            config["api_secret"] = "xp2G8BXbjvjec0dbFIaQbUJ3Mj8"
-            MediaManager.init(this, config)
+        // Initialize Cloudinary with configuration
+        config["cloud_name"] = "dznvwntjn"
+        config["api_key"] = "972319243848173"
+        config["api_secret"] = "xp2G8BXbjvjec0dbFIaQbUJ3Mj8"
+        MediaManager.init(this, config)
 
 
         selectedImageView = findViewById(R.id.selectedImageView)
@@ -138,7 +139,7 @@ class UserUpdate : AppCompatActivity() {
     }
     private fun updateUserp() {
         // Get user data from SharedPreferences
-       // val sharedPreferences: SharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE)
+        // val sharedPreferences: SharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE)
         val userId = sharedPreferences.getString("userId", "")
         val imageUrl=sharedPreferences.getString("imageRes","")
         Log.d("hhhhhhhhhhh","jjjjjjjjjjjjjjjj")
@@ -173,7 +174,7 @@ class UserUpdate : AppCompatActivity() {
     private fun handleSuccessfulupdate(user: User?) {
         // Handle successful registration
         // Optionally, you can navigate to the login screen
-        startActivity(Intent(this@UserUpdate, LoginActivity::class.java))
+        startActivity(Intent(this@UserUpdate, MIDrawerActivity::class.java))
         finish()
     }
 

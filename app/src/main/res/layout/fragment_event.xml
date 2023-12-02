@@ -43,6 +43,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_gravity="center_vertical">
+
+                    <Button
+                        android:id="@+id/btnProfil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Quiz" />
+
                     <Button
                         android:id="@+id/calender"
                         android:layout_width="53dp"
@@ -65,7 +72,6 @@
                         android:textColor="@color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
-
 
 
             </LinearLayout>
