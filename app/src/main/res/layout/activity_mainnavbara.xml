@@ -90,7 +90,7 @@
                 android:drawableTint="@android:color/white"
                 android:gravity="center_vertical"
                 android:padding="20dp"
-                android:text="Gestion profil"
+                android:text="Gestion Event"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
