@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContentProviderCompat.requireContext
@@ -77,7 +78,7 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         actionbar?.setDisplayHomeAsUpEnabled(true)
         actionbar?.setHomeAsUpIndicator(R.drawable.home)
 
-         sharedPreferences = this.getSharedPreferences("user_pref", AppCompatActivity.MODE_PRIVATE)
+        sharedPreferences = this.getSharedPreferences("user_pref", AppCompatActivity.MODE_PRIVATE)
         val userImageRes = sharedPreferences.getString("userImageRes", "")
         // Load user image using Glide
         val circularImageView = findViewById<ImageView>(R.id.circularImageView)
@@ -94,6 +95,9 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
+        activityMainBinding.logout.setOnClickListener {
+            logout()
+        }
 
         // Implement the drawer listener
         activityMainBinding.drawerLayout.setMIDrawerListener(object : MIDrawerView.MIDrawerEvents {
@@ -160,6 +164,7 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
                 slideType = MI_TYPE_DOOR_OUT
                 updateSliderTypeEvents()
             }
+
         }
     }
 
@@ -173,7 +178,7 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
 
     var handler: Handler? = null
     var runnable: Runnable = Runnable {
-        activityMainBinding.logout.setOnClickListener { logout() }
+
         when (slideType) {
             MI_TYPE_SLIDE_WITH_CONTENT -> {
                 activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.scroll)
@@ -182,7 +187,7 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             MI_TYPE_SLIDE -> {
-                activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.scroll)
+                activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.slide)
                 replaceFragment(ProduitFragment())  }
             MI_TYPE_DOOR_IN -> {
                 activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.doorIn)
