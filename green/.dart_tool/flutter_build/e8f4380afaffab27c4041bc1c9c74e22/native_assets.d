@@ -1,1 +1,0 @@
- D:\\GreenWorldFlutter\\green\\.dart_tool\\flutter_build\\e8f4380afaffab27c4041bc1c9c74e22\\native_assets.yaml: 
