@@ -19,7 +19,7 @@ interface UserInterface {
     // Mettre à jour les informations d'un utilisateur
     @PUT("user")
     fun updateUser( @Body updatedUser: User5): Call<User>
-    @PUT("user/update")
+    @PUT("user/updateR")
     fun updateUser2( @Body updatedUser: User1): Call<User>
     // Supprimer un utilisateur
     @DELETE("user/{id}")

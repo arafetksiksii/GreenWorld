@@ -17,6 +17,6 @@ interface Login {
 
     @POST("/user") // Assurez-vous d'utiliser le bon endpoint sur votre serveur
     fun register(@Body user: User2): Call<User>
-    @POST("auth/sendResetCode")
+    @POST("user/sendResetCode")
     fun sendResetCode(@Body user: User3): Call<User>
 }

@@ -90,6 +90,9 @@ dependencies {
     implementation ("com.fasterxml.jackson.core:jackson-core:2.13.0")
     implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.0")
     implementation ("com.applandeo:material-calendar-view:1.9.0-rc03")
+    implementation ("com.facebook.android:facebook-login:latest.release")
+
+
 
 }
 

@@ -1,0 +1,16 @@
+com.example.green.app-core-1.6.0-0 C:\Users\aymen\.gradle\caches\transforms-3\0b940654baf256ae03586fda9feb7746\transformed\core-1.6.0\res
+com.example.green.app-jetified-window-java-1.0.0-beta04-1 C:\Users\aymen\.gradle\caches\transforms-3\151ff085a2a31620a42e68a337718b66\transformed\jetified-window-java-1.0.0-beta04\res
+com.example.green.app-jetified-window-1.0.0-beta04-2 C:\Users\aymen\.gradle\caches\transforms-3\6d4ee56f27249b51bddcce43ae8799fc\transformed\jetified-window-1.0.0-beta04\res
+com.example.green.app-jetified-annotation-experimental-1.1.0-3 C:\Users\aymen\.gradle\caches\transforms-3\f9ffc4bb63f9c4c5940bbd58cb0852b0\transformed\jetified-annotation-experimental-1.1.0\res
+com.example.green.app-debug-4 D:\GreenWorldFlutter\green\android\app\src\debug\res
+com.example.green.app-main-5 D:\GreenWorldFlutter\green\android\app\src\main\res
+com.example.green.app-pngs-6 D:\GreenWorldFlutter\green\build\app\generated\res\pngs\debug
+com.example.green.app-resValues-7 D:\GreenWorldFlutter\green\build\app\generated\res\resValues\debug
+com.example.green.app-rs-8 D:\GreenWorldFlutter\green\build\app\generated\res\rs\debug
+com.example.green.app-mergeDebugResources-9 D:\GreenWorldFlutter\green\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.green.app-mergeDebugResources-10 D:\GreenWorldFlutter\green\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.green.app-merged_res-11 D:\GreenWorldFlutter\green\build\app\intermediates\merged_res\debug
+com.example.green.app-packaged_res-12 D:\GreenWorldFlutter\green\build\connectivity_plus\intermediates\packaged_res\debug
+com.example.green.app-packaged_res-13 D:\GreenWorldFlutter\green\build\package_info_plus\intermediates\packaged_res\debug
+com.example.green.app-packaged_res-14 D:\GreenWorldFlutter\green\build\path_provider_android\intermediates\packaged_res\debug
+com.example.green.app-packaged_res-15 D:\GreenWorldFlutter\green\build\shared_preferences_android\intermediates\packaged_res\debug

@@ -6,6 +6,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginResult
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,6 +26,9 @@ import tn.esprit.greenworld.utils.RetrofitImp
 
 class LoginActivity : MIDrawerActivity() {
     private lateinit var binding: ActivityUserLoginBinding
+    private lateinit var callbackManager: CallbackManager
+
+
     // Define a shared preference name
     private val PREF_NAME = "user_pref"
     private val USER_ID_KEY = "userId"
@@ -35,6 +42,24 @@ class LoginActivity : MIDrawerActivity() {
         binding = ActivityUserLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val rootView = window.decorView.rootView
+        callbackManager = CallbackManager.Factory.create()
+
+        val loginButton = binding.loginButton
+        loginButton.setReadPermissions("email", "public_profile")
+        loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+                // Handle successful login
+                val intent = Intent(this@LoginActivity, MIDrawerActivity::class.java)
+            }
+
+            override fun onCancel() {
+                // Handle canceled login
+            }
+
+            override fun onError(error: FacebookException) {
+                // Handle login error
+            }
+        })
 
         binding.btnLogin.setOnClickListener {
 
@@ -43,7 +68,7 @@ class LoginActivity : MIDrawerActivity() {
                   // email = binding.edtEmail.text.toString(),
                    //password = binding.tiPassword.text.toString()
                           email = "cexepis601@kxgif.com",
-                    password = "Catvcatv11"
+                    password = "123456789"
 
                 )
             ).enqueue(object : Callback<User> {
