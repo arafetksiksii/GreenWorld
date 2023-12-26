@@ -182,8 +182,8 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         when (slideType) {
             MI_TYPE_SLIDE_WITH_CONTENT -> {
                 activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.scroll)
-                val intent = Intent(this, UserUpdate::class.java)
-                startActivity(intent)
+
+                replaceFragment(UserProfileFragment())
             }
 
             MI_TYPE_SLIDE -> {

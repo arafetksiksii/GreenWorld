@@ -12,45 +12,47 @@ tools:context=".ui.gestionUser.UserProfileFragment">
         android:id="@+id/rellay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradientbackground"
+        android:background="@drawable/bg_gradient"
         android:paddingBottom="20dp">
 
 
         <ImageView
-            android:id="@+id/imageRes"
+            android:id="@+id/profile_image"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginStart="140dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginEnd="109dp"
-            android:layout_marginBottom="9dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/circle"
-            android:padding="3dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/camera" />
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="136dp"
+            android:layout_marginTop="98dp"
+            android:background="@drawable/background_dialog"
+            android:src="@drawable/avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageRes"
+            android:layout_below="@+id/profile_image"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="104dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="101dp"
             android:fontFamily="sans-serif-light"
-            android:text="Joey Tribbiani"
+            android:text="zouaoui aymen "
             android:textColor="@color/white"
             android:textSize="32sp" />
 
         <TextView
-            android:id="@+id/tv_address"
+            android:id="@+id/score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_name"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="190dp"
             android:fontFamily="sans-serif"
-            android:text="new york, usa"
+            android:text="score"
             android:textAllCaps="true"
             android:textColor="@color/address"
             android:textSize="14sp" />
@@ -60,10 +62,11 @@ tools:context=".ui.gestionUser.UserProfileFragment">
             android:layout_height="52dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_toEndOf="@+id/imageRes"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="83dp"
+            android:layout_marginRight="26dp"
+
+            android:layout_toEndOf="@+id/profile_image"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
             android:src="@drawable/settings" />
@@ -82,7 +85,7 @@ tools:context=".ui.gestionUser.UserProfileFragment">
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/followersBg"
+            android:background="@color/graylight"
             android:gravity="center"
             android:paddingBottom="5dp"
             android:paddingTop="5dp">
@@ -94,6 +97,7 @@ tools:context=".ui.gestionUser.UserProfileFragment">
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txt_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -105,7 +109,7 @@ tools:context=".ui.gestionUser.UserProfileFragment">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="followers"
+                    android:text="Full Time passed"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="13sp" />
@@ -119,7 +123,7 @@ tools:context=".ui.gestionUser.UserProfileFragment">
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/followingBg"
+            android:background="@color/_bg__frame_31_ek1_color"
             android:gravity="center"
             android:paddingBottom="5dp"
             android:paddingTop="5dp">
@@ -131,6 +135,7 @@ tools:context=".ui.gestionUser.UserProfileFragment">
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txt_Ln"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -142,7 +147,7 @@ tools:context=".ui.gestionUser.UserProfileFragment">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="following"
+                    android:text="Login Count"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="13sp" />
@@ -178,9 +183,10 @@ tools:context=".ui.gestionUser.UserProfileFragment">
                     android:layout_height="wrap_content"
                     android:text="Email"
                     android:textColor="@color/headings"
-                    android:textSize="13sp" />
+                    android:textSize="19sp" />
 
                 <TextView
+                    android:id="@+id/txt_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -207,15 +213,16 @@ tools:context=".ui.gestionUser.UserProfileFragment">
                     android:layout_height="wrap_content"
                     android:text="Phone"
                     android:textColor="@color/headings"
-                    android:textSize="13sp" />
+                    android:textSize="19sp" />
 
                 <TextView
+                    android:id="@+id/txt_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="+1-202-555-0157"
                     android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -236,7 +243,7 @@ tools:context=".ui.gestionUser.UserProfileFragment">
                     android:layout_height="wrap_content"
                     android:text="Twitter"
                     android:textColor="@color/headings"
-                    android:textSize="13sp" />
+                    android:textSize="19sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -244,7 +251,7 @@ tools:context=".ui.gestionUser.UserProfileFragment">
                     android:fontFamily="sans-serif-light"
                     android:text=""
                     android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -265,7 +272,7 @@ tools:context=".ui.gestionUser.UserProfileFragment">
                     android:layout_height="wrap_content"
                     android:text="Facebook"
                     android:textColor="@color/headings"
-                    android:textSize="13sp" />
+                    android:textSize="19sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -273,7 +280,7 @@ tools:context=".ui.gestionUser.UserProfileFragment">
                     android:fontFamily="sans-serif-light"
                     android:text="facebook.com/joeytrib"
                     android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <View
                     android:layout_width="match_parent"

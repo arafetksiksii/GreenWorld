@@ -17,7 +17,7 @@ interface UserInterface {
     fun getUserById(@Path("id") userId: Long): Call<User>
 
     // Mettre à jour les informations d'un utilisateur
-    @PUT("user")
+    @PUT("user/updateUser/{id}")
     fun updateUser( @Body updatedUser: User5): Call<User>
     @PUT("user/updateR")
     fun updateUser2( @Body updatedUser: User1): Call<User>

@@ -36,6 +36,10 @@ class LoginActivity : MIDrawerActivity() {
     private val USER_EMAIL_KEY = "userEmail"
     private val USER_IMAGE_KEY = "userImageRes"
     private val USER_TOKEN_KEY = "tokenLogin"
+    private val USER_TIMEPass_KEY="userTimePass"
+    private val USER_NBLOGIN_KEY="userNBLogin"
+    private val USER_SCORE_KEY="userScore"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -65,10 +69,9 @@ class LoginActivity : MIDrawerActivity() {
 
             RetrofitImp.buildRetrofit().create(Login::class.java).login(
                 User1(
-                  // email = binding.edtEmail.text.toString(),
-                   //password = binding.tiPassword.text.toString()
-                          email = "cexepis601@kxgif.com",
-                    password = "123456789"
+                  email = binding.edtEmail.text.toString(),
+                   password = binding.tiPassword.text.toString()
+
 
                 )
             ).enqueue(object : Callback<User> {
@@ -235,6 +238,13 @@ class LoginActivity : MIDrawerActivity() {
         editor.putString(USER_EMAIL_KEY, user.email)
         editor.putString(USER_IMAGE_KEY, user.imageRes)
         editor.putString(USER_TOKEN_KEY, user.token)
+        editor.putString(USER_NBLOGIN_KEY, user.loginCount)
+        editor.putString(USER_TIMEPass_KEY, user.totalTimeSpen)
+        editor.putString(USER_SCORE_KEY, user.score.toString())
+
+
+
+
         editor.apply()
 
         // Add logs to check values after saving

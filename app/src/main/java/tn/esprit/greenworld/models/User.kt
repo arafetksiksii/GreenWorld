@@ -23,14 +23,17 @@ data class User(
     val resetCode: String,
     val role:Roles,
     val token:String,
-    val score :Int
+    val score :Int,
+    val loginCount:String,
+    val totalTimeSpen:String
 
 ) {
 
 
     override fun toString(): String {
-        return "User(_id='$_id', nom='$nom', prenom='$prenom', dateNaissance=$dateNaissance, adress='$adress', cin='$cin', userName='$userName', email='$email', password='$password', lastPaswword='$lastPaswword', isValid=$isValid, imageRes='$imageRes', resetCode='$resetCode', role=$role, score=$score)"
+        return "User(_id='$_id', nom='$nom', prenom='$prenom', dateNaissance=$dateNaissance, address='$adress', cin='$cin', userName='$userName', email='$email', password='$password', lastPassword='$lastPaswword', isValid=$isValid, imageRes='$imageRes', resetCode='$resetCode', role=$role, score=$score, loginCount=$loginCount, totalTimeSpen=$totalTimeSpen)"
     }
+
 }
 data class User1(
     val email: String,

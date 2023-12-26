@@ -1,5 +1,5 @@
-
 package tn.esprit.greenworld.ui.gestionUser
+
 import android.content.Context
 
 import android.content.SharedPreferences
@@ -25,13 +25,17 @@ class UserProfileFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var textViewName: TextView
     private lateinit var textViewEmail: TextView
+    private lateinit var textViewNum: TextView
+    private lateinit var textViewLoginNumber: TextView
+    private lateinit var textViewTimePass: TextView
     private lateinit var imageView: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        sharedPreferences = requireActivity().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+        sharedPreferences =
+            requireActivity().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
 
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.activity_user_profi, container, false)
@@ -39,22 +43,32 @@ class UserProfileFragment : Fragment() {
         val userName = sharedPreferences.getString("userName", "")
         val userEmail = sharedPreferences.getString("userEmail", "")
         val userImageRes = sharedPreferences.getString("userImageRes", "")
-        Log.d("UserFragment", "UserName: $userName, UserEmail: $userEmail, UserImageRes: $userImageRes")
+        val userNumTel = sharedPreferences.getString("userNumTel", "")
+        val userTimePass = sharedPreferences.getString("userTimePass", "")
+        val userNBLogin = sharedPreferences.getString("userNBLogin", "")
+        Log.d(
+            "UserFragment",
+            "UserName: $userName, UserEmail: $userEmail, UserImageRes: $userImageRes"
+        )
 
         textViewName = view.findViewById(R.id.tv_name)
-        textViewEmail = view.findViewById(R.id.tv_address)
-        imageView = view.findViewById(R.id.imageRes)
+        textViewEmail = view.findViewById(R.id.txt_email)
+        textViewNum = view.findViewById(R.id.txt_num)
+        textViewLoginNumber = view.findViewById(R.id.txt_Ln)
+        textViewTimePass = view.findViewById(R.id.txt_time)
+        imageView = view.findViewById(R.id.profile_image)
 
         textViewName.text = userName
         textViewEmail.text = userEmail
-
+        textViewNum.text = userNumTel
+        textViewLoginNumber.text = userNBLogin
+        textViewTimePass.text = userTimePass
         Glide.with(this)
             .load(userImageRes)
             .apply(
                 RequestOptions()
                     .placeholder(R.drawable.ic_apple)
                     .error(R.drawable.avatar)
-                    .circleCrop()
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
             )
             .into(imageView)

@@ -34,7 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
         dataBinding = true
     }
@@ -70,28 +70,35 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    implementation ("com.squareup.okhttp3:okhttp:4.9.1")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
-    implementation ("com.squareup.picasso:picasso:2.71828")
-    implementation ("com.cloudinary:cloudinary-android:2.5.0")
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.cloudinary:cloudinary-android:2.5.0")
     //chaima
     val preference_version = "1.2.1"
-    implementation ("com.google.android.gms:play-services-maps:17.0.1")
+    implementation("com.google.android.gms:play-services-maps:17.0.1")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.preference:preference:1.2.1")
     implementation("androidx.preference:preference-ktx:$preference_version")
-    implementation ("org.osmdroid:osmdroid-android:6.1.7")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
-    implementation ("com.facebook.android:facebook-android-sdk:+")
-    implementation ("com.facebook.android:facebook-share:+")
+    implementation("org.osmdroid:osmdroid-android:6.1.7")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    implementation("com.facebook.android:facebook-android-sdk:+")
+    implementation("com.facebook.android:facebook-share:+")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
-    implementation ("com.github.mindinventory:minavdrawer:1.2.2")
+    implementation("com.github.mindinventory:minavdrawer:1.2.2")
     implementation("io.github.muddz:styleabletoast:2.4.0")
-    implementation ("com.fasterxml.jackson.core:jackson-core:2.13.0")
-    implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.0")
-    implementation ("com.applandeo:material-calendar-view:1.9.0-rc03")
-    implementation ("com.facebook.android:facebook-login:latest.release")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.13.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
+    implementation("com.applandeo:material-calendar-view:1.9.0-rc03")
+    implementation("com.facebook.android:facebook-login:latest.release")
 
+
+    //aymen
+
+
+    implementation("androidx.credentials:credentials:1.0.0-alpha02")
+    implementation("androidx.credentials:credentials-play-services-auth:1.0.0-alpha02")
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.5.21")
 
 
 }
