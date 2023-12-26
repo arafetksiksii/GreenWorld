@@ -29,16 +29,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Update_Password"
+            android:name=".Update_Email"
             android:exported="false" />
         <activity
-            android:name=".Update_Email"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:name="Update_Password"
+            android:exported="false">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.quiz_activity.QuizListActivity"
@@ -126,7 +122,14 @@
             android:exported="false" />
         <activity
             android:name=".ui.gestionUser.LoginActivity"
-            android:exported="false"></activity>
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Home"
             android:exported="true">

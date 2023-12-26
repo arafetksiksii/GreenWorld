@@ -31,17 +31,13 @@ import tn.esprit.green_world.fragments.HomeFragment
 import tn.esprit.greenworld.activities.MapActivity
 
 import tn.esprit.greenworld.databinding.ActivityMainnavbaraBinding
-import tn.esprit.greenworld.databinding.FavproduitFragmentBinding
+
 import tn.esprit.greenworld.fragments.EventFragment
 import tn.esprit.greenworld.fragments.ProduitFragment
 import tn.esprit.greenworld.fragments.typedechets
 import tn.esprit.greenworld.ui.gestionUser.LoginActivity
 import tn.esprit.greenworld.ui.gestionUser.UserProfileFragment
 
-import tn.esprit.greenworld.ui.gestionUser.User_ForgetPassword
-
-import tn.esprit.greenworld.ui.gestionUser.User_Register
-import tn.esprit.greenworld.ui.quiz_activity.QuizListActivity
 
 open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -50,6 +46,7 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var activityMainBinding: ActivityMainnavbaraBinding
     private lateinit var imageView: ImageView
     private lateinit var sharedPreferences: SharedPreferences // Déplacer ici
+
     // Define a shared preference name
     private val PREF_NAME = "user_pref"
     private val USER_ID_KEY = "userId"
@@ -62,11 +59,8 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         activityMainBinding = ActivityMainnavbaraBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
-
         // Set color for the container's content as transparent
         activityMainBinding.drawerLayout.setScrimColor(Color.TRANSPARENT)
-
-
         activityMainBinding.navScroll.setOnClickListener(this)
         activityMainBinding.navSlide.setOnClickListener(this)
         activityMainBinding.navDoorIn.setOnClickListener(this)
@@ -104,6 +98,7 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
             override fun onDrawerOpened(drawerView: View) {
 
                 super.onDrawerOpened(drawerView)
+
                 Log.d(TAG, "Drawer Opened")
             }
 
@@ -112,23 +107,30 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
                 Log.d(TAG, "Drawer closed")
             }
         })
+
+
         //dark mode
 
-        val currentNightMode = resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
+        val currentNightMode =
+            resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
         when (currentNightMode) {
             android.content.res.Configuration.UI_MODE_NIGHT_YES -> {
                 // Night mode is active
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
+
             android.content.res.Configuration.UI_MODE_NIGHT_NO -> {
                 // Night mode is not active, use the default light mode
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
+
             else -> {
                 // Use the default light mode
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
+
+      //  replaceFragment(UserProfileFragment())
 
 
     }
@@ -148,6 +150,7 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
                 slideType = MI_TYPE_SLIDE_WITH_CONTENT
                 updateSliderTypeEvents()
             }
+
             R.id.nav_slide -> {
                 avoidDoubleClicks(activityMainBinding.navSlide)
                 slideType = MI_TYPE_SLIDE
@@ -159,6 +162,7 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
                 slideType = MI_TYPE_DOOR_IN
                 updateSliderTypeEvents()
             }
+
             R.id.nav_doorOut -> {
                 avoidDoubleClicks(activityMainBinding.navDoorIn)
                 slideType = MI_TYPE_DOOR_OUT
@@ -181,28 +185,36 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
 
         when (slideType) {
             MI_TYPE_SLIDE_WITH_CONTENT -> {
-                activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.scroll)
+                activityMainBinding.includeToolbar.toolbar.title =
+                    this@MIDrawerActivity.resources.getString(R.string.scroll)
 
                 replaceFragment(UserProfileFragment())
             }
 
             MI_TYPE_SLIDE -> {
-                activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.slide)
-                replaceFragment(ProduitFragment())  }
+                activityMainBinding.includeToolbar.toolbar.title =
+                    this@MIDrawerActivity.resources.getString(R.string.slide)
+                replaceFragment(ProduitFragment())
+            }
+
             MI_TYPE_DOOR_IN -> {
-                activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.doorIn)
+                activityMainBinding.includeToolbar.toolbar.title =
+                    this@MIDrawerActivity.resources.getString(R.string.doorIn)
                 replaceFragment(EventFragment())
 
             }
+
             MI_TYPE_DOOR_OUT -> {
-                activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.doorOut)
-                replaceFragment(typedechets())
-            }
-            MI_TYPE_DOOR_OUT -> {
-                activityMainBinding.includeToolbar.toolbar.title = this@MIDrawerActivity.resources.getString(R.string.dechet)
+                activityMainBinding.includeToolbar.toolbar.title =
+                    this@MIDrawerActivity.resources.getString(R.string.doorOut)
                 replaceFragment(typedechets())
             }
 
+            MI_TYPE_DOOR_OUT -> {
+                activityMainBinding.includeToolbar.toolbar.title =
+                    this@MIDrawerActivity.resources.getString(R.string.dechet)
+                replaceFragment(typedechets())
+            }
 
 
         }
@@ -220,9 +232,6 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         return super.onOptionsItemSelected(item)
     }
 
-    /**
-     * Avoid double click.
-     */
     fun avoidDoubleClicks(view: View) {
         val DELAY_IN_MS: Long = 900
         if (!view.isClickable) {
@@ -231,6 +240,7 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         view.isClickable = false
         view.postDelayed({ view.isClickable = true }, DELAY_IN_MS)
     }
+
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
@@ -240,22 +250,10 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
 
     // New method for logout
     private fun logout() {
-        val sharedPreferences: SharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-
-        // Clear all saved user data from shared preferences
-        editor.remove(USER_ID_KEY)
-        editor.remove(USER_NAME_KEY)
-        editor.remove(USER_EMAIL_KEY)
-        editor.remove(USER_IMAGE_KEY)
-        editor.remove(USER_TOKEN_KEY)
-
-        // Apply changes
-        editor.apply()
 
         // Redirect to the login screen or any other appropriate action
-
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }
+
 }

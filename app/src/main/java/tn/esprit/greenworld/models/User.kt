@@ -55,6 +55,7 @@ data class User4(
 
 
 )
+data class UserR(val email: String, val rememberMe: Boolean)
 
 data class User5(
     val id: String,

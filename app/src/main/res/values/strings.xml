@@ -20,7 +20,7 @@
     <string name="txt_otp_validation">Please enter the 4-digit code we sent to your email address</string>
     <string name="txt_otp_adress"> verify your email address.</string>
     <string name="txt_otp_email_code"> We have sent a 4-digit code to the following email address:</string>
-    <string name="txt_otp_email">  @{viewmodel.userName}"</string>
+    <string name="txt_otp_email">zouoouiaymen@gmail.com</string>
     <string name="txt_otp_email_validation">  If you do not receive the confirmation email, please check your spam or unwanted emails."</string>
 
     <string name="txt_reset_password">Reset Password</string>
