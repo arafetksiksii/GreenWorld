@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#99B7DAA6"
-    app:barrierMargin="1dp"
-    tools:context=".ui.gestionUser.User_ValidationCode">
+    android:backgroundTint="#99B7DAA6">
 
     <Button
         android:id="@+id/btnReturn"
-        style="@style/Widget.Material3.Button.IconButton"
+        style="@style/AppTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/Content_description_back"
@@ -19,62 +17,40 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtForgotPwd1"
+        android:id="@+id/txtVerificationTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         android:layout_marginTop="25dp"
-        android:gravity="start|center"
-        android:text="@string/txt_otp_Confirmation"
+        android:gravity="center"
+        android:text="@string/txt_otp_validation"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnReturn" />
 
-    <TextView
-        android:id="@+id/txtForgotPwd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginTop="20dp"
-        android:gravity="start|center"
-        android:text="@string/txt_otp_validation"
-        android:textColor="@color/Primary"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtForgotPwd1" />
-
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayoutCodeEntry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:weightSum="4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtForgotPwd">
+        app:layout_constraintTop_toBottomOf="@+id/txtVerificationTitle">
 
+        <!-- Repeat this block for each digit input -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tiCode1Layout"
             style="@style/EllipseTextInputStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_weight="1">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiCode1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/Content_description_1"
                 android:gravity="center"
-
                 android:inputType="number"
                 android:maxLength="1"
                 android:textSize="40sp"
@@ -87,19 +63,19 @@
             style="@style/EllipseTextInputStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_weight="1">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiCode2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/Content_description_2"
                 android:gravity="center"
                 android:inputType="number"
                 android:maxLength="1"
                 android:textSize="40sp"
                 android:textStyle="bold" />
+
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,14 +84,13 @@
             style="@style/EllipseTextInputStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_weight="1">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiCode3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/Content_description_3"
                 android:gravity="center"
                 android:inputType="number"
                 android:maxLength="1"
@@ -129,22 +104,21 @@
             style="@style/EllipseTextInputStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_weight="1">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiCode4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/Content_description_4"
                 android:gravity="center"
                 android:inputType="number"
                 android:maxLength="1"
                 android:textSize="40sp"
-                android:textStyle="bold"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
+        <!-- Repeat end -->
 
     </LinearLayout>
 
@@ -153,24 +127,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:layout_marginTop="80dp"
-        android:backgroundTint="#437D28"
-        android:paddingLeft="24dp"
-
+        android:background="@drawable/bg_button_verify"
         android:text="@string/btn_verify"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:barrierMargin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCodeEntry" />
+
 
     <TextView
         android:id="@+id/txtNoReception"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="92dp"
         android:gravity="center"
         android:text="@string/txt_no_reception"
         android:textStyle="bold"
@@ -183,17 +153,25 @@
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-
-        android:backgroundTint="#437D28"
+        android:layout_marginTop="144dp"
         android:text="@string/btn_resend_code"
-        android:textColor="#FFFFFF"
-        app:barrierMargin="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNoReception" />
+
+    <TextView
+        android:id="@+id/txtCountdownTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnVerify" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

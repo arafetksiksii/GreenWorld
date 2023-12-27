@@ -20,8 +20,9 @@
 
     <style name="Theme.GreenWorld" parent="Base.Theme.GreenWorld" />
 
-    <style name="EllipseTextInputStyle">
-        <item name="android:background">@drawable/ellipse_background</item>
+    <!-- TextInputLayout style -->
+    <style name="EllipseTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <!-- Add any specific styling for TextInputLayout -->
     </style>
 
     <!-- styles.xml -->

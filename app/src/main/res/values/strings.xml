@@ -74,6 +74,9 @@
     <string name="formatted_time">%02d s</string>
     <string name="time_up">Temps écoulé!</string>
 
+    <string name="seconds_remaining">%1$d seconds remaining</string>
+    <string name="time_up1">Time</string>
+
     <!--  Main  -->
     <string name="main_desc">Every action counts in preserving our precious nature</string>
 

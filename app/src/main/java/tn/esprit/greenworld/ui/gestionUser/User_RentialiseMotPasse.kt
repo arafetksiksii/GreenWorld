@@ -3,7 +3,10 @@ package tn.esprit.greenworld.ui.gestionUser
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
@@ -25,7 +28,9 @@ class User_RentialiseMotPasse:AppCompatActivity() {
         super.onCreate(savedInstanceState)
        binding = ActivityUserRentialiseMotPasseBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        // Set text change listeners
+        setupTextChangeListeners()
+        binding.btnSubmit.visibility = View.INVISIBLE
         binding.btnSubmit.setOnClickListener {
             if (validatePassword() && validateConfirmPassword()) {
                 // Update user information
@@ -139,5 +144,28 @@ class User_RentialiseMotPasse:AppCompatActivity() {
     }
     private fun showSnackbar(message: String) {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun setupTextChangeListeners() {
+        val passwordWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                updateSubmitButtonVisibility()
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        }
+
+        binding.tiPassword.addTextChangedListener(passwordWatcher)
+        binding.tiConfirmPassword.addTextChangedListener(passwordWatcher)
+    }
+
+    private fun updateSubmitButtonVisibility() {
+        if (binding.tiPassword.text.toString() == binding.tiConfirmPassword.text.toString()) {
+            binding.btnSubmit.visibility = View.VISIBLE
+        } else {
+            binding.btnSubmit.visibility = View.INVISIBLE
+        }
     }
 }

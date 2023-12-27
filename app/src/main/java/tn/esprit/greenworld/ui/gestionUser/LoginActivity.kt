@@ -200,7 +200,7 @@ class LoginActivity : MIDrawerActivity() {
         editor.putString(USER_IMAGE_KEY, user.imageRes)
         editor.putString(USER_TOKEN_KEY, user.token)
         editor.putString(USER_NBLOGIN_KEY, user.loginCount)
-        editor.putString(USER_TIMEPass_KEY, user.totalTimeSpen)
+        editor.putString(USER_TIMEPass_KEY, user.totalTimeSpent)
         editor.putString(USER_SCORE_KEY, user.score.toString())
 
 

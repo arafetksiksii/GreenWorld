@@ -1,4 +1,10 @@
 <resources>
 
+    <!-- res/values/styles.xml -->
+    <style name="AppTheme.PopupMenu" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:itemBackground">@drawable/menu_item_background</item>
+    </style>
+
 
 </resources>

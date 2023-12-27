@@ -10,31 +10,38 @@
 
 
 
+    <Button
+        android:id="@+id/btnReturn"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageEllipseNineOne"
+        android:layout_width="366dp"
+        android:layout_height="149dp"
+        android:layout_gravity="top|start"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_ellipse9_81x292"
+        tools:ignore="ContentDescription" />
 
 
-<ImageView
-    android:id="@+id/imageEllipseNineOne"
-    android:layout_width="366dp"
-    android:layout_height="149dp"
-    android:layout_gravity="top|start"
-    android:scaleType="fitXY"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:srcCompat="@drawable/img_ellipse9_81x292"
-    tools:ignore="ContentDescription" />
-
-
-<ImageView
-    android:id="@+id/imageEllipseTen"
-    android:layout_width="170dp"
-    android:layout_height="68dp"
-    android:layout_gravity="top|end"
-    android:scaleType="fitXY"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:srcCompat="@drawable/img_ellipse10"
-    tools:ignore="ContentDescription"
-    tools:src="@drawable/img_ellipse10" />
+    <ImageView
+        android:id="@+id/imageEllipseTen"
+        android:layout_width="170dp"
+        android:layout_height="68dp"
+        android:layout_gravity="top|end"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_ellipse10"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/img_ellipse10" />
 
     <!-- app:suffixText="@string/input_suffix_Email" -->
 

@@ -1,6 +1,7 @@
 package tn.esprit.greenworld.ui.gestionUser
 
 import android.content.Context
+import android.content.Intent
 
 import android.content.SharedPreferences
 
@@ -9,8 +10,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 
 import androidx.fragment.app.Fragment
@@ -19,23 +23,28 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 
 import tn.esprit.greenworld.R
+import tn.esprit.greenworld.Update_Email
+import tn.esprit.greenworld.Update_Password
+import tn.esprit.greenworld.UserUpdate
+import tn.esprit.greenworld.databinding.ActivityUserProfiBinding
 
 class UserProfileFragment : Fragment() {
 
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var textViewName: TextView
-    private lateinit var textViewEmail: TextView
-    private lateinit var textViewNum: TextView
-    private lateinit var textViewLoginNumber: TextView
-    private lateinit var textViewTimePass: TextView
-    private lateinit var imageView: ImageView
+    private lateinit var binding: ActivityUserProfiBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = ActivityUserProfiBinding.inflate(inflater, container, false)
+
+
+
         sharedPreferences =
             requireActivity().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+
 
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.activity_user_profi, container, false)
@@ -51,18 +60,14 @@ class UserProfileFragment : Fragment() {
             "UserName: $userName, UserEmail: $userEmail, UserImageRes: $userImageRes"
         )
 
-        textViewName = view.findViewById(R.id.tv_name)
-        textViewEmail = view.findViewById(R.id.txt_email)
-        textViewNum = view.findViewById(R.id.txt_num)
-        textViewLoginNumber = view.findViewById(R.id.txt_Ln)
-        textViewTimePass = view.findViewById(R.id.txt_time)
-        imageView = view.findViewById(R.id.profile_image)
 
-        textViewName.text = userName
-        textViewEmail.text = userEmail
-        textViewNum.text = userNumTel
-        textViewLoginNumber.text = userNBLogin
-        textViewTimePass.text = userTimePass
+
+        binding.tvName.text = userName
+        binding.txtEmail.text = userEmail
+        binding.txtNum.text = userNumTel
+        binding.txtLn.text = userNBLogin
+        binding.txtTime.text = userTimePass
+
         Glide.with(this)
             .load(userImageRes)
             .apply(
@@ -71,8 +76,42 @@ class UserProfileFragment : Fragment() {
                     .error(R.drawable.avatar)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
             )
-            .into(imageView)
+            .into(binding.profileImage)
+        binding.btnSetting.setOnClickListener { showPopupMenu(it) }
+        // Handle Return button click
 
-        return view
+        return binding.root
     }
+
+    private fun showPopupMenu(view: View) {
+        val popupMenu = PopupMenu(requireContext(), view)
+        popupMenu.menuInflater.inflate(R.menu.setting_options_menu, popupMenu.menu)
+
+        popupMenu.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.menuUpdatePassword -> {
+
+                    startActivity(Intent(this.context, Update_Password::class.java))
+                    true
+                }
+
+                R.id.menuUpdateEmail -> {
+
+                    startActivity(Intent(this.context, Update_Email::class.java))
+                    true
+                }
+
+                R.id.menuUserUpdate -> {
+                    startActivity(Intent(this.context, UserUpdate::class.java))
+                    true
+                }
+
+                else -> false
+            }
+        }
+
+        popupMenu.show()
+    }
+
 }
+

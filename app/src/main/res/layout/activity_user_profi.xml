@@ -14,7 +14,14 @@ tools:context=".ui.gestionUser.UserProfileFragment">
         android:layout_height="wrap_content"
         android:background="@drawable/bg_gradient"
         android:paddingBottom="20dp">
-
+        <Button
+            android:id="@+id/btnReturn"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/profile_image"
@@ -58,14 +65,15 @@ tools:context=".ui.gestionUser.UserProfileFragment">
             android:textSize="14sp" />
 
         <ImageView
+            android:id="@+id/btn_setting"
             android:layout_width="65dp"
             android:layout_height="52dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_marginStart="65dp"
             android:layout_marginTop="83dp"
-            android:layout_marginRight="26dp"
 
+            android:layout_marginRight="26dp"
             android:layout_toEndOf="@+id/profile_image"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"

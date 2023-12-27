@@ -4,14 +4,17 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import tn.esprit.greenworld.R
 import tn.esprit.greenworld.databinding.ActivityUserValidationCodeBinding
 import tn.esprit.greenworld.models.User
 import tn.esprit.greenworld.models.User3
@@ -23,11 +26,15 @@ class User_ValidationCode : AppCompatActivity() {
 
     private lateinit var binding: ActivityUserValidationCodeBinding
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var countDownTimer: CountDownTimer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserValidationCodeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        startCountdownTimer()
+        binding.btnVerify.isEnabled = false
+        startButtonAnimation()
         binding.btnVerify.setOnClickListener {
             if (checkOTP()) {
                 // Verification code is correct
@@ -35,8 +42,11 @@ class User_ValidationCode : AppCompatActivity() {
             } else {
                 // Verification code is incorrect
                 Toast.makeText(this, "Incorrect verification code", Toast.LENGTH_SHORT).show()
+                startButtonAnimation()
             }
         }
+
+
         sharedPreferences = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
 
         val userEmail = sharedPreferences.getString("userEmail", "")
@@ -108,12 +118,20 @@ class User_ValidationCode : AppCompatActivity() {
                     } else if (s?.isEmpty() == true && index > 0) {
                         editTextList[index - 1].requestFocus()
                     }
+
+                    // Check if the code is valid and update the button state
+                    if (checkOTP()) {
+                        stopButtonAnimation()
+                        binding.btnVerify.isEnabled = true
+                    }
                 }
 
                 override fun afterTextChanged(s: Editable?) {}
             })
         }
     }
+
+
 
     private fun checkOTP(): Boolean {
         val enteredCode = buildVerificationCode()
@@ -134,5 +152,44 @@ class User_ValidationCode : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE)
 
         return sharedPreferences.getString("resetCode", "0")?.toIntOrNull() ?: 0
+    }
+
+
+    private fun startButtonAnimation() {
+        Log.d("Animation", "Starting Button Animation")
+        binding.btnVerify.apply {
+            isEnabled = false
+            val animation = AnimationUtils.loadAnimation(context, R.anim.rotate_button)
+            startAnimation(animation)
+        }
+    }
+
+
+
+
+    private fun stopButtonAnimation() {
+        Log.d("Animation", "Stopping Button Animation")
+        binding.btnVerify.apply {
+            clearAnimation()
+            isEnabled = true
+        }
+    }
+
+    private fun startCountdownTimer() {
+        countDownTimer = object : CountDownTimer(30000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val secondsRemaining = millisUntilFinished / 1000
+                binding.txtCountdownTimer.text = getString(R.string.seconds_remaining, secondsRemaining)
+            }
+
+            override fun onFinish() {
+                binding.txtCountdownTimer.text = getString(R.string.time_up1)
+                // Perform any action you need when the timer finishes
+            }
+        }.start()
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        countDownTimer.cancel()  // Avoid memory leaks
     }
 }

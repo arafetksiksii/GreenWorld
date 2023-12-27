@@ -44,7 +44,10 @@ class UserUpdate : AppCompatActivity() {
         binding = ActivityUserUpdateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        // Handle Return button click
+        binding.btnReturn.setOnClickListener {
+            finish()
+        }
 // Initialiser sharedPreferences ici
         sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE)
 

@@ -10,6 +10,9 @@
     <color name="colorSecondaryDark">#333744</color>
     <color name="colorSecondaryLight">#111d40</color>
     <color name="colorSecondaryOverLay">#CC0c0f18</color>
+    <!-- res/values/colors.xml -->
+
+    <color name="colorTextPrimary">#000000</color>
 
     <color name="red">#FF0000</color>
     <color name="yellow">#FFFF00</color>

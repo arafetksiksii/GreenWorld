@@ -13,7 +13,14 @@
     <!-- Bouton pour la sélection d'image -->
 
     <!-- ImageView pour afficher l'image sélectionnée -->
-
+    <Button
+        android:id="@+id/btnReturn"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <Button
         android:id="@+id/selectImageButton"
         app:layout_constraintEnd_toEndOf="parent"

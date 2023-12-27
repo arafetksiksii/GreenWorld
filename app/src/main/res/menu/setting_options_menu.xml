@@ -1,0 +1,20 @@
+<!-- res/menu/setting_options_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuUpdatePassword"
+        android:title="Update Password"
+        android:icon="@drawable/ic_password"
+        />
+
+    <item
+        android:id="@+id/menuUpdateEmail"
+        android:title="Update Email"
+        android:icon="@drawable/ic_email"
+        />
+
+    <item
+        android:id="@+id/menuUserUpdate"
+        android:title="User Update"
+        android:icon="@drawable/ic_baseline_person_24"
+         />
+</menu>
