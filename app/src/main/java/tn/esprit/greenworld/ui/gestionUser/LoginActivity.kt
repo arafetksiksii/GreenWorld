@@ -12,10 +12,11 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.login.LoginResult
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,7 +32,7 @@ import tn.esprit.greenworld.utils.RetrofitImp
 
 class LoginActivity : MIDrawerActivity() {
     private lateinit var binding: ActivityUserLoginBinding
-    private lateinit var callbackManager: CallbackManager
+
     private lateinit var dbHelper: DatabaseHelper
 
 
@@ -53,6 +54,9 @@ class LoginActivity : MIDrawerActivity() {
 
     private val PASSWORD_KEY = "password"
 
+    private lateinit var gso: GoogleSignInOptions
+    private lateinit var gsc: GoogleSignInClient
+
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,25 +66,6 @@ class LoginActivity : MIDrawerActivity() {
 
         binding = ActivityUserLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val rootView = window.decorView.rootView
-        callbackManager = CallbackManager.Factory.create()
-
-        val loginButton = binding.btnFacebookLogin
-        loginButton.setReadPermissions("email", "public_profile")
-        loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
-            override fun onSuccess(loginResult: LoginResult) {
-                // Handle successful login
-                val intent = Intent(this@LoginActivity, MIDrawerActivity::class.java)
-            }
-
-            override fun onCancel() {
-                // Handle canceled login
-            }
-
-            override fun onError(error: FacebookException) {
-                // Handle login error
-            }
-        })
 
         binding.btnLogin.setOnClickListener {
             val storedUsername = sharedPreferences.getString(USER_EMAIL_KEY_NEW, "")
@@ -117,10 +102,15 @@ class LoginActivity : MIDrawerActivity() {
                     performLogin(username, password)
                 } else {
                     // Display a Toast message if username or password is empty
-                    Toast.makeText(this@LoginActivity, "Please enter both username and password.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@LoginActivity,
+                        "Please enter both username and password.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
+
 
 
 
@@ -183,7 +173,14 @@ class LoginActivity : MIDrawerActivity() {
 
 
 
+        gso =
+            GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
+        gsc = GoogleSignIn.getClient(this, gso)
 
+        binding.btnGoogleLogin.setOnClickListener {
+            signIn()
+
+        }
 
     }
 
@@ -294,6 +291,41 @@ class LoginActivity : MIDrawerActivity() {
         })
 
     }
+
+
+
+    private fun signIn() {
+        val signInIntent = gsc!!.signInIntent
+        startActivityForResult(signInIntent, 1000)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1000) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+
+                // You can use the GoogleSignInAccount to get user information
+                val username = account?.displayName
+                val email = account?.email
+                val userId = account?.id
+
+               Log.d("googem1",email.toString()+username.toString())
+                // Perform the necessary actions with user information (e.g., pass it to the server for authentication)
+
+                // You might want to save some user information to SharedPreferences or perform other actions here
+
+                // Proceed with your application logic, e.g., navigate to the main activity
+                val intent = Intent(this@LoginActivity, MIDrawerActivity::class.java)
+                startActivity(intent)
+                finish()
+            } catch (e: ApiException) {
+                Toast.makeText(applicationContext, "Google Sign-In failed: ${e.statusCode}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 
 
 }

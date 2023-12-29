@@ -99,7 +99,7 @@ dependencies {
     implementation("androidx.credentials:credentials:1.0.0-alpha02")
     implementation("androidx.credentials:credentials-play-services-auth:1.0.0-alpha02")
     implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.5.21")
-
+    implementation ("com.google.android.gms:play-services-auth:20.7.0")
 
 }
 
