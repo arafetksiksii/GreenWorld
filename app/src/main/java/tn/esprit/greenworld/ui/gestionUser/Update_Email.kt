@@ -1,4 +1,4 @@
-package tn.esprit.greenworld
+package tn.esprit.greenworld.ui.gestionUser
 
 import android.animation.ObjectAnimator
 import android.content.Context
@@ -13,6 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import tn.esprit.greenworld.R
 import tn.esprit.greenworld.databinding.ActivityUpdateEmailBinding
 import tn.esprit.greenworld.models.User
 import tn.esprit.greenworld.models.User5

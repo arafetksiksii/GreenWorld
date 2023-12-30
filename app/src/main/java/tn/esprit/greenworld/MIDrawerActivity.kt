@@ -27,6 +27,9 @@ import com.mindinventory.midrawer.MIDrawerView.Companion.MI_TYPE_DOOR_IN
 import com.mindinventory.midrawer.MIDrawerView.Companion.MI_TYPE_DOOR_OUT
 import com.mindinventory.midrawer.MIDrawerView.Companion.MI_TYPE_SLIDE
 import com.mindinventory.midrawer.MIDrawerView.Companion.MI_TYPE_SLIDE_WITH_CONTENT
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import tn.esprit.green_world.fragments.HomeFragment
 import tn.esprit.greenworld.activities.MapActivity
 
@@ -37,6 +40,8 @@ import tn.esprit.greenworld.fragments.ProduitFragment
 import tn.esprit.greenworld.fragments.typedechets
 import tn.esprit.greenworld.ui.gestionUser.LoginActivity
 import tn.esprit.greenworld.ui.gestionUser.UserProfileFragment
+import tn.esprit.greenworld.utils.Login
+import tn.esprit.greenworld.utils.RetrofitImp
 
 
 open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
@@ -90,7 +95,10 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
 
 
         activityMainBinding.logout.setOnClickListener {
-            logout()
+
+            val id = sharedPreferences.getString("userIds", "")
+            val token = sharedPreferences.getString("tokenLogin", "")
+            logout(id.toString(),token.toString())
         }
 
         // Implement the drawer listener
@@ -248,12 +256,31 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         fragmentTransaction.commit()
     }
 
-    // New method for logout
-    private fun logout() {
 
-        // Redirect to the login screen or any other appropriate action
-        startActivity(Intent(this, LoginActivity::class.java))
-        finish()
+
+    private fun logout(userId: String, token: String) {
+        val call: Call<Void> = RetrofitImp.buildRetrofit().create(Login::class.java).logout(token, userId)
+
+        call.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    // Start LoginActivity after successful logout
+                    startActivity(Intent(this@MIDrawerActivity, LoginActivity::class.java))
+                    finish()
+                    println("Logout successful")
+                } else {
+                    // Handle logout failure
+                    println("Logout failed: ${response.errorBody()?.string()}")
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                // Handle network or other errors
+                println("Network error: ${t.message}")
+            }
+        })
     }
+
+
 
 }

@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import tn.esprit.greenworld.UserUpdate
 import tn.esprit.greenworld.activities.CustomCalendar
 import tn.esprit.greenworld.activities.EventsMainPage
 import tn.esprit.greenworld.adapters.EventAdapter

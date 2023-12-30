@@ -10,12 +10,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
 
-import android.widget.ImageView
 import android.widget.PopupMenu
-import android.widget.TextView
 
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -23,9 +19,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 
 import tn.esprit.greenworld.R
-import tn.esprit.greenworld.Update_Email
-import tn.esprit.greenworld.Update_Password
-import tn.esprit.greenworld.UserUpdate
+
 import tn.esprit.greenworld.databinding.ActivityUserProfiBinding
 
 class UserProfileFragment : Fragment() {
@@ -102,7 +96,7 @@ class UserProfileFragment : Fragment() {
                 }
 
                 R.id.menuUserUpdate -> {
-                    startActivity(Intent(this.context, UserUpdate::class.java))
+                    startActivity(Intent(this.context, UserUpdate_Image::class.java))
                     true
                 }
 
