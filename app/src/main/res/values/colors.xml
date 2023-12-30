@@ -130,7 +130,8 @@
     <color name="grey">#E5E5E5</color>
 
 
-
+    <color name="strong_password">#4CAF50</color> <!-- Green for strong password -->
+    <color name="weak_password">#F44336</color> <!-- Red for weak password -->
 
 
 </resources>

@@ -1,8 +1,10 @@
-package tn.esprit.greenworld
+package tn.esprit.greenworld.ui.gestionUser
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
@@ -12,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import tn.esprit.greenworld.R
 import tn.esprit.greenworld.databinding.ActivityUpdatePasswordBinding
 import tn.esprit.greenworld.models.User
 import tn.esprit.greenworld.models.User1
@@ -91,6 +94,10 @@ class Update_Password : AppCompatActivity() {
         binding.btnReturn.setOnClickListener {
             finish()
         }
+
+
+        binding.tiPassword.addTextChangedListener(passwordStrengthWatcher)
+
     }
 
     private fun showRestCodeDialog(code: String,password: String,email: String) {
@@ -183,5 +190,37 @@ class Update_Password : AppCompatActivity() {
         // Add your password validation logic here
         val passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}\$"
         return Regex(passwordRegex).matches(password)
+    }
+
+
+
+    private val passwordStrengthWatcher = object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+            if (s != null) {
+                updatePasswordStrengthView(s.toString())
+            }
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+    }
+
+    private fun updatePasswordStrengthView(password: String) {
+        // Example logic for password strength
+        when {
+            password.isEmpty() -> {
+                binding.passwordStrengthIndicator.text = ""
+                binding.passwordStrengthIndicator.setBackgroundColor(getColor(R.color.transparent))
+            }
+            isValidPassword(password) -> {
+                binding.passwordStrengthIndicator.text = "Strong password"
+                binding.passwordStrengthIndicator.setBackgroundColor(getColor(R.color.strong_password))
+            }
+            else -> {
+                binding.passwordStrengthIndicator.text = "Weak password"
+                binding.passwordStrengthIndicator.setBackgroundColor(getColor(R.color.weak_password))
+            }
+        }
     }
 }
