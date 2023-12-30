@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_margin="16dp"
+
+    android:background="@drawable/bg_white_corner_16"
+    tools:context=".fragments.CommentBottomSheet">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="@drawable/bg_yellow_corner_16_top_left_right"
+        android:text="Send Your Feedback"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="Please send us your feedback"/>
+        <EditText
+            android:id="@+id/commentText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_corner_10_border_gray"
+            android:padding="15dp"
+            android:layout_marginTop="16dp"
+            android:hint="FeedBack"
+            />
+
+        <TextView
+            android:id="@+id/eventID"
+            android:layout_width="306dp"
+            android:layout_height="2dp"
+            android:text="TextView"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/userID"
+            android:layout_width="319dp"
+            android:layout_height="4dp"
+            android:text="TextView"
+            android:visibility="invisible" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:alpha="0.4"
+                android:background="@drawable/bg_gray_corner_10"
+                android:text="No, Thank You"
+                android:textSize="14sp"
+                app:iconTint="#FFEB3B" />
+
+            <Button
+                android:id="@+id/envoyer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_yellow_corner_10"
+                android:text="Send"
+                android:textColor="#E7E8E2"
+                android:textColorLink="#CDDC39"
+                android:textSize="14sp"
+                app:iconTint="#FFEB3B" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

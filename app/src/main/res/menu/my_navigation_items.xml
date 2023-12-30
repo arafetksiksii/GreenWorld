@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home"
+        android:title="Home" />
+    <item
+        android:id="@+id/Store"
+        android:icon="@drawable/shop"
+        android:title="Store" />
+    <item
+        android:id="@+id/dechets"
+        android:icon="@drawable/baseline_recycling_24"
+        android:title="Dechets" />
+    <item
+        android:id="@+id/Event"
+        android:icon="@drawable/baseline_event_24"
+        android:title="Event" />
+    <item
+        android:id="@+id/quiz"
+        android:icon="@drawable/baseline_quiz_24"
+        android:title="Quiz" />
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/settings"
+        android:title="Settings" />
+
+
+    <item android:title="Profile">
+        <menu>
+            <item
+                android:id="@+id/nav_login"
+                android:icon="@drawable/profil"
+                android:title="Login" />
+        </menu>
+    </item>
+
+
+</menu>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="home"
+        android:icon="@drawable/ic_home"
+        android:id="@+id/homeFragment"/>
+
+    <item android:title="favorite"
+        android:icon="@drawable/ic_heart"
+        android:id="@+id/favoriteFragment"/>
+    <item android:title="Event"
+        android:icon="@drawable/baseline_event_24"
+        android:id="@+id/EventFragment"/>
+    <item android:title="Dechets"
+        android:icon="@drawable/baseline_recycling_24"
+        android:id="@+id/typeFragment" />
+
+    <item android:title="store"
+        android:icon="@drawable/ic_shop"
+        android:id="@+id/produitFragment"/>
+</menu>
