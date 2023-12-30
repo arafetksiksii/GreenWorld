@@ -90,9 +90,17 @@ Green World
 
     <!--  STATICS  -->
 
-    <string name="facebook_client_token">b11b19cf6002767cf2ec5683bd3da0c8</string>
-    <string name="fb_login_protocol_scheme">fbb11b19cf6002767cf2ec5683bd3da0c8</string>
-    <string name="facebook_app_id">739564591530426</string>
+    <string name="facebook_client_token">2f05a541c203b1b7bc65ab4d45fce1a9</string>
+    <string name="fb_login_protocol_scheme">fb696561575781314</string>
+    <string name="facebook_app_id">696561575781314</string>
+
+
+
+
+
+
+
+
     <!--  ErrorsMessages  -->
 
     <!--  Main  -->
