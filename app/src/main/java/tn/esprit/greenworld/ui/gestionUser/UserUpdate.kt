@@ -46,12 +46,12 @@ class UserUpdate : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE)
 
         // Check if MediaManager is already initialized
-        if (!MediaManager.get().isInitialized) {
+
             config["cloud_name"] = "dznvwntjn"
             config["api_key"] = "972319243848173"
             config["api_secret"] = "xp2G8BXbjvjec0dbFIaQbUJ3Mj8"
             MediaManager.init(this, config)
-        }
+
 
         selectedImageView = findViewById(R.id.selectedImageView)
 

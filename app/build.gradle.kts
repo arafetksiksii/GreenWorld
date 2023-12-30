@@ -91,6 +91,7 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
     implementation("com.applandeo:material-calendar-view:1.9.0-rc03")
     implementation("com.facebook.android:facebook-login:latest.release")
+    implementation ("com.facebook.android:facebook-android-sdk:[4,5)")
 
 
     //aymen
@@ -100,6 +101,7 @@ dependencies {
     implementation("androidx.credentials:credentials-play-services-auth:1.0.0-alpha02")
     implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.5.21")
     implementation ("com.google.android.gms:play-services-auth:20.7.0")
+
 
 }
 

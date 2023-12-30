@@ -12,12 +12,22 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
+import com.facebook.CallbackManager
+import com.facebook.FacebookAuthorizationException
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.FacebookOperationCanceledException
+import com.facebook.FacebookSdk
+import com.facebook.GraphRequest
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
+import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +35,7 @@ import tn.esprit.greenworld.MIDrawerActivity
 import tn.esprit.greenworld.databinding.ActivityUserLoginBinding
 import tn.esprit.greenworld.models.User
 import tn.esprit.greenworld.models.User1
+import tn.esprit.greenworld.models.UserData
 import tn.esprit.greenworld.utils.DatabaseHelper
 import tn.esprit.greenworld.utils.Login
 import tn.esprit.greenworld.utils.RetrofitImp
@@ -57,6 +68,7 @@ class LoginActivity : MIDrawerActivity() {
     private lateinit var gso: GoogleSignInOptions
     private lateinit var gsc: GoogleSignInClient
 
+    private lateinit var callbackManager: CallbackManager
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,6 +78,7 @@ class LoginActivity : MIDrawerActivity() {
 
         binding = ActivityUserLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        FacebookSdk.sdkInitialize(applicationContext)
 
         binding.btnLogin.setOnClickListener {
             val storedUsername = sharedPreferences.getString(USER_EMAIL_KEY_NEW, "")
@@ -181,6 +194,69 @@ class LoginActivity : MIDrawerActivity() {
             signIn()
 
         }
+
+
+        callbackManager = CallbackManager.Factory.create()
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+            object : FacebookCallback<LoginResult> {
+                override fun onSuccess(loginResult: LoginResult) {
+                    val accessToken = loginResult.accessToken
+                    val request = GraphRequest.newMeRequest(accessToken) { jsonObject, _ ->
+                        jsonObject?.let {
+                            try {
+                                val userId = it.getString("id")
+                                val userName = it.getString("name")
+                                val userEmail = it.getString("email")
+
+                                // Print or use the user information as needed
+                                Log.d("FacebookLogin", "User ID: $userId, Name: $userName, Email: $userEmail")
+
+                                // You can pass this information to other functions or activities as needed
+                                // For example, save it to SharedPreferences or start a new activity
+                            } catch (e: JSONException) {
+                                e.printStackTrace()
+                            }
+                        }
+                    }
+
+                    val parameters = Bundle()
+                    parameters.putString("fields", "id,name,email") // Specify the fields you need
+                    request.parameters = parameters
+                    request.executeAsync()
+                }
+
+
+
+                override fun onCancel() {
+                    // App code
+                }
+
+                override fun onError(exception: FacebookException) {
+                    // Handle different types of FacebookException
+                    when (exception) {
+                        is FacebookAuthorizationException -> {
+                            // Authorization failed (e.g., user denied permissions)
+                            Log.e("FacebookLogin", "Authorization failed: ${exception.message}")
+                            // Handle the error in your app, show a message to the user, etc.
+                        }
+                        is FacebookOperationCanceledException -> {
+                            // Operation canceled (e.g., the user canceled the login process)
+                            Log.e("FacebookLogin", "Operation canceled: ${exception.message}")
+                            // Handle the error in your app, show a message to the user, etc.
+                        }
+                        else -> {
+                            // Other types of FacebookException
+                            Log.e("FacebookLogin", "Facebook login error: ${exception.message}")
+                            // Handle the error in your app, show a generic message to the user, etc.
+                        }
+                    }
+                }})
+        binding.btnFacebookLogin.setOnClickListener {
+            LoginManager.getInstance().logInWithReadPermissions(this, listOf("public_profile"))
+        }
+
+
 
     }
 
@@ -301,31 +377,80 @@ class LoginActivity : MIDrawerActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
         if (requestCode == 1000) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
 
-                // You can use the GoogleSignInAccount to get user information
                 val username = account?.displayName
                 val email = account?.email
                 val userId = account?.id
 
-               Log.d("googem1",email.toString()+username.toString())
-                // Perform the necessary actions with user information (e.g., pass it to the server for authentication)
+                Log.d("googem1", "$email$username$userId")
 
-                // You might want to save some user information to SharedPreferences or perform other actions here
+                RetrofitImp.buildRetrofit().create(Login::class.java).loginWithFacebook(
+                    UserData(
+                        email = email.orEmpty(),
+                        tokenfb = userId.orEmpty(),
+                        nom = username.orEmpty(),
+                        prenom = username.orEmpty()
+                    )
+                ).enqueue(object : Callback<User> {
+                    override fun onResponse(call: Call<User>, response: Response<User>) {
+                        if (response.isSuccessful) {
+                            val user = response.body()
+                            Log.d("user fbbbb0", user.toString())
+                            user?.let {
+                                Log.d("eeeeeeeeeee", user.toString())
+                                saveUserToPreferences(user)
 
-                // Proceed with your application logic, e.g., navigate to the main activity
-                val intent = Intent(this@LoginActivity, MIDrawerActivity::class.java)
-                startActivity(intent)
-                finish()
+                                val intent = Intent(this@LoginActivity, MIDrawerActivity::class.java)
+                                intent.putExtra("userId", user._id)
+                                intent.putExtra("userName", user.userName)
+                                intent.putExtra("userEmail", user.email)
+                                intent.putExtra("userImageRes", user.imageRes)
+                                startActivity(intent)
+                                finish()
+                            } ?: run {
+                                Log.e("LoginActivity", "Login response body is null")
+                                Snackbar.make(
+                                    binding.contextView,
+                                    "Login failed. Please try again.",
+                                    Snackbar.LENGTH_SHORT
+                                ).show()
+                            }
+                        } else {
+                            val errorBody = response.errorBody()?.string().orEmpty()
+                            Log.d("LoginActivity", "Login failed. Error: $errorBody")
+                            Snackbar.make(
+                                binding.contextView,
+                                "Login failed. Please try again.",
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<User>, t: Throwable) {
+                        Log.e("LoginActivity", "Login request failed", t)
+                        Snackbar.make(
+                            binding.contextView,
+                            "Login request failed. Please try again.",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
+                })
             } catch (e: ApiException) {
-                Toast.makeText(applicationContext, "Google Sign-In failed: ${e.statusCode}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    applicationContext,
+                    "Google Sign-In failed: ${e.statusCode}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
+        } else {
+            callbackManager.onActivityResult(requestCode, resultCode, data)
         }
     }
-
 
 
 }

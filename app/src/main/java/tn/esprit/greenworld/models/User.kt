@@ -57,7 +57,14 @@ data class User4(
 
 )
 data class UserR(val email: String, val rememberMe: Boolean)
+data class UserData(
 
+    val email: String,
+    val nom: String,
+    val prenom: String,
+    val tokenfb: String
+    // Include other user details as needed
+)
 data class User5(
     val id: String,
     val email: String,

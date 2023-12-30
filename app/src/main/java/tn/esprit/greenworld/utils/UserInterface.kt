@@ -1,11 +1,13 @@
 package tn.esprit.greenworld.utils
 
+
 import retrofit2.Call
 import retrofit2.http.*
 import tn.esprit.greenworld.models.User
 import tn.esprit.greenworld.models.User1
 import tn.esprit.greenworld.models.User4
 import tn.esprit.greenworld.models.User5
+import tn.esprit.greenworld.models.UserData
 
 interface UserInterface {
     // Créer un nouvel utilisateur
@@ -38,4 +40,8 @@ interface UserInterface {
 
     @PUT("admin/newPassword")
     fun updatePassword(@Body updatedUser: User1): Call<User>
+
+
+
+
 }
