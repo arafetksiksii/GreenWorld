@@ -10,6 +10,7 @@
 
     android:background="@drawable/bg_white_corner_16"
     tools:context=".fragments.CommentBottomSheet">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,6 +35,21 @@
             android:gravity="center"
             android:textStyle="bold"
             android:text="Please send us your feedback"/>
+        <!-- Image de l'avatar de l'utilisateur -->
+
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="55dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/count_background"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
             android:id="@+id/commentText"
             android:layout_width="match_parent"

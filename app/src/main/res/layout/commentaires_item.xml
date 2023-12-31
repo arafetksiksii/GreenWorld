@@ -1,44 +1,71 @@
-<!-- commentaire_item.xml -->
-<androidx.constraintlayout.widget.ConstraintLayout
+<!-- commentaire_item_facebook.xml -->
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="16dp">
 
+    <!-- Image de profil circulaire -->
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/count_background"
-        android:scaleType="centerCrop"
-        android:src="@drawable/avatar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:id="@+id/profileImage"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/circle_background" />
 
-    <TextView
-        android:id="@+id/comment"
+    <!-- Conteneur pour le nom d'utilisateur et le commentaire -->
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintStart_toEndOf="@id/imageView6"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/iconLayout"
-        tools:ignore="MissingConstraints" />
+        android:layout_toEndOf="@+id/profileImage"
+        android:layout_toStartOf="@+id/actionIcons"
+        android:orientation="vertical">
 
+        <!-- Vue pour afficher le nom d'utilisateur -->
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="John Doe"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <!-- Vue pour afficher le commentaire -->
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This is a sample comment."
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!-- Conteneur pour les icônes d'actions -->
     <LinearLayout
-        android:id="@+id/iconLayout"
+        android:id="@+id/actionIcons"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toEndOf="@id/comment"
-        app:layout_constraintTop_toBottomOf="@id/comment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Icône de suppression -->
+        <ImageView
+            android:id="@+id/deleteIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_delete"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Icône de mise à jour -->
+        <ImageView
+            android:id="@+id/updateIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/baseline_edit_24" />
+
+    </LinearLayout>
+
+</RelativeLayout>

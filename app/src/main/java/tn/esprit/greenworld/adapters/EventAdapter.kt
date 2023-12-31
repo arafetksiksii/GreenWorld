@@ -79,9 +79,11 @@ class EventAdapter (): RecyclerView.Adapter<EventAdapter.EventListViewHolder>() 
 
 
         println(event)
+        val imageUrl = "http://10.0.2.2:9090/img/${event.image}"
+        Log.d("Glide", "Image URL: $imageUrl")
 
         Glide.with(holder.binding.root)
-            .load(event.image)
+            .load(imageUrl)
             .into(holder.binding.imageEvent)
       //  holder.binding.titreEvent.text = event.titre
       //  holder.binding.location.text=event.lieu
@@ -90,7 +92,7 @@ class EventAdapter (): RecyclerView.Adapter<EventAdapter.EventListViewHolder>() 
       //  holder.binding.nbParticipant.text= event.nbparticipant.toString()
         holder.binding.titreEvent.text= eventList[position].titre
         holder.binding.location.text=eventList[position].lieu
-        holder.binding.dateDebut.text=eventList[position].datedebut
+        // holder.binding.dateDebut.text= eventList[position].datedebut.toString()
         holder.binding.nbParticipant.text= eventList[position].nbparticipant.toString()
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(eventList[position])
@@ -100,7 +102,7 @@ class EventAdapter (): RecyclerView.Adapter<EventAdapter.EventListViewHolder>() 
             onListEventClick.invoke(eventList[position])
 
         }
-        }
+    }
 
     override fun getItemCount(): Int {
         return eventList.size

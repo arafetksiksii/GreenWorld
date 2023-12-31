@@ -1,27 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MapActivity"
-    android:orientation="vertical">
-  <TextView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.MapActivity">
+
+  <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbar"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:gravity="center"
-      android:text="Notre Map d'evennement"
-      android:textSize="24sp"
-      android:layout_marginTop="10dp"
-      android:layout_marginBottom="20dp"
-      android:textColor="@color/drawer_color"
-      android:textStyle="bold"
-      />
+      android:layout_height="?attr/actionBarSize"
+      android:background="?attr/colorPrimary"
+      android:elevation="4dp"
+      android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+      app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@id/toolbar"
+      android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Notre Map d'evennement"
+        android:textSize="24sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/drawer_color"
+        android:textStyle="bold" />
+
     <org.osmdroid.views.MapView
         android:id="@+id/map"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        />
-        
+        android:layout_width="match_parent" />
+  </LinearLayout>
 
-
-</LinearLayout>
+</RelativeLayout>

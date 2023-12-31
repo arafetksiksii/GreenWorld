@@ -5,10 +5,13 @@ import java.util.Date
 
 data class Comment(
     val _id: String,
-    val Contenu: String,
+    var Contenu: String,
     val date: Date,
     val eventID: String,
     val userID: String,
+    val userName: String,
+    val userImage: String?, // Ajout du champ userImage
+
     val __v: Int,
 
-): Serializable
+    ): Serializable

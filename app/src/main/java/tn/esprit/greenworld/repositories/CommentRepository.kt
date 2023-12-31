@@ -40,5 +40,37 @@ class CommentRepository {
             }
         })
     }
+    fun deleteComment(commentId: String, callback: (Boolean) -> Unit) {
+        commentApi.deleteComment(commentId).enqueue(object : Callback<Unit> {
+            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                if (response.isSuccessful) {
+                    callback(true)
+                } else {
+                    callback(false)
+                }
+            }
+
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
+                callback(false)
+            }
+        })
+    }
+    fun updateComment(commentId: String, updatedComment: Comment, callback: (Boolean) -> Unit) {
+        commentApi.updateComment(commentId, updatedComment).enqueue(object : Callback<Comment> {
+            override fun onResponse(call: Call<Comment>, response: Response<Comment>) {
+                if (response.isSuccessful) {
+                    callback(true)
+                } else {
+                    callback(false)
+                }
+            }
+
+            override fun onFailure(call: Call<Comment>, t: Throwable) {
+                callback(false)
+            }
+        })
+    }
+
+
 }
 
