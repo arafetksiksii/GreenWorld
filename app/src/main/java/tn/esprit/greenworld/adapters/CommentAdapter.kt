@@ -109,7 +109,7 @@ class CommentAdapter(
                     .error(com.cloudinary.android.R.drawable.mtrl_ic_error)
                     .into(binding.profileImage)
             } else {
-                binding.profileImage.setImageResource(R.drawable.profil
+                binding.profileImage.setImageResource(R.drawable.profil23
                 )
             }
             if (comment.userID == currentUserID) {

@@ -1,0 +1,45 @@
+<!-- res/layout/fragment_options_bottom_sheet.xml -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Option 1: Update Password -->
+    <TextView
+        android:id="@+id/tvUpdatePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Password"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <!-- Option 2: Update Email -->
+    <TextView
+        android:id="@+id/tvUpdateEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Email"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <!-- Option 3: User Update -->
+    <TextView
+        android:id="@+id/tvUserUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User Update"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground" />
+</LinearLayout>

@@ -12,11 +12,14 @@ import android.view.View
 import android.view.ViewGroup
 
 import android.widget.PopupMenu
+import android.widget.TextView
 
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 import tn.esprit.greenworld.R
 
@@ -68,44 +71,54 @@ class UserProfileFragment : Fragment() {
                 RequestOptions()
                     .placeholder(R.drawable.ic_apple)
                     .error(R.drawable.avatar)
+                    .transform(RoundedCorners(16))  // 16 is the radius in pixels, adjust as needed
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
             )
             .into(binding.profileImage)
-        binding.btnSetting.setOnClickListener { showPopupMenu(it) }
-        // Handle Return button click
+
+        binding.btnSetting.setOnClickListener {showBottomSheet(it) }
+
+
 
         return binding.root
     }
 
-    private fun showPopupMenu(view: View) {
-        val popupMenu = PopupMenu(requireContext(), view)
-        popupMenu.menuInflater.inflate(R.menu.setting_options_menu, popupMenu.menu)
-
-        popupMenu.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.menuUpdatePassword -> {
-
-                    startActivity(Intent(this.context, Update_Password::class.java))
-                    true
-                }
-
-                R.id.menuUpdateEmail -> {
-
-                    startActivity(Intent(this.context, Update_Email::class.java))
-                    true
-                }
-
-                R.id.menuUserUpdate -> {
-                    startActivity(Intent(this.context, UserUpdate_Image::class.java))
-                    true
-                }
-
-                else -> false
-            }
-        }
-
-        popupMenu.show()
+    private fun showBottomSheet(view: View) {
+        val bottomSheetFragment = OptionsBottomSheetFragment()
+        bottomSheetFragment.show(parentFragmentManager, bottomSheetFragment.tag)
     }
 
+
+
+}
+
+class OptionsBottomSheetFragment : BottomSheetDialogFragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_options_bottom_sheet, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Handle item clicks here
+        view.findViewById<TextView>(R.id.tvUpdatePassword).setOnClickListener {
+            startActivity(Intent(requireContext(), Update_Password::class.java))
+            dismiss()
+        }
+
+        view.findViewById<TextView>(R.id.tvUpdateEmail).setOnClickListener {
+            startActivity(Intent(requireContext(), Update_Email::class.java))
+            dismiss()
+        }
+
+        view.findViewById<TextView>(R.id.tvUserUpdate).setOnClickListener {
+            startActivity(Intent(requireContext(), UserUpdate_Image::class.java))
+            dismiss()
+        }
+    }
 }
 

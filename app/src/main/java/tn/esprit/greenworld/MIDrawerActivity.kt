@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewTreeObserver
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatDelegate
@@ -63,6 +64,7 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainnavbaraBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
+
 
         // Set color for the container's content as transparent
         activityMainBinding.drawerLayout.setScrimColor(Color.TRANSPARENT)
@@ -117,8 +119,6 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         })
 
 
-        //dark mode
-
         val currentNightMode =
             resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
         when (currentNightMode) {
@@ -138,7 +138,19 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
 
-      //  replaceFragment(UserProfileFragment())
+        // Vérifier si le fragmentContainer est prêt avant de remplacer le fragment
+        if (findViewById<View>(R.id.fragmentContainer) != null && savedInstanceState == null) {
+            // Attendez que la vue soit prête avant de remplacer le fragment
+            activityMainBinding.root.viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
+                override fun onPreDraw(): Boolean {
+                    // Supprimez le listener pour éviter d'être appelé à plusieurs reprises
+                    activityMainBinding.root.viewTreeObserver.removeOnPreDrawListener(this)
+                    // Remplacez le fragment une fois que la vue est prête
+                    replaceFragment(UserProfileFragment())
+                    return true
+                }
+            })
+        }
 
 
     }
@@ -255,6 +267,8 @@ open class MIDrawerActivity : AppCompatActivity(), View.OnClickListener {
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()
     }
+
+
 
 
 

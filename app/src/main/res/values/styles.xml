@@ -5,6 +5,10 @@
         <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:itemBackground">@drawable/menu_item_background</item>
     </style>
+    <style name="ShapeAppearanceOverlay.MyApp.ImageView.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item> <!-- Adjust the corner size as needed -->
+    </style>
 
 
 </resources>
