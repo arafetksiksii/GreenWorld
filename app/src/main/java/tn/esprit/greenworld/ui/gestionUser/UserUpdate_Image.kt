@@ -87,7 +87,10 @@ class UserUpdate_Image : AppCompatActivity() {
         if (userImageRes?.isNotEmpty() == true) {
             // Use your preferred image loading library or method to set the image
             // For example, if using Glide:
-            Glide.with(this).load(userImageRes).into(selectedImageView)
+            Glide.with(this)
+                .load(userImageRes)
+                .optionalCircleCrop()
+                .into(selectedImageView)
         }
 
         val selectImageButton: Button = findViewById(R.id.selectImageButton)

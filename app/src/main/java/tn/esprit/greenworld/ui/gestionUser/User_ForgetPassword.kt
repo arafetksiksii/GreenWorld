@@ -34,7 +34,10 @@ class User_ForgetPassword : AppCompatActivity() {
         binding.editTextEmail.doAfterTextChanged { text ->
             binding.btnForgetPassword.isEnabled = text?.isNotEmpty() == true
         }
-
+        // Handle Return button click
+        binding.btnReturn.setOnClickListener {
+            finish()
+        }
         // Add an animation to the button
         binding.btnForgetPassword.setOnClickListener {
             val inflater = layoutInflater
