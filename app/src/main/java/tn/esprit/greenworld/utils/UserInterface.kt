@@ -10,13 +10,16 @@ import tn.esprit.greenworld.models.User5
 import tn.esprit.greenworld.models.UserData
 
 interface UserInterface {
+
+
+    @GET("user/{id}")
+    fun getUserById(@Path("id") userId: String): Call<User>
     // Créer un nouvel utilisateur
     @POST("user")
     fun createUser(@Body user: User): Call<User>
 
     // Obtenir un utilisateur par ID
-    @GET("user/{id}")
-    fun getUserById(@Path("id") userId: Long): Call<User>
+
 
     // Mettre à jour les informations d'un utilisateur
     @PUT("user/")

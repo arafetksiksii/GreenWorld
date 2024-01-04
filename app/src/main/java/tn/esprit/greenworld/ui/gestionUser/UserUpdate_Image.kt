@@ -171,80 +171,81 @@ class UserUpdate_Image : AppCompatActivity() {
         }).dispatch()
     }
 
-    private fun updateUserp(imageUrl: String) {
-        val userId = sharedPreferences.getString("userId", "")
+        private fun updateUserp(imageUrl: String) {
+            val userId = sharedPreferences.getString("userId", "")
 
-        val user5 = User5(
-            id = userId?.toString() ?: "",
-            email = "",
-            nom = "",
-            prenom = "",
-            userName = "",
-            adress = "",
-            cin = "",
-            imageRes = imageUrl
-        )
+            val user5 = User5(
+                id = userId?.toString() ?: "",
+                email = "",
+                nom = "",
+                prenom = "",
+                userName = "",
+                adress = "",
+                numTel = "",
+                imageRes = imageUrl
+            )
 
-        val imageService = RetrofitImp.buildRetrofit().create(UserInterface::class.java)
-        imageService.updateUser(user5).enqueue(object : Callback<User> {
-            override fun onResponse(call: Call<User>, response: Response<User>) {
-                if (response.isSuccessful) {
-                    handleSuccessfulupdate(response.body())
-                } else {
-                    handleUpdateFailure(response.errorBody()?.string().toString())
+            val imageService = RetrofitImp.buildRetrofit().create(UserInterface::class.java)
+            imageService.updateUser(user5).enqueue(object : Callback<User> {
+                override fun onResponse(call: Call<User>, response: Response<User>) {
+                    if (response.isSuccessful) {
+                        handleSuccessfulupdate(response.body())
+                    } else {
+                        handleUpdateFailure(response.errorBody()?.string().toString())
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<User>, t: Throwable) {
-                handleUpdateFailure(t.message ?: "Unknown error")
-            }
-        })
-    }
+                override fun onFailure(call: Call<User>, t: Throwable) {
+                    handleUpdateFailure(t.message ?: "Unknown error")
+                }
+            })
+        }
 
-    private fun handleSuccessfulupdate(user: User?) {
-        if (user != null) {
-            saveUserToPreferences(user)
-            startActivity(Intent(this@UserUpdate_Image, MIDrawerActivity::class.java))
-            finish()
-        } else {
-            // Handle the case where user is null, e.g., show an error message
-            Log.e("UserUpdate_Image", "Received null user in handleSuccessfulupdate")
-            showSnackbar("Error updating user information")
+        private fun handleSuccessfulupdate(user: User?) {
+            if (user != null) {
+                //saveUserToPreferences(user)
+                //startActivity(Intent(this@UserUpdate_Image, MIDrawerActivity::class.java))
+              //  finish()
+                showSnackbar(" updating user image succes")
+            } else {
+                // Handle the case where user is null, e.g., show an error message
+                Log.e("UserUpdate_Image", "Received null user in handleSuccessfulupdate")
+                showSnackbar("Error updating user information")
+            }
+        }
+
+
+        private fun handleUpdateFailure(errorMessage: String) {
+            showSnackbar(errorMessage)
+        }
+
+        private fun showSnackbar(message: String) {
+            Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+        }
+        private fun saveUserToPreferences(user: User) {
+            val sharedPreferences: SharedPreferences =
+                getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+
+            editor.putString(PASSWORD_KEY, user.password)
+            editor.putString(USER_ID_KEY, user._id)
+            editor.putString(USER_NAME_KEY, user.userName)
+            editor.putString(USER_EMAIL_KEY, user.email)
+            editor.putString(USER_IMAGE_KEY, user.imageRes)
+            editor.putString(USER_TOKEN_KEY, user.token)
+            editor.putString(USER_NBLOGIN_KEY, user.loginCount)
+            editor.putString(USER_TIMEPass_KEY, user.totalTimeSpent)
+            editor.putString(USER_SCORE_KEY, user.score.toString())
+
+
+
+
+            editor.apply()
+
+            // Add logs to check values after saving
+            Log.d(
+                "UserProfileFragment",
+                "Saved UserID: ${user._id}, UserName: ${user.userName}, UserEmail: ${user.email}, UserImageRes: ${user.imageRes}, UserToken: ${user.token}"
+            )
         }
     }
-
-
-    private fun handleUpdateFailure(errorMessage: String) {
-        showSnackbar(errorMessage)
-    }
-
-    private fun showSnackbar(message: String) {
-        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
-    }
-    private fun saveUserToPreferences(user: User) {
-        val sharedPreferences: SharedPreferences =
-            getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-
-        editor.putString(PASSWORD_KEY, user.password)
-        editor.putString(USER_ID_KEY, user._id)
-        editor.putString(USER_NAME_KEY, user.userName)
-        editor.putString(USER_EMAIL_KEY, user.email)
-        editor.putString(USER_IMAGE_KEY, user.imageRes)
-        editor.putString(USER_TOKEN_KEY, user.token)
-        editor.putString(USER_NBLOGIN_KEY, user.loginCount)
-        editor.putString(USER_TIMEPass_KEY, user.totalTimeSpent)
-        editor.putString(USER_SCORE_KEY, user.score.toString())
-
-
-
-
-        editor.apply()
-
-        // Add logs to check values after saving
-        Log.d(
-            "UserProfileFragment",
-            "Saved UserID: ${user._id}, UserName: ${user.userName}, UserEmail: ${user.email}, UserImageRes: ${user.imageRes}, UserToken: ${user.token}"
-        )
-    }
-}

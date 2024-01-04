@@ -95,12 +95,6 @@ Green World
     <string name="facebook_app_id">696561575781314</string>
 
 
-
-
-
-
-
-
     <!--  ErrorsMessages  -->
 
     <!--  Main  -->
@@ -145,7 +139,6 @@ Green World
     <string name="select_image">Select Image</string>
     <string name="upload_image">Upload Image</string>
     <string name="profile_picture">Profile Picture</string>
-
 
 
 </resources>

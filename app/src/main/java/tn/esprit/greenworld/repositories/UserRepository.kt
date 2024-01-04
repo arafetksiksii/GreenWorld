@@ -13,9 +13,7 @@ class UserRepository(private val userInterface: UserInterface) {
     }
 
     // Obtenir un utilisateur par ID
-    suspend fun getUserById(userId: Long): User? {
-        return userInterface.getUserById(userId).await()
-    }
+
 
     // Mettre à jour les informations d'un utilisateur
 

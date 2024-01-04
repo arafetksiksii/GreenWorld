@@ -25,13 +25,15 @@ data class User(
     val token:String,
     val score :Int,
     val loginCount:String,
-    val totalTimeSpent:String
+    val totalTimeSpent:String,
+    val numTel:String
+
 
 ) {
 
 
     override fun toString(): String {
-        return "User(_id='$_id', nom='$nom', prenom='$prenom', dateNaissance=$dateNaissance, address='$adress', cin='$cin', userName='$userName', email='$email', password='$password', lastPassword='$lastPaswword', isValid=$isValid, imageRes='$imageRes', resetCode='$resetCode', role=$role, score=$score, loginCount=$loginCount, totalTimeSpen=$totalTimeSpent)"
+        return "User(_id='$_id', nom='$nom', prenom='$prenom', dateNaissance=$dateNaissance, address='$adress', cin='$cin', userName='$userName', email='$email', password='$password', lastPassword='$lastPaswword', isValid=$isValid, imageRes='$imageRes', resetCode='$resetCode', role=$role, score=$score, loginCount=$loginCount, totalTimeSpen=$totalTimeSpent,numTel=$numTel)"
     }
 
 }
@@ -72,7 +74,7 @@ data class User5(
     val prenom: String,
     val userName: String,
     val adress: String,
-    val cin: String,
+    val numTel: String,
     val imageRes: String
 ) {
     constructor(email: String,id: String) : this(
@@ -82,7 +84,7 @@ data class User5(
         prenom = "",
         userName = "",
         adress = "",
-        cin = "",
+        numTel = "",
         imageRes = ""
     )
 }

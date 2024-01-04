@@ -36,6 +36,16 @@
         android:id="@+id/tvUserUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="User Image update"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground" />
+    <TextView
+        android:id="@+id/tvUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="User Update"
         android:textSize="18sp"
         android:padding="12dp"
