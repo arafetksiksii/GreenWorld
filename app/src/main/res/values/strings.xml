@@ -110,6 +110,7 @@ Green World
 
     <string name="item_notification">Notification</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">VOTRE_CLE_API</string>
+<<<<<<< Updated upstream
     <string name="title_activity_drawer">drawer</string>
 
 
@@ -139,6 +140,10 @@ Green World
     <string name="select_image">Select Image</string>
     <string name="upload_image">Upload Image</string>
     <string name="profile_picture">Profile Picture</string>
+=======
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+>>>>>>> Stashed changes
 
 
 </resources>

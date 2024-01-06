@@ -89,11 +89,49 @@ class LoginActivity : MIDrawerActivity() {
                 val username = binding.edtEmail.text.toString()
                 val password = binding.tiPassword.text.toString()
 
+<<<<<<< Updated upstream
                 // Save the entered credentials in SharedPreferences
                 with(sharedPreferences.edit()) {
                     putString(USER_EMAIL_KEY_NEW, username)
                     putString(PASSWORD_KEY_NEW, password)
                     apply()
+=======
+                        // Check if user is not null before accessing its properties
+                        user?.let {
+                            // Pass the user data to UserProfil activity
+                            saveUserToPreferences(it)
+                            Log.d("LoginActivity", "Login successful. User data: $user")
+                            Log.d("bbbbbbbbb",it._id)
+
+
+                            val intent = Intent(this@LoginActivity, UserUpdate::class.java)
+                            intent.putExtra("userId", it._id)
+                            intent.putExtra("userName", it.userName)
+                            intent.putExtra("userEmail", it.email)
+                            intent.putExtra("userImageRes", it.imageRes)
+                            startActivity(intent)
+                            finish()
+                        } ?: run {
+                            // Handle the case where user is null (optional)
+                            Log.e("LoginActivity", "User data is null")
+
+                            Snackbar.make(
+                                binding.contextView,
+                                "User data is null",
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                        }
+                    } else {
+                        val errorBody = response.errorBody()?.string().toString()
+                        Log.d("LoginActivity", "Login failed. Error: $errorBody")
+
+                        Snackbar.make(
+                            binding.contextView,
+                            errorBody,
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
+>>>>>>> Stashed changes
                 }
 
                 performLogin(username, password)

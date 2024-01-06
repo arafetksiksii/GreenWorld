@@ -10,6 +10,11 @@ data class Dechets (
     val date_depot: String,
     val nombre_capacite:Int,
     val adresse:String,
+<<<<<<< Updated upstream
+=======
+    val userID: String,
+    val file: List<String>?,
+>>>>>>> Stashed changes
     val createdAt: String,
     val updatedAt: String
 

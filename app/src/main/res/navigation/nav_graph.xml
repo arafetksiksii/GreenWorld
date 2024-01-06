@@ -3,21 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    >
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="tn.esprit.green_world.fragments.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/favoriteFragment"
-        android:name="tn.esprit.greenworld.fragments.FavProduitFragment"
-        android:label="fragment_favorite"
-        tools:layout="@layout/favproduit_fragment" />
-    <fragment
-        android:id="@+id/produitFragment"
-        android:name="tn.esprit.green_world.fragments.ProduitFragment"
-        android:label="fragment_produit"
-        tools:layout="@layout/fragment_produit" />
+
 </navigation>

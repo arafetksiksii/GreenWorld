@@ -18,6 +18,4 @@ data class Event(
     val latitude: Double,
     val longitude: Double
 
-
-
 ) :Serializable

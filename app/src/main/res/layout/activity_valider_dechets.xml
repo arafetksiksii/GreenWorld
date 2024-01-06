@@ -36,8 +36,13 @@
 
     <ImageView
         android:id="@+id/imageEllipseNineOne11"
+<<<<<<< Updated upstream
         android:layout_width="238dp"
         android:layout_height="193dp"
+=======
+        android:layout_width="241dp"
+        android:layout_height="194dp"
+>>>>>>> Stashed changes
         android:layout_gravity="top|start"
         android:layout_marginStart="84dp"
         android:scaleType="fitXY"
@@ -184,6 +189,7 @@
         android:id="@+id/Qrcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< Updated upstream
         android:layout_marginStart="24dp"
         android:layout_marginTop="424dp"
         android:text="Scanne Your Qr Code :"
@@ -192,6 +198,15 @@
 
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/qrImageView"
+=======
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="516dp"
+        android:text="Scanne Your Qr Code :"
+        android:textSize="23sp"
+        android:textColor="@color/drawer_color"
+
+        android:textStyle="bold"
+>>>>>>> Stashed changes
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />

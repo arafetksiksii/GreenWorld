@@ -5,12 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< Updated upstream
     tools:context=".HomeActivity">
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pagerMain"
         android:layout_width="match_parent"
         android:background="@color/white"
         android:layout_height="match_parent"/>
+=======
+    tools:context=".Home">
+
+<androidx.viewpager2.widget.ViewPager2
+    android:id="@+id/pagerMain"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"/>
+>>>>>>> Stashed changes
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_alignParentBottom="true"

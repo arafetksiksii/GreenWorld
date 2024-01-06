@@ -11,8 +11,13 @@
     <item android:title="Event"
         android:icon="@drawable/baseline_event_24"
         android:id="@+id/EventFragment"/>
+<<<<<<< Updated upstream
     <item android:title="Dechets"
         android:icon="@drawable/baseline_recycling_24"
+=======
+        <item android:title="Dechets"
+            android:icon="@drawable/baseline_recycling_24"
+>>>>>>> Stashed changes
         android:id="@+id/typeFragment" />
 
     <item android:title="store"

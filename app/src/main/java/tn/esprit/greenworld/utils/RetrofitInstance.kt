@@ -13,7 +13,11 @@ object RetrofitInstance {
    var a ="http://10.0.2.2:9090/"
     val api: ProduitApi by lazy {
         Retrofit.Builder()
+<<<<<<< Updated upstream
             .baseUrl(a)
+=======
+            .baseUrl("http://192.168.1.105:9090/")
+>>>>>>> Stashed changes
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ProduitApi::class.java)
@@ -21,7 +25,11 @@ object RetrofitInstance {
 
     val Commandeapi: CommandeApi by lazy {
         Retrofit.Builder()
+<<<<<<< Updated upstream
             .baseUrl(a)
+=======
+            .baseUrl("http://192.168.1.105:9090/")
+>>>>>>> Stashed changes
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(CommandeApi::class.java)
@@ -29,7 +37,11 @@ object RetrofitInstance {
 
     val apiEvent: EventApi by lazy {
         Retrofit.Builder()
+<<<<<<< Updated upstream
             .baseUrl(a)
+=======
+            .baseUrl("http://192.168.1.105:9090/")
+>>>>>>> Stashed changes
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(EventApi::class.java)
@@ -37,14 +49,22 @@ object RetrofitInstance {
 
     val apii: TypeApi by lazy {
         Retrofit.Builder()
+<<<<<<< Updated upstream
             .baseUrl(a)
+=======
+            .baseUrl("http://192.168.1.105:9090/")
+>>>>>>> Stashed changes
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(TypeApi::class.java)
     }
     val apiii: CommentApi by lazy {
         Retrofit.Builder()
+<<<<<<< Updated upstream
             .baseUrl(a)
+=======
+            .baseUrl("http://192.168.1.105:9090/")
+>>>>>>> Stashed changes
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(CommentApi::class.java)

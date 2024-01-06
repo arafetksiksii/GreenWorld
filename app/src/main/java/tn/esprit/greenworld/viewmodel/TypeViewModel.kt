@@ -1,18 +1,18 @@
 package tn.esprit.greenworld.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import androidx.lifecycle.LiveData
 import tn.esprit.greenworld.models.Type
 import tn.esprit.greenworld.models.TypeList
 import tn.esprit.greenworld.utils.RetrofitInstance
 
-class TypeViewModel:ViewModel() {
+
+class TypeViewModel : ViewModel() {
     private var listTypeLiveData = MutableLiveData<List<Type>>()
 
     fun getType() {
@@ -37,7 +37,7 @@ class TypeViewModel:ViewModel() {
         })
     }
 
-    fun observeListTypeLiveData(): LiveData<List<Type>>{
+    fun observeListTypeLiveData(): LiveData<List<Type>> {
         return listTypeLiveData
 
     }

@@ -5,8 +5,12 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.databinding.ActivityMain4Binding
+<<<<<<< Updated upstream
 import tn.esprit.greenworld.databinding.ActivityMainBinding
 import tn.esprit.greenworld.fragments.EventFragment
+=======
+import tn.esprit.greenworld.fragments.typedechets
+>>>>>>> Stashed changes
 
 class MainActivity4 : AppCompatActivity() {
     private lateinit var binding: ActivityMain4Binding

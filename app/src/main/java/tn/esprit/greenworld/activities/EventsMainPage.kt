@@ -55,6 +55,7 @@ class EventsMainPage : AppCompatActivity(), CommentActionListener {
 
     private val userID by lazy { getUserIdFromPreferences() }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)

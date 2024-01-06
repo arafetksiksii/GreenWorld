@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.squareup.picasso.Picasso
 import tn.esprit.greenworld.R
 import tn.esprit.greenworld.models.User
 
@@ -30,7 +29,8 @@ class UserListAdapter(private val onItemClick: (User) -> Unit) : RecyclerView.Ad
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = userList[position]
         // Chargez l'image dans l'ImageView avec Picasso
-        Picasso.get().load(user.imageRes).into(holder.imageView)
+
+       // Picasso.get().load(user.imageRes).into(holder.imageView)
         holder.bind(user)
 
         holder.itemView.setOnClickListener {

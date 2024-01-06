@@ -5,7 +5,10 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
+<<<<<<< Updated upstream
 import tn.esprit.green_world.fragments.HomeFragment
+=======
+>>>>>>> Stashed changes
 import tn.esprit.greenworld.adapters.Adapter
 import tn.esprit.greenworld.fragments.EventFragment
 import tn.esprit.greenworld.fragments.FavProduitFragment

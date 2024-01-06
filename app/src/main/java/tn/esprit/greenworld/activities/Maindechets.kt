@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
+import android.os.UserManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -268,14 +269,15 @@ class Maindechets : AppCompatActivity() {
     private fun registerDechets() {
         val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
 
-
         try {
             val date = dateFormat.parse(binding.selectedDateTextView.text.toString())
             val dechets = DechetsItem(
                 Type_dechets = binding.titype.text.toString(),
                 date_depot = binding.selectedDateTextView.text.toString(),
                 nombre_capacite = binding.tiWeight.text.toString().toIntOrNull() ?: 0,
-                adresse = binding.tiAdresse.text.toString()
+                adresse = binding.tiAdresse.text.toString(),
+                userID = "655ddc80d5849d7349c150f6"
+
             )
 
             val registerService = RetrofitImp.buildRetrofit().create(DechetsApi::class.java)
@@ -351,4 +353,8 @@ class Maindechets : AppCompatActivity() {
     }
 }
 
+<<<<<<< Updated upstream
 fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this?: "")
+=======
+fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this?: "")
+>>>>>>> Stashed changes
